@@ -1,0 +1,49 @@
+{
+  "project": "gorilla",
+  "checks": [
+    {
+      "command": "moon fmt",
+      "exit_code": 0,
+      "output": "Finished. moon: ran 8 tasks, now up to date\n",
+      "utc": "2026-09-10T06:01:20.836988+00:00"
+    },
+    {
+      "command": "moon info",
+      "exit_code": 0,
+      "output": "Finished. moon: ran 2 tasks, now up to date\n",
+      "utc": "2026-09-10T06:01:21.581799+00:00"
+    },
+    {
+      "command": "moon check --deny-warn",
+      "exit_code": 0,
+      "output": "Finished. moon: ran 2 tasks, now up to date\n",
+      "utc": "2026-09-10T06:01:22.607526+00:00"
+    },
+    {
+      "command": "moon test --target wasm-gc --deny-warn",
+      "exit_code": 0,
+      "output": "Total tests: 7, passed: 7, failed: 0.\n",
+      "utc": "2026-09-10T06:01:23.683982+00:00"
+    },
+    {
+      "command": "moon test --target js --deny-warn",
+      "exit_code": 0,
+      "output": "Total tests: 7, passed: 7, failed: 0.\n",
+      "utc": "2026-09-10T06:01:24.660561+00:00"
+    },
+    {
+      "command": "moon build --target js --deny-warn",
+      "exit_code": 0,
+      "output": "Finished. moon: no work to do\n",
+      "utc": "2026-09-10T06:01:25.683050+00:00"
+    },
+    {
+      "command": "moon run cmd/main",
+      "exit_code": 0,
+      "output": "Samples: 4\nEncoded bytes: 28\nRaw sample bytes: 64\nDecoded: [\n  { timestamp: 1700000000, bits: 4607182418800017408 },\n  { timestamp: 1700000060, bits: 4607182418800017408 },\n  { timestamp: 1700000120, bits: 4607182418800017409 },\n  { timestamp: 1700000180, bits: 4607182418800017409 },\n]\n",
+      "utc": "2026-09-10T06:01:26.409124+00:00"
+    }
+  ],
+  "demo": "Samples: 4\nEncoded bytes: 28\nRaw sample bytes: 64\nDecoded: [\n  { timestamp: 1700000000, bits: 4607182418800017408 },\n  { timestamp: 1700000060, bits: 4607182418800017408 },\n  { timestamp: 1700000120, bits: 4607182418800017409 },\n  { timestamp: 1700000180, bits: 4607182418800017409 },\n]",
+  "source_lines": 280
+}

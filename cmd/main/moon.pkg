@@ -1,0 +1,6 @@
+import {
+  "localreview/gorilla" @lib,
+  "moonbitlang/core/string" @strconv,
+}
+
+pkgtype(kind: "executable")

@@ -1,0 +1,26 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "localreview/gorilla"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn decode(Bytes) -> Array[Sample] raise CodecError
+
+pub fn encode(Array[Sample]) -> Bytes raise CodecError
+
+// Errors
+pub suberror CodecError {
+  Invalid(String)
+} derive(@debug.Debug)
+
+// Types and methods
+pub(all) struct Sample {
+  timestamp : Int64
+  bits : UInt64
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
