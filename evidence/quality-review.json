@@ -1,0 +1,47 @@
+{
+  "project": "moonbit-gorilla",
+  "timestamp": "2026-09-10T10:39:53.944664+00:00",
+  "exit_code": 0,
+  "backend_test_counts": [
+    [
+      "8",
+      "8",
+      "0"
+    ],
+    [
+      "8",
+      "8",
+      "0"
+    ]
+  ],
+  "scope": "Local Windows verify.ps1; remote CI and full upstream conformance not run",
+  "coverage": {
+    "covered": 125,
+    "total": 134,
+    "measurement": "MoonBit instrumentation points, not upstream feature coverage"
+  },
+  "robustness": {
+    "project": "gorilla",
+    "seed": 20260910,
+    "cases": 307,
+    "expected_error_responses": 304,
+    "uncaught_exceptions": 0,
+    "scope": "bounded malformed-input robustness, not proof of full language/protocol conformance"
+  },
+  "benchmark": {
+    "project": "gorilla",
+    "utc": "2026-09-10T10:39:53.692Z",
+    "runtime": "v24.11.0",
+    "platform": "win32",
+    "cpu": "Intel(R) Core(TM) i7-14700HX",
+    "input_utf8_bytes": 123,
+    "samples": 30,
+    "warmup": 5,
+    "median_ms": 0.21420000000000528,
+    "p95_ms": 0.42970000000000397,
+    "max_ms": 0.4521999999999977,
+    "scope": "JS warm execution of documented example; no cross-project or upstream performance claim"
+  },
+  "remote_ci": "not run",
+  "network_interoperability": "not run"
+}

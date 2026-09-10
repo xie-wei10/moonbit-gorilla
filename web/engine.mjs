@@ -250,25 +250,6 @@ _M0DTPC16result6ResultGmRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag 
 function _M0TPB8MutLocalGmE(param0) {
   this.val = param0;
 }
-function _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
-function _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(param0) {
-  this._0 = param0;
-}
-_M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
-function _M0TP211localreview7gorilla6Writer(param0) {
-  this.bits = param0;
-}
-function _M0TPB8MutLocalGlE(param0) {
-  this.val = param0;
-}
-function _M0TPB9ArrayViewGyE(param0, param1, param2) {
-  this.buf = param0;
-  this.start = param1;
-  this.end = param2;
-}
 function _M0TP211localreview7gorilla6Reader(param0, param1) {
   this.bytes = param0;
   this.pos = param1;
@@ -281,9 +262,28 @@ function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211l
   this._0 = param0;
 }
 _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
+function _M0TPB8MutLocalGlE(param0) {
+  this.val = param0;
+}
 function _M0TP211localreview7gorilla6Sample(param0, param1) {
   this.timestamp = param0;
   this.bits = param1;
+}
+function _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
+function _M0TP211localreview7gorilla6Writer(param0) {
+  this.bits = param0;
+}
+function _M0TPB9ArrayViewGyE(param0, param1, param2) {
+  this.buf = param0;
+  this.start = param1;
+  this.end = param2;
 }
 const _M0FP092moonbitlang_2fcore_2fbuiltin_2fStringBuilder_24as_24_40moonbitlang_2fcore_2fbuiltin_2eLogger = { method_0: _M0IPB13StringBuilderPB6Logger13write__string, method_1: _M0IP016_24default__implPB6Logger16write__substringGRPB13StringBuilderE, method_2: _M0IPB13StringBuilderPB6Logger11write__view, method_3: _M0IPB13StringBuilderPB6Logger11write__char, method_4: _M0IP016_24default__implPB6Logger28write__string__interpolationGRPB13StringBuilderE, method_5: _M0IP016_24default__implPB6Logger5writeGRPB13StringBuilderE };
 function _M0FP15Error8to__repr(_e) {
@@ -4225,32 +4225,19 @@ function _M0FPC28internal7strconv20parse__int64_2einner(str, base) {
     return _M0FPC28internal7strconv11syntax__errGlE();
   }
 }
-function _M0IP211localreview7gorilla10CodecErrorPC15debug5Debug8to__reprGRP211localreview7gorilla10CodecErrorE(_x_48) {
-  let _arg_49;
+function _M0IP211localreview7gorilla10CodecErrorPC15debug5Debug8to__reprGRP211localreview7gorilla10CodecErrorE(_x_52) {
+  let _arg_53;
   _L: {
-    const _Invalid = _x_48;
-    const _$42$arg_49 = _Invalid._0;
-    _arg_49 = _$42$arg_49;
+    const _Invalid = _x_52;
+    const _$42$arg_53 = _Invalid._0;
+    _arg_53 = _$42$arg_53;
     break _L;
   }
-  return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_49) }]);
+  return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_53) }]);
 }
-function _M0IP211localreview7gorilla6SamplePC15debug5Debug8to__repr(_x_46) {
-  const _bind = [{ _0: "timestamp", _1: _M0IPC15int645Int64PC15debug5Debug8to__repr(_x_46.timestamp) }, { _0: "bits", _1: _M0IPC16uint646UInt64PC15debug5Debug8to__repr(_x_46.bits) }];
+function _M0IP211localreview7gorilla6SamplePC15debug5Debug8to__repr(_x_50) {
+  const _bind = [{ _0: "timestamp", _1: _M0IPC15int645Int64PC15debug5Debug8to__repr(_x_50.timestamp) }, { _0: "bits", _1: _M0IPC16uint646UInt64PC15debug5Debug8to__repr(_x_50.bits) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind, 0, 2), undefined));
-}
-function _M0MP211localreview7gorilla6Writer3put(self, n, width) {
-  let _tmp = width - 1 | 0;
-  while (true) {
-    const i = _tmp;
-    if (i >= 0) {
-      _M0MPC15array5Array4pushGiE(self.bits, Number(BigInt.asIntN(32, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, n) >> BigInt(i & 63)) & 1n))) | 0);
-      _tmp = i - 1 | 0;
-      continue;
-    } else {
-      return;
-    }
-  }
 }
 function _M0MP211localreview7gorilla6Reader3get(self, n) {
   if (n < 0 || (self.pos + n | 0) > (Math.imul(self.bytes.length, 8) | 0)) {
@@ -4281,146 +4268,6 @@ function _M0MP211localreview7gorilla6Reader3get(self, n) {
     }
   }
   return new _M0DTPC16result6ResultGmRP211localreview7gorilla10CodecErrorE2Ok(out.val);
-}
-function _M0FP211localreview7gorilla5zeros(x) {
-  const lead = new _M0TPB8MutLocalGiE(0);
-  const trail = new _M0TPB8MutLocalGiE(0);
-  while (true) {
-    if (lead.val < 64 && BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt((63 - lead.val | 0) & 63)) & 1n)) === BigInt.asUintN(64, 0n)) {
-      lead.val = lead.val + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  while (true) {
-    if (trail.val < 64 && BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(trail.val & 63)) & 1n)) === BigInt.asUintN(64, 0n)) {
-      trail.val = trail.val + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return { _0: lead.val, _1: trail.val };
-}
-function _M0FP211localreview7gorilla6encode(samples) {
-  if (samples.length > 100000) {
-    return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
-  }
-  const w = new _M0TP211localreview7gorilla6Writer([]);
-  _M0MP211localreview7gorilla6Writer3put(w, 1196380721n, 32);
-  _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(samples.length), 32);
-  const previous = new _M0TPB8MutLocalGmE(0n);
-  const time = new _M0TPB8MutLocalGlE(0n);
-  const delta = new _M0TPB8MutLocalGlE(0n);
-  const leading = new _M0TPB8MutLocalGiE(64);
-  const trailing = new _M0TPB8MutLocalGiE(0);
-  const _bind = samples.length;
-  let _tmp = 0;
-  while (true) {
-    const i = _tmp;
-    if (i < _bind) {
-      const s = samples[i];
-      if (BigInt.asIntN(64, s.timestamp) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, s.timestamp) > BigInt.asIntN(64, 9007199254740991n)) {
-        return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp outside safe range"));
-      }
-      if (i === 0) {
-        _M0MP211localreview7gorilla6Writer3put(w, s.timestamp, 64);
-        _M0MP211localreview7gorilla6Writer3put(w, s.bits, 64);
-      } else {
-        const d = BigInt.asUintN(64, s.timestamp - time.val);
-        if (BigInt.asIntN(64, d) < BigInt.asIntN(64, 0n)) {
-          return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamps must be nondecreasing"));
-        }
-        const dd = BigInt.asUintN(64, d - delta.val);
-        if (BigInt.asUintN(64, dd) === BigInt.asUintN(64, 0n)) {
-          _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
-        } else {
-          if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551553n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 64n)) {
-            _M0MP211localreview7gorilla6Writer3put(w, 2n, 2);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 63n), 7);
-          } else {
-            if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551361n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 256n)) {
-              _M0MP211localreview7gorilla6Writer3put(w, 6n, 3);
-              _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 255n), 9);
-            } else {
-              if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709549569n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 2048n)) {
-                _M0MP211localreview7gorilla6Writer3put(w, 14n, 4);
-                _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 2047n), 12);
-              } else {
-                _M0MP211localreview7gorilla6Writer3put(w, 15n, 4);
-                _M0MP211localreview7gorilla6Writer3put(w, dd, 64);
-              }
-            }
-          }
-        }
-        const x = BigInt.asUintN(64, previous.val ^ s.bits);
-        if (BigInt.asUintN(64, x) === BigInt.asUintN(64, 0n)) {
-          _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
-        } else {
-          _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
-          let l;
-          let t;
-          _L: {
-            const _bind$2 = _M0FP211localreview7gorilla5zeros(x);
-            const _l = _bind$2._0;
-            const _t = _bind$2._1;
-            l = _l;
-            t = _t;
-            break _L;
-          }
-          if (l >= leading.val && t >= trailing.val) {
-            _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(trailing.val & 63)), (64 - leading.val | 0) - trailing.val | 0);
-          } else {
-            leading.val = l;
-            trailing.val = t;
-            _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
-            _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(l), 6);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, _M0MPC13int3Int10to__uint64((64 - l | 0) - t | 0) & 63n), 6);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(t & 63)), (64 - l | 0) - t | 0);
-          }
-        }
-        delta.val = d;
-      }
-      time.val = s.timestamp;
-      previous.val = s.bits;
-      _tmp = i + 1 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  const data = [];
-  let _tmp$2 = 0;
-  while (true) {
-    const i = _tmp$2;
-    if (i < w.bits.length) {
-      const b = new _M0TPB8MutLocalGiE(0);
-      const _bind$2 = 0;
-      const _bind$3 = 8;
-      let _tmp$3 = _bind$2;
-      while (true) {
-        const j = _tmp$3;
-        if (j < _bind$3) {
-          b.val = b.val << 1;
-          if ((i + j | 0) < w.bits.length) {
-            b.val = b.val | _M0MPC15array5Array2atGiE(w.bits, i + j | 0);
-          }
-          _tmp$3 = j + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
-      }
-      _M0MPC15array5Array4pushGyE(data, b.val & 255);
-      _tmp$2 = i + 8 | 0;
-      continue;
-    } else {
-      break;
-    }
-  }
-  return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(_M0MPC15bytes5Bytes11from__array(new _M0TPB9ArrayViewGyE(data, 0, data.length)));
 }
 function _M0FP211localreview7gorilla6decode(data) {
   const r = new _M0TP211localreview7gorilla6Reader(data, 0);
@@ -4656,6 +4503,159 @@ function _M0FP211localreview7gorilla6decode(data) {
     }
   }
   return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok(result);
+}
+function _M0MP211localreview7gorilla6Writer3put(self, n, width) {
+  let _tmp = width - 1 | 0;
+  while (true) {
+    const i = _tmp;
+    if (i >= 0) {
+      _M0MPC15array5Array4pushGiE(self.bits, Number(BigInt.asIntN(32, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, n) >> BigInt(i & 63)) & 1n))) | 0);
+      _tmp = i - 1 | 0;
+      continue;
+    } else {
+      return;
+    }
+  }
+}
+function _M0FP211localreview7gorilla5zeros(x) {
+  const lead = new _M0TPB8MutLocalGiE(0);
+  const trail = new _M0TPB8MutLocalGiE(0);
+  while (true) {
+    if (lead.val < 64 && BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt((63 - lead.val | 0) & 63)) & 1n)) === BigInt.asUintN(64, 0n)) {
+      lead.val = lead.val + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  while (true) {
+    if (trail.val < 64 && BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(trail.val & 63)) & 1n)) === BigInt.asUintN(64, 0n)) {
+      trail.val = trail.val + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return { _0: lead.val, _1: trail.val };
+}
+function _M0FP211localreview7gorilla6encode(samples) {
+  if (samples.length > 100000) {
+    return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
+  }
+  const w = new _M0TP211localreview7gorilla6Writer([]);
+  _M0MP211localreview7gorilla6Writer3put(w, 1196380721n, 32);
+  _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(samples.length), 32);
+  const previous = new _M0TPB8MutLocalGmE(0n);
+  const time = new _M0TPB8MutLocalGlE(0n);
+  const delta = new _M0TPB8MutLocalGlE(0n);
+  const leading = new _M0TPB8MutLocalGiE(64);
+  const trailing = new _M0TPB8MutLocalGiE(0);
+  const _bind = samples.length;
+  let _tmp = 0;
+  while (true) {
+    const i = _tmp;
+    if (i < _bind) {
+      const s = samples[i];
+      if (BigInt.asIntN(64, s.timestamp) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, s.timestamp) > BigInt.asIntN(64, 9007199254740991n)) {
+        return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp outside safe range"));
+      }
+      if (i === 0) {
+        _M0MP211localreview7gorilla6Writer3put(w, s.timestamp, 64);
+        _M0MP211localreview7gorilla6Writer3put(w, s.bits, 64);
+      } else {
+        const d = BigInt.asUintN(64, s.timestamp - time.val);
+        if (BigInt.asIntN(64, d) < BigInt.asIntN(64, 0n)) {
+          return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamps must be nondecreasing"));
+        }
+        const dd = BigInt.asUintN(64, d - delta.val);
+        if (BigInt.asUintN(64, dd) === BigInt.asUintN(64, 0n)) {
+          _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
+        } else {
+          if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551553n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 64n)) {
+            _M0MP211localreview7gorilla6Writer3put(w, 2n, 2);
+            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 63n), 7);
+          } else {
+            if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551361n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 256n)) {
+              _M0MP211localreview7gorilla6Writer3put(w, 6n, 3);
+              _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 255n), 9);
+            } else {
+              if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709549569n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 2048n)) {
+                _M0MP211localreview7gorilla6Writer3put(w, 14n, 4);
+                _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 2047n), 12);
+              } else {
+                _M0MP211localreview7gorilla6Writer3put(w, 15n, 4);
+                _M0MP211localreview7gorilla6Writer3put(w, dd, 64);
+              }
+            }
+          }
+        }
+        const x = BigInt.asUintN(64, previous.val ^ s.bits);
+        if (BigInt.asUintN(64, x) === BigInt.asUintN(64, 0n)) {
+          _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
+        } else {
+          _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
+          let l;
+          let t;
+          _L: {
+            const _bind$2 = _M0FP211localreview7gorilla5zeros(x);
+            const _l = _bind$2._0;
+            const _t = _bind$2._1;
+            l = _l;
+            t = _t;
+            break _L;
+          }
+          if (l >= leading.val && t >= trailing.val) {
+            _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
+            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(trailing.val & 63)), (64 - leading.val | 0) - trailing.val | 0);
+          } else {
+            leading.val = l;
+            trailing.val = t;
+            _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
+            _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(l), 6);
+            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, _M0MPC13int3Int10to__uint64((64 - l | 0) - t | 0) & 63n), 6);
+            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(t & 63)), (64 - l | 0) - t | 0);
+          }
+        }
+        delta.val = d;
+      }
+      time.val = s.timestamp;
+      previous.val = s.bits;
+      _tmp = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  const data = [];
+  let _tmp$2 = 0;
+  while (true) {
+    const i = _tmp$2;
+    if (i < w.bits.length) {
+      const b = new _M0TPB8MutLocalGiE(0);
+      const _bind$2 = 0;
+      const _bind$3 = 8;
+      let _tmp$3 = _bind$2;
+      while (true) {
+        const j = _tmp$3;
+        if (j < _bind$3) {
+          b.val = b.val << 1;
+          if ((i + j | 0) < w.bits.length) {
+            b.val = b.val | _M0MPC15array5Array2atGiE(w.bits, i + j | 0);
+          }
+          _tmp$3 = j + 1 | 0;
+          continue;
+        } else {
+          break;
+        }
+      }
+      _M0MPC15array5Array4pushGyE(data, b.val & 255);
+      _tmp$2 = i + 8 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(_M0MPC15bytes5Bytes11from__array(new _M0TPB9ArrayViewGyE(data, 0, data.length)));
 }
 function _M0FP411localreview7gorilla3cmd3web3run(input) {
   let _try_err;

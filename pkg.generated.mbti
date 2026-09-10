@@ -8,6 +8,8 @@ import {
 // Values
 pub fn decode(Bytes) -> Array[Sample] raise CodecError
 
+pub fn decode_range(Bytes, Int64, Int64) -> Array[Sample] raise CodecError
+
 pub fn encode(Array[Sample]) -> Bytes raise CodecError
 
 // Errors
