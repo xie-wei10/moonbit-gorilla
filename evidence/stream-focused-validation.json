@@ -1,0 +1,10 @@
+{
+  "date": "2026-09-10T14:50:08.317Z",
+  "projectJsTestsPassed": 13,
+  "cliScenariosPassed": 5,
+  "maximumSamplesTested": 100000,
+  "constantNaNPayloadBlockBytesBelow": 26000,
+  "wireFormat": "GOR1 custom format, unchanged",
+  "upstreamWireCompatibilityClaimed": false,
+  "engineSha256": "a407544a7697dab31018f412c914e10bd2e6032b60b078b8366413ba10ad5ff5"
+}

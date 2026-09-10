@@ -8,5 +8,12 @@ pub fn decode_range(
   if start < 0L || end < start {
     raise Invalid("invalid time range")
   }
-  decode(data).filter(s => s.timestamp >= start && s.timestamp <= end)
+  let decoder = Decoder::new(data)
+  let out = []
+  while decoder.next() is Some(sample) {
+    if sample.timestamp >= start && sample.timestamp <= end {
+      out.push(sample)
+    }
+  }
+  out
 }

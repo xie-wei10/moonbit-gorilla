@@ -76,6 +76,7 @@ function _M0TPB5EntryGsRPC15debug4ReprE(param0, param1, param2, param3, param4, 
 function _M0TPB8MutLocalGORPB5EntryGsRPC15debug4ReprEE(param0) {
   this.val = param0;
 }
+const _M0MPB7JSArray4copy = (arr) => arr.slice(0);
 const $bytes_literal$0 = new Uint8Array();
 const _M0MPB7JSArray12append__view = (dst, src, src_offset, len) => {
    for (let i = 0; i < len; i++) {
@@ -250,24 +251,69 @@ _M0DTPC16result6ResultGmRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag 
 function _M0TPB8MutLocalGmE(param0) {
   this.val = param0;
 }
+function _M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
 function _M0TP211localreview7gorilla6Reader(param0, param1) {
   this.bytes = param0;
   this.pos = param1;
 }
-function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(param0) {
+function _M0TP211localreview7gorilla7Decoder(param0, param1, param2, param3, param4, param5, param6, param7, param8, param9) {
+  this.reader = param0;
+  this.count = param1;
+  this.index = param2;
+  this.time = param3;
+  this.delta = param4;
+  this.previous = param5;
+  this.leading = param6;
+  this.trailing = param7;
+  this.failed = param8;
+  this.verified = param9;
+}
+function _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(param0) {
   this._0 = param0;
 }
-_M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
-function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok(param0) {
+_M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE2Ok(param0) {
   this._0 = param0;
 }
-_M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
-function _M0TPB8MutLocalGlE(param0) {
-  this.val = param0;
+_M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
+function _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(param0) {
+  this._0 = param0;
 }
+_M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
 function _M0TP211localreview7gorilla6Sample(param0, param1) {
   this.timestamp = param0;
   this.bits = param1;
+}
+function _M0TP211localreview7gorilla6Writer(param0, param1, param2) {
+  this.bytes = param0;
+  this.partial = param1;
+  this.used = param2;
+}
+function _M0TP211localreview7gorilla7Encoder(param0, param1, param2, param3, param4, param5, param6, param7) {
+  this.writer = param0;
+  this.count = param1;
+  this.previous = param2;
+  this.time = param3;
+  this.delta = param4;
+  this.leading = param5;
+  this.trailing = param6;
+  this.closed = param7;
+}
+function _M0TPB9ArrayViewGyE(param0, param1, param2) {
+  this.buf = param0;
+  this.start = param1;
+  this.end = param2;
 }
 function _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(param0) {
   this._0 = param0;
@@ -277,14 +323,22 @@ function _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(param0
   this._0 = param0;
 }
 _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
-function _M0TP211localreview7gorilla6Writer(param0) {
-  this.bits = param0;
+function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(param0) {
+  this._0 = param0;
 }
-function _M0TPB9ArrayViewGyE(param0, param1, param2) {
-  this.buf = param0;
-  this.start = param1;
-  this.end = param2;
+_M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok(param0) {
+  this._0 = param0;
 }
+_M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok.prototype.$tag = 1;
+function _M0DTPC16result6ResultGzRPB7FailureE3Err(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGzRPB7FailureE3Err.prototype.$tag = 0;
+function _M0DTPC16result6ResultGzRPB7FailureE2Ok(param0) {
+  this._0 = param0;
+}
+_M0DTPC16result6ResultGzRPB7FailureE2Ok.prototype.$tag = 1;
 const _M0FP092moonbitlang_2fcore_2fbuiltin_2fStringBuilder_24as_24_40moonbitlang_2fcore_2fbuiltin_2eLogger = { method_0: _M0IPB13StringBuilderPB6Logger13write__string, method_1: _M0IP016_24default__implPB6Logger16write__substringGRPB13StringBuilderE, method_2: _M0IPB13StringBuilderPB6Logger11write__view, method_3: _M0IPB13StringBuilderPB6Logger11write__char, method_4: _M0IP016_24default__implPB6Logger28write__string__interpolationGRPB13StringBuilderE, method_5: _M0IP016_24default__implPB6Logger5writeGRPB13StringBuilderE };
 function _M0FP15Error8to__repr(_e) {
   if (_e.$tag === 0) {
@@ -1129,6 +1183,9 @@ function _M0MPC16string10StringView4find(self, str) {
     }
   }
 }
+function _M0MPC16string6String4find(self, str) {
+  return _M0MPC16string10StringView4find(new _M0TPC16string10StringView(self, 0, self.length), str);
+}
 function _M0IPC16string6StringPB4Show10to__string(self) {
   return self;
 }
@@ -1203,14 +1260,32 @@ function _M0MPC16string10StringView13strip__prefix(self, prefix) {
 function _M0MPC15array5Array13Array_2einnerGRPC16string10StringViewE(capacity) {
   return [];
 }
+function _M0MPC15array5Array13Array_2einnerGcE(capacity) {
+  return [];
+}
 function _M0MPC15array5Array4pushGRP211localreview7gorilla6SampleE(self, value) {
   _M0MPB7JSArray4push(self, value);
 }
 function _M0MPC15array5Array4pushGyE(self, value) {
   _M0MPB7JSArray4push(self, value);
 }
-function _M0MPC15array5Array4pushGiE(self, value) {
+function _M0MPC15array5Array4pushGcE(self, value) {
   _M0MPB7JSArray4push(self, value);
+}
+function _M0MPB4Iter4foldGcRPB5ArrayGcEE(self, init, f) {
+  let acc = init;
+  while (true) {
+    const _bind = _M0MPB4Iter4nextGcE(self);
+    if (_bind === -1) {
+      break;
+    } else {
+      const _Some = _bind;
+      const _x = _Some;
+      acc = f(acc, _x);
+      continue;
+    }
+  }
+  return acc;
 }
 function _M0FPB36string__contains__code__unit__scalar(str, start, end, code) {
   let _tmp = start;
@@ -1487,6 +1562,27 @@ function _M0MPC16string6String4trim(self, chars$46$opt) {
 function _M0MPC16string10StringView9is__empty(self) {
   return (self.end - self.start | 0) === 0;
 }
+function _M0MPC16string6String4iter(self) {
+  const len = self.length;
+  const index = new _M0TPB8MutLocalGiE(0);
+  return _M0MPB4Iter3newGcE(() => {
+    if (index.val < len) {
+      const c1 = self.charCodeAt(index.val);
+      if (_M0MPC16uint166UInt1622is__leading__surrogate(c1) && (index.val + 1 | 0) < len) {
+        const c2 = self.charCodeAt(index.val + 1 | 0);
+        if (_M0MPC16uint166UInt1623is__trailing__surrogate(c2)) {
+          const c = _M0FPB32code__point__of__surrogate__pair(c1, c2);
+          index.val = index.val + 2 | 0;
+          return c;
+        }
+      }
+      index.val = index.val + 1 | 0;
+      return _M0MPC16uint166UInt1616unsafe__to__char(c1);
+    } else {
+      return -1;
+    }
+  }, undefined);
+}
 function _M0MPB4Iter3mapGcRPC16string10StringViewE(self, f) {
   return new _M0TPB4IterGRPC16string10StringViewE(() => {
     const _bind = _M0MPB4Iter4nextGcE(self);
@@ -1566,11 +1662,95 @@ function _M0MPB4Iter9to__arrayGRPC16string10StringViewE(self) {
   }
   return result;
 }
+function _M0MPC16string6String12replace__all(self, old, new_) {
+  const len = self.length;
+  const buf = _M0MPB13StringBuilder21StringBuilder_2einner(len);
+  const old_len = old.end - old.start | 0;
+  const new$2 = _M0MPC16string10StringView9to__owned(new_);
+  if (old_len === 0) {
+    _M0IPB13StringBuilderPB6Logger13write__string(buf, new$2);
+    const _bind = self.length;
+    let _tmp = 0;
+    while (true) {
+      const _string_index = _tmp;
+      if (_string_index < _bind) {
+        let _decoded_next_string_index;
+        let _decoded_char;
+        _L: {
+          const _bind$2 = self.charCodeAt(_string_index);
+          if (_bind$2 >= 55296 && _bind$2 <= 56319 && (_string_index + 1 | 0) < _bind) {
+            const _bind$3 = self.charCodeAt(_string_index + 1 | 0);
+            if (_bind$3 >= 56320 && _bind$3 <= 57343) {
+              _decoded_next_string_index = _string_index + 2 | 0;
+              _decoded_char = _M0MPC13int3Int16unsafe__to__char((((Math.imul(_bind$2 - 55296 | 0, 1024) | 0) + _bind$3 | 0) - 56320 | 0) + 65536 | 0);
+              break _L;
+            } else {
+              _decoded_next_string_index = _string_index + 1 | 0;
+              _decoded_char = _M0MPC13int3Int16unsafe__to__char(_bind$2);
+              break _L;
+            }
+          } else {
+            _decoded_next_string_index = _string_index + 1 | 0;
+            _decoded_char = _M0MPC13int3Int16unsafe__to__char(_bind$2);
+            break _L;
+          }
+        }
+        _M0IPB13StringBuilderPB6Logger11write__char(buf, _decoded_char);
+        _M0IPB13StringBuilderPB6Logger13write__string(buf, new$2);
+        _tmp = _decoded_next_string_index;
+        continue;
+      } else {
+        break;
+      }
+    }
+    return _M0MPB13StringBuilder10to__string(buf);
+  } else {
+    const first_end = _M0MPC16string6String4find(self, old);
+    if (first_end === undefined) {
+      return self;
+    } else {
+      const _Some = first_end;
+      const _end = _Some;
+      let _tmp = new _M0TPC16string10StringView(self, 0, self.length);
+      let _tmp$2 = _end;
+      while (true) {
+        const view = _tmp;
+        const end = _tmp$2;
+        const seg = _M0MPC16string10StringView12view_2einner(view, 0, end);
+        _M0IP016_24default__implPB6Logger16write__substringGRPB13StringBuilderE(buf, _M0MPC16string10StringView4data(seg), _M0MPC16string10StringView13start__offset(seg), seg.end - seg.start | 0);
+        _M0IPB13StringBuilderPB6Logger13write__string(buf, new$2);
+        if ((end + old_len | 0) <= len) {
+          const next_view = _M0MPC16string10StringView12view_2einner(view, end + old_len | 0, undefined);
+          const _bind = _M0MPC16string10StringView4find(next_view, old);
+          if (_bind === undefined) {
+            _M0IP016_24default__implPB6Logger16write__substringGRPB13StringBuilderE(buf, _M0MPC16string10StringView4data(next_view), _M0MPC16string10StringView13start__offset(next_view), next_view.end - next_view.start | 0);
+            break;
+          } else {
+            const _Some$2 = _bind;
+            const _next_end = _Some$2;
+            _tmp = next_view;
+            _tmp$2 = _next_end;
+            continue;
+          }
+        } else {
+          break;
+        }
+      }
+      return _M0MPB13StringBuilder10to__string(buf);
+    }
+  }
+}
 function _M0IPC16string6StringPB12ToStringView16to__string__view(self) {
   return new _M0TPC16string10StringView(self, 0, self.length);
 }
 function _M0IPC16string10StringViewPB12ToStringView16to__string__view(self) {
   return self;
+}
+function _M0MPC16string6String9to__array(self) {
+  return _M0MPB4Iter4foldGcRPB5ArrayGcEE(_M0MPC16string6String4iter(self), _M0MPC15array5Array13Array_2einnerGcE(self.length), (rv, c) => {
+    _M0MPC15array5Array4pushGcE(rv, c);
+    return rv;
+  });
 }
 function _M0MPC14byte4Byte8to__uint(self) {
   return self;
@@ -2454,13 +2634,26 @@ function _M0MPC15array5Array6appendGsE(self, other) {
 function _M0MPC15array5Array9is__emptyGRPC15debug7ContentE(self) {
   return self.length === 0;
 }
+function _M0MPC15array5Array4copyGyE(self) {
+  return _M0MPB7JSArray4copy(self);
+}
 function _M0MPC15array5Array2atGRPC16string10StringViewE(self, index) {
   const len = self.length;
   return index >= 0 && index < len ? self[index] : $panic();
 }
-function _M0MPC15array5Array2atGiE(self, index) {
+function _M0MPC15array5Array2atGcE(self, index) {
   const len = self.length;
   return index >= 0 && index < len ? self[index] : $panic();
+}
+function _M0MPC15array5Array3setGyE(self, index, value) {
+  const len = self.length;
+  if (index >= 0 && index < len) {
+    self[index] = value;
+    return;
+  } else {
+    $panic();
+    return;
+  }
 }
 function _M0MPC15array5Array3setGsE(self, index, value) {
   const len = self.length;
@@ -4225,18 +4418,18 @@ function _M0FPC28internal7strconv20parse__int64_2einner(str, base) {
     return _M0FPC28internal7strconv11syntax__errGlE();
   }
 }
-function _M0IP211localreview7gorilla10CodecErrorPC15debug5Debug8to__reprGRP211localreview7gorilla10CodecErrorE(_x_52) {
-  let _arg_53;
+function _M0IP211localreview7gorilla10CodecErrorPC15debug5Debug8to__reprGRP211localreview7gorilla10CodecErrorE(_x_61) {
+  let _arg_62;
   _L: {
-    const _Invalid = _x_52;
-    const _$42$arg_53 = _Invalid._0;
-    _arg_53 = _$42$arg_53;
+    const _Invalid = _x_61;
+    const _$42$arg_62 = _Invalid._0;
+    _arg_62 = _$42$arg_62;
     break _L;
   }
-  return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_53) }]);
+  return _M0MPC15debug4Repr4ctor("Invalid", [{ _0: undefined, _1: _M0IPC16string6StringPC15debug5Debug8to__repr(_arg_62) }]);
 }
-function _M0IP211localreview7gorilla6SamplePC15debug5Debug8to__repr(_x_50) {
-  const _bind = [{ _0: "timestamp", _1: _M0IPC15int645Int64PC15debug5Debug8to__repr(_x_50.timestamp) }, { _0: "bits", _1: _M0IPC16uint646UInt64PC15debug5Debug8to__repr(_x_50.bits) }];
+function _M0IP211localreview7gorilla6SamplePC15debug5Debug8to__repr(_x_59) {
+  const _bind = [{ _0: "timestamp", _1: _M0IPC15int645Int64PC15debug5Debug8to__repr(_x_59.timestamp) }, { _0: "bits", _1: _M0IPC16uint646UInt64PC15debug5Debug8to__repr(_x_59.bits) }];
   return _M0MPC15debug4Repr6record(_M0MPB3Map3MapGsRPC15debug4ReprE(new _M0TPB9ArrayViewGUsRPC15debug4ReprEE(_bind, 0, 2), undefined));
 }
 function _M0MP211localreview7gorilla6Reader3get(self, n) {
@@ -4269,9 +4462,12 @@ function _M0MP211localreview7gorilla6Reader3get(self, n) {
   }
   return new _M0DTPC16result6ResultGmRP211localreview7gorilla10CodecErrorE2Ok(out.val);
 }
-function _M0FP211localreview7gorilla6decode(data) {
-  const r = new _M0TP211localreview7gorilla6Reader(data, 0);
-  const _bind = _M0MP211localreview7gorilla6Reader3get(r, 32);
+function _M0MP211localreview7gorilla7Decoder3new(data) {
+  if (data.length > 2000000) {
+    return new _M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("encoded block limit"));
+  }
+  const reader = new _M0TP211localreview7gorilla6Reader(data, 0);
+  const _bind = _M0MP211localreview7gorilla6Reader3get(reader, 32);
   let _tmp;
   if (_bind.$tag === 1) {
     const _ok = _bind;
@@ -4280,242 +4476,287 @@ function _M0FP211localreview7gorilla6decode(data) {
     return _bind;
   }
   if (BigInt.asUintN(64, _tmp) !== BigInt.asUintN(64, 1196380721n)) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("not GOR1"));
+    return new _M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("not GOR1"));
   }
-  const _bind$2 = _M0MP211localreview7gorilla6Reader3get(r, 32);
-  let n;
+  const _bind$2 = _M0MP211localreview7gorilla6Reader3get(reader, 32);
+  let count;
   if (_bind$2.$tag === 1) {
     const _ok = _bind$2;
-    n = _ok._0;
+    count = _ok._0;
   } else {
     return _bind$2;
   }
-  if (BigInt.asUintN(64, n) > BigInt.asUintN(64, 100000n)) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
+  if (BigInt.asUintN(64, count) > BigInt.asUintN(64, 100000n)) {
+    return new _M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
   }
-  const result = [];
-  const time = new _M0TPB8MutLocalGlE(0n);
-  const delta = new _M0TPB8MutLocalGlE(0n);
-  const previous = new _M0TPB8MutLocalGmE(0n);
-  const leading = new _M0TPB8MutLocalGiE(64);
-  const trailing = new _M0TPB8MutLocalGiE(0);
-  const _bind$3 = 0;
-  const _bind$4 = Number(BigInt.asIntN(32, n)) | 0;
-  let _tmp$2 = _bind$3;
+  return new _M0DTPC16result6ResultGRP211localreview7gorilla7DecoderRP211localreview7gorilla10CodecErrorE2Ok(new _M0TP211localreview7gorilla7Decoder(reader, Number(BigInt.asIntN(32, count)) | 0, 0, 0n, 0n, 0n, 64, 0, false, false));
+}
+function _M0MP211localreview7gorilla7Decoder12verify__tail(self) {
+  const r = self.reader;
+  if (((Math.imul(r.bytes.length, 8) | 0) - r.pos | 0) >= 8) {
+    return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("trailing bytes"));
+  }
   while (true) {
-    const i = _tmp$2;
-    if (i < _bind$4) {
-      if (i === 0) {
-        const _bind$5 = _M0MP211localreview7gorilla6Reader3get(r, 64);
-        let _tmp$3;
-        if (_bind$5.$tag === 1) {
-          const _ok = _bind$5;
-          _tmp$3 = _ok._0;
-        } else {
-          return _bind$5;
-        }
-        time.val = _tmp$3;
-        const _bind$6 = _M0MP211localreview7gorilla6Reader3get(r, 64);
-        let _tmp$4;
-        if (_bind$6.$tag === 1) {
-          const _ok = _bind$6;
-          _tmp$4 = _ok._0;
-        } else {
-          return _bind$6;
-        }
-        previous.val = _tmp$4;
+    if (r.pos < (Math.imul(r.bytes.length, 8) | 0)) {
+      const _bind = _M0MP211localreview7gorilla6Reader3get(r, 1);
+      let _tmp;
+      if (_bind.$tag === 1) {
+        const _ok = _bind;
+        _tmp = _ok._0;
       } else {
-        let dd;
-        const _bind$5 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+        return _bind;
+      }
+      if (BigInt.asUintN(64, _tmp) !== BigInt.asUintN(64, 0n)) {
+        return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("nonzero padding"));
+      }
+      continue;
+    } else {
+      break;
+    }
+  }
+  self.verified = true;
+  return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE2Ok(undefined);
+}
+function _M0MP211localreview7gorilla7Decoder12read__sample(self) {
+  if (self.index === self.count) {
+    if (!self.verified) {
+      const _bind = _M0MP211localreview7gorilla7Decoder12verify__tail(self);
+      if (_bind.$tag === 1) {
+        const _ok = _bind;
+        _ok._0;
+      } else {
+        return _bind;
+      }
+    }
+    return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE2Ok(undefined);
+  }
+  const r = self.reader;
+  if (self.index === 0) {
+    const _bind = _M0MP211localreview7gorilla6Reader3get(r, 64);
+    let _tmp;
+    if (_bind.$tag === 1) {
+      const _ok = _bind;
+      _tmp = _ok._0;
+    } else {
+      return _bind;
+    }
+    self.time = _tmp;
+    const _bind$2 = _M0MP211localreview7gorilla6Reader3get(r, 64);
+    let _tmp$2;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    self.previous = _tmp$2;
+  } else {
+    let dd;
+    const _bind = _M0MP211localreview7gorilla6Reader3get(r, 1);
+    let _tmp;
+    if (_bind.$tag === 1) {
+      const _ok = _bind;
+      _tmp = _ok._0;
+    } else {
+      return _bind;
+    }
+    if (BigInt.asUintN(64, _tmp) === BigInt.asUintN(64, 0n)) {
+      dd = 0n;
+    } else {
+      const _bind$2 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+      let _tmp$2;
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        _tmp$2 = _ok._0;
+      } else {
+        return _bind$2;
+      }
+      if (BigInt.asUintN(64, _tmp$2) === BigInt.asUintN(64, 0n)) {
+        const _bind$3 = _M0MP211localreview7gorilla6Reader3get(r, 7);
         let _tmp$3;
-        if (_bind$5.$tag === 1) {
-          const _ok = _bind$5;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
           _tmp$3 = _ok._0;
         } else {
-          return _bind$5;
+          return _bind$3;
+        }
+        dd = BigInt.asUintN(64, _tmp$3 - 63n);
+      } else {
+        const _bind$3 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+        let _tmp$3;
+        if (_bind$3.$tag === 1) {
+          const _ok = _bind$3;
+          _tmp$3 = _ok._0;
+        } else {
+          return _bind$3;
         }
         if (BigInt.asUintN(64, _tmp$3) === BigInt.asUintN(64, 0n)) {
-          dd = 0n;
-        } else {
-          const _bind$6 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+          const _bind$4 = _M0MP211localreview7gorilla6Reader3get(r, 9);
           let _tmp$4;
-          if (_bind$6.$tag === 1) {
-            const _ok = _bind$6;
+          if (_bind$4.$tag === 1) {
+            const _ok = _bind$4;
             _tmp$4 = _ok._0;
           } else {
-            return _bind$6;
+            return _bind$4;
+          }
+          dd = BigInt.asUintN(64, _tmp$4 - 255n);
+        } else {
+          const _bind$4 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+          let _tmp$4;
+          if (_bind$4.$tag === 1) {
+            const _ok = _bind$4;
+            _tmp$4 = _ok._0;
+          } else {
+            return _bind$4;
           }
           if (BigInt.asUintN(64, _tmp$4) === BigInt.asUintN(64, 0n)) {
-            const _bind$7 = _M0MP211localreview7gorilla6Reader3get(r, 7);
+            const _bind$5 = _M0MP211localreview7gorilla6Reader3get(r, 12);
             let _tmp$5;
-            if (_bind$7.$tag === 1) {
-              const _ok = _bind$7;
+            if (_bind$5.$tag === 1) {
+              const _ok = _bind$5;
               _tmp$5 = _ok._0;
             } else {
-              return _bind$7;
+              return _bind$5;
             }
-            dd = BigInt.asUintN(64, _tmp$5 - 63n);
+            dd = BigInt.asUintN(64, _tmp$5 - 2047n);
           } else {
-            const _bind$7 = _M0MP211localreview7gorilla6Reader3get(r, 1);
-            let _tmp$5;
-            if (_bind$7.$tag === 1) {
-              const _ok = _bind$7;
-              _tmp$5 = _ok._0;
+            const _bind$5 = _M0MP211localreview7gorilla6Reader3get(r, 64);
+            if (_bind$5.$tag === 1) {
+              const _ok = _bind$5;
+              dd = _ok._0;
             } else {
-              return _bind$7;
-            }
-            if (BigInt.asUintN(64, _tmp$5) === BigInt.asUintN(64, 0n)) {
-              const _bind$8 = _M0MP211localreview7gorilla6Reader3get(r, 9);
-              let _tmp$6;
-              if (_bind$8.$tag === 1) {
-                const _ok = _bind$8;
-                _tmp$6 = _ok._0;
-              } else {
-                return _bind$8;
-              }
-              dd = BigInt.asUintN(64, _tmp$6 - 255n);
-            } else {
-              const _bind$8 = _M0MP211localreview7gorilla6Reader3get(r, 1);
-              let _tmp$6;
-              if (_bind$8.$tag === 1) {
-                const _ok = _bind$8;
-                _tmp$6 = _ok._0;
-              } else {
-                return _bind$8;
-              }
-              if (BigInt.asUintN(64, _tmp$6) === BigInt.asUintN(64, 0n)) {
-                const _bind$9 = _M0MP211localreview7gorilla6Reader3get(r, 12);
-                let _tmp$7;
-                if (_bind$9.$tag === 1) {
-                  const _ok = _bind$9;
-                  _tmp$7 = _ok._0;
-                } else {
-                  return _bind$9;
-                }
-                dd = BigInt.asUintN(64, _tmp$7 - 2047n);
-              } else {
-                const _bind$9 = _M0MP211localreview7gorilla6Reader3get(r, 64);
-                if (_bind$9.$tag === 1) {
-                  const _ok = _bind$9;
-                  dd = _ok._0;
-                } else {
-                  return _bind$9;
-                }
-              }
+              return _bind$5;
             }
           }
-        }
-        if (BigInt.asIntN(64, dd) < BigInt.asIntN(64, 18437736874454810625n) || BigInt.asIntN(64, dd) > BigInt.asIntN(64, 9007199254740991n)) {
-          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("delta range"));
-        }
-        delta.val = BigInt.asUintN(64, delta.val + dd);
-        if (BigInt.asIntN(64, delta.val) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, delta.val) > BigInt.asIntN(64, BigInt.asUintN(64, 9007199254740991n - time.val))) {
-          return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp overflow/order"));
-        }
-        time.val = BigInt.asUintN(64, time.val + delta.val);
-        const _bind$6 = _M0MP211localreview7gorilla6Reader3get(r, 1);
-        let _tmp$4;
-        if (_bind$6.$tag === 1) {
-          const _ok = _bind$6;
-          _tmp$4 = _ok._0;
-        } else {
-          return _bind$6;
-        }
-        if (BigInt.asUintN(64, _tmp$4) !== BigInt.asUintN(64, 0n)) {
-          const _bind$7 = _M0MP211localreview7gorilla6Reader3get(r, 1);
-          let _tmp$5;
-          if (_bind$7.$tag === 1) {
-            const _ok = _bind$7;
-            _tmp$5 = _ok._0;
-          } else {
-            return _bind$7;
-          }
-          if (BigInt.asUintN(64, _tmp$5) !== BigInt.asUintN(64, 0n)) {
-            const _bind$8 = _M0MP211localreview7gorilla6Reader3get(r, 6);
-            let _tmp$6;
-            if (_bind$8.$tag === 1) {
-              const _ok = _bind$8;
-              _tmp$6 = _ok._0;
-            } else {
-              return _bind$8;
-            }
-            leading.val = Number(BigInt.asIntN(32, _tmp$6)) | 0;
-            const _bind$9 = _M0MP211localreview7gorilla6Reader3get(r, 6);
-            let _tmp$7;
-            if (_bind$9.$tag === 1) {
-              const _ok = _bind$9;
-              _tmp$7 = _ok._0;
-            } else {
-              return _bind$9;
-            }
-            const size = Number(BigInt.asIntN(32, _tmp$7)) | 0;
-            const size$2 = size === 0 ? 64 : size;
-            trailing.val = (64 - leading.val | 0) - size$2 | 0;
-            if (trailing.val < 0) {
-              return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("invalid XOR window"));
-            }
-          } else {
-            if (leading.val === 64) {
-              return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("missing XOR window"));
-            }
-          }
-          const _tmp$6 = previous.val;
-          const _bind$8 = _M0MP211localreview7gorilla6Reader3get(r, (64 - leading.val | 0) - trailing.val | 0);
-          let _tmp$7;
-          if (_bind$8.$tag === 1) {
-            const _ok = _bind$8;
-            _tmp$7 = _ok._0;
-          } else {
-            return _bind$8;
-          }
-          previous.val = BigInt.asUintN(64, _tmp$6 ^ BigInt.asUintN(64, _tmp$7 << BigInt(trailing.val & 63)));
         }
       }
-      if (BigInt.asIntN(64, time.val) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, time.val) > BigInt.asIntN(64, 9007199254740991n)) {
-        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp range"));
-      }
-      _M0MPC15array5Array4pushGRP211localreview7gorilla6SampleE(result, new _M0TP211localreview7gorilla6Sample(time.val, previous.val));
-      _tmp$2 = i + 1 | 0;
-      continue;
-    } else {
-      break;
     }
-  }
-  if (((Math.imul(data.length, 8) | 0) - r.pos | 0) >= 8) {
-    return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("trailing bytes"));
-  }
-  while (true) {
-    if (r.pos < (Math.imul(data.length, 8) | 0)) {
-      const _bind$5 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+    if (BigInt.asIntN(64, dd) < BigInt.asIntN(64, 18437736874454810625n) || BigInt.asIntN(64, dd) > BigInt.asIntN(64, 9007199254740991n)) {
+      return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("delta range"));
+    }
+    self.delta = BigInt.asUintN(64, self.delta + dd);
+    if (BigInt.asIntN(64, self.delta) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, self.delta) > BigInt.asIntN(64, BigInt.asUintN(64, 9007199254740991n - self.time))) {
+      return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp overflow/order"));
+    }
+    self.time = BigInt.asUintN(64, self.time + self.delta);
+    const _bind$2 = _M0MP211localreview7gorilla6Reader3get(r, 1);
+    let _tmp$2;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      _tmp$2 = _ok._0;
+    } else {
+      return _bind$2;
+    }
+    if (BigInt.asUintN(64, _tmp$2) !== BigInt.asUintN(64, 0n)) {
+      const _bind$3 = _M0MP211localreview7gorilla6Reader3get(r, 1);
       let _tmp$3;
-      if (_bind$5.$tag === 1) {
-        const _ok = _bind$5;
+      if (_bind$3.$tag === 1) {
+        const _ok = _bind$3;
         _tmp$3 = _ok._0;
       } else {
-        return _bind$5;
+        return _bind$3;
       }
       if (BigInt.asUintN(64, _tmp$3) !== BigInt.asUintN(64, 0n)) {
-        return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("nonzero padding"));
+        const _bind$4 = _M0MP211localreview7gorilla6Reader3get(r, 6);
+        let _tmp$4;
+        if (_bind$4.$tag === 1) {
+          const _ok = _bind$4;
+          _tmp$4 = _ok._0;
+        } else {
+          return _bind$4;
+        }
+        self.leading = Number(BigInt.asIntN(32, _tmp$4)) | 0;
+        const _bind$5 = _M0MP211localreview7gorilla6Reader3get(r, 6);
+        let _tmp$5;
+        if (_bind$5.$tag === 1) {
+          const _ok = _bind$5;
+          _tmp$5 = _ok._0;
+        } else {
+          return _bind$5;
+        }
+        const size = Number(BigInt.asIntN(32, _tmp$5)) | 0;
+        const size$2 = size === 0 ? 64 : size;
+        self.trailing = (64 - self.leading | 0) - size$2 | 0;
+        if (self.trailing < 0) {
+          return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("invalid XOR window"));
+        }
+      } else {
+        if (self.leading === 64) {
+          return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("missing XOR window"));
+        }
       }
-      continue;
-    } else {
-      break;
+      const _tmp$4 = self.previous;
+      const _bind$4 = _M0MP211localreview7gorilla6Reader3get(r, (64 - self.leading | 0) - self.trailing | 0);
+      let _tmp$5;
+      if (_bind$4.$tag === 1) {
+        const _ok = _bind$4;
+        _tmp$5 = _ok._0;
+      } else {
+        return _bind$4;
+      }
+      self.previous = BigInt.asUintN(64, _tmp$4 ^ BigInt.asUintN(64, _tmp$5 << BigInt(self.trailing & 63)));
     }
   }
-  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok(result);
+  if (BigInt.asIntN(64, self.time) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, self.time) > BigInt.asIntN(64, 9007199254740991n)) {
+    return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp range"));
+  }
+  self.index = self.index + 1 | 0;
+  if (self.index === self.count) {
+    const _bind = _M0MP211localreview7gorilla7Decoder12verify__tail(self);
+    if (_bind.$tag === 1) {
+      const _ok = _bind;
+      _ok._0;
+    } else {
+      return _bind;
+    }
+  }
+  return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE2Ok(new _M0TP211localreview7gorilla6Sample(self.time, self.previous));
+}
+function _M0MP211localreview7gorilla7Decoder4next(self) {
+  if (self.failed) {
+    return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("decoder is in failed state"));
+  }
+  let _err;
+  _L: {
+    const _bind = _M0MP211localreview7gorilla7Decoder12read__sample(self);
+    let _tmp;
+    if (_bind.$tag === 1) {
+      const _ok = _bind;
+      _tmp = _ok._0;
+    } else {
+      const _err$2 = _bind;
+      _err = _err$2._0;
+      break _L;
+    }
+    return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE2Ok(_tmp);
+  }
+  self.failed = true;
+  return new _M0DTPC16result6ResultGORP211localreview7gorilla6SampleRP211localreview7gorilla10CodecErrorE3Err(_err);
 }
 function _M0MP211localreview7gorilla6Writer3put(self, n, width) {
   let _tmp = width - 1 | 0;
   while (true) {
     const i = _tmp;
     if (i >= 0) {
-      _M0MPC15array5Array4pushGiE(self.bits, Number(BigInt.asIntN(32, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, n) >> BigInt(i & 63)) & 1n))) | 0);
+      self.partial = self.partial << 1 | (Number(BigInt.asIntN(32, BigInt.asUintN(64, BigInt.asUintN(64, BigInt.asUintN(64, n) >> BigInt(i & 63)) & 1n))) | 0);
+      self.used = self.used + 1 | 0;
+      if (self.used === 8) {
+        _M0MPC15array5Array4pushGyE(self.bytes, self.partial & 255);
+        self.partial = 0;
+        self.used = 0;
+      }
       _tmp = i - 1 | 0;
       continue;
     } else {
       return;
     }
   }
+}
+function _M0MP211localreview7gorilla7Encoder3new() {
+  const writer = new _M0TP211localreview7gorilla6Writer([], 0, 0);
+  _M0MP211localreview7gorilla6Writer3put(writer, 1196380721n, 32);
+  _M0MP211localreview7gorilla6Writer3put(writer, 0n, 32);
+  return new _M0TP211localreview7gorilla7Encoder(writer, 0, 0n, 0n, 0n, 64, 0, false);
 }
 function _M0FP211localreview7gorilla5zeros(x) {
   const lead = new _M0TPB8MutLocalGiE(0);
@@ -4538,124 +4779,168 @@ function _M0FP211localreview7gorilla5zeros(x) {
   }
   return { _0: lead.val, _1: trail.val };
 }
-function _M0FP211localreview7gorilla6encode(samples) {
-  if (samples.length > 100000) {
-    return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
+function _M0MP211localreview7gorilla7Encoder6append(self, sample) {
+  if (self.closed) {
+    return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("encoder finished"));
   }
-  const w = new _M0TP211localreview7gorilla6Writer([]);
-  _M0MP211localreview7gorilla6Writer3put(w, 1196380721n, 32);
-  _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(samples.length), 32);
-  const previous = new _M0TPB8MutLocalGmE(0n);
-  const time = new _M0TPB8MutLocalGlE(0n);
-  const delta = new _M0TPB8MutLocalGlE(0n);
-  const leading = new _M0TPB8MutLocalGiE(64);
-  const trailing = new _M0TPB8MutLocalGiE(0);
-  const _bind = samples.length;
-  let _tmp = 0;
+  if (self.count === 100000) {
+    return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
+  }
+  if (BigInt.asIntN(64, sample.timestamp) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, sample.timestamp) > BigInt.asIntN(64, 9007199254740991n)) {
+    return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp outside safe range"));
+  }
+  if (self.count > 0 && BigInt.asIntN(64, sample.timestamp) < BigInt.asIntN(64, self.time)) {
+    return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamps must be nondecreasing"));
+  }
+  const w = self.writer;
+  if (self.count === 0) {
+    _M0MP211localreview7gorilla6Writer3put(w, sample.timestamp, 64);
+    _M0MP211localreview7gorilla6Writer3put(w, sample.bits, 64);
+  } else {
+    const d = BigInt.asUintN(64, sample.timestamp - self.time);
+    const dd = BigInt.asUintN(64, d - self.delta);
+    if (BigInt.asUintN(64, dd) === BigInt.asUintN(64, 0n)) {
+      _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
+    } else {
+      if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551553n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 64n)) {
+        _M0MP211localreview7gorilla6Writer3put(w, 2n, 2);
+        _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 63n), 7);
+      } else {
+        if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551361n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 256n)) {
+          _M0MP211localreview7gorilla6Writer3put(w, 6n, 3);
+          _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 255n), 9);
+        } else {
+          if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709549569n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 2048n)) {
+            _M0MP211localreview7gorilla6Writer3put(w, 14n, 4);
+            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 2047n), 12);
+          } else {
+            _M0MP211localreview7gorilla6Writer3put(w, 15n, 4);
+            _M0MP211localreview7gorilla6Writer3put(w, dd, 64);
+          }
+        }
+      }
+    }
+    const xor = BigInt.asUintN(64, self.previous ^ sample.bits);
+    if (BigInt.asUintN(64, xor) === BigInt.asUintN(64, 0n)) {
+      _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
+    } else {
+      _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
+      let leading;
+      let trailing;
+      _L: {
+        const _bind = _M0FP211localreview7gorilla5zeros(xor);
+        const _leading = _bind._0;
+        const _trailing = _bind._1;
+        leading = _leading;
+        trailing = _trailing;
+        break _L;
+      }
+      if (leading >= self.leading && trailing >= self.trailing) {
+        _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
+        _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, xor) >> BigInt(self.trailing & 63)), (64 - self.leading | 0) - self.trailing | 0);
+      } else {
+        self.leading = leading;
+        self.trailing = trailing;
+        _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
+        _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(leading), 6);
+        _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, _M0MPC13int3Int10to__uint64((64 - leading | 0) - trailing | 0) & 63n), 6);
+        _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, xor) >> BigInt(trailing & 63)), (64 - leading | 0) - trailing | 0);
+      }
+    }
+    self.delta = d;
+  }
+  self.time = sample.timestamp;
+  self.previous = sample.bits;
+  self.count = self.count + 1 | 0;
+  return new _M0DTPC16result6ResultGuRP211localreview7gorilla10CodecErrorE2Ok(undefined);
+}
+function _M0MP211localreview7gorilla6Writer8snapshot(self, count) {
+  const data = _M0MPC15array5Array4copyGyE(self.bytes);
+  if (self.used > 0) {
+    _M0MPC15array5Array4pushGyE(data, self.partial << (8 - self.used | 0) & 255);
+  }
+  const _bind = 0;
+  const _bind$2 = 4;
+  let _tmp = _bind;
   while (true) {
     const i = _tmp;
-    if (i < _bind) {
-      const s = samples[i];
-      if (BigInt.asIntN(64, s.timestamp) < BigInt.asIntN(64, 0n) || BigInt.asIntN(64, s.timestamp) > BigInt.asIntN(64, 9007199254740991n)) {
-        return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamp outside safe range"));
-      }
-      if (i === 0) {
-        _M0MP211localreview7gorilla6Writer3put(w, s.timestamp, 64);
-        _M0MP211localreview7gorilla6Writer3put(w, s.bits, 64);
-      } else {
-        const d = BigInt.asUintN(64, s.timestamp - time.val);
-        if (BigInt.asIntN(64, d) < BigInt.asIntN(64, 0n)) {
-          return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("timestamps must be nondecreasing"));
-        }
-        const dd = BigInt.asUintN(64, d - delta.val);
-        if (BigInt.asUintN(64, dd) === BigInt.asUintN(64, 0n)) {
-          _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
-        } else {
-          if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551553n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 64n)) {
-            _M0MP211localreview7gorilla6Writer3put(w, 2n, 2);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 63n), 7);
-          } else {
-            if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709551361n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 256n)) {
-              _M0MP211localreview7gorilla6Writer3put(w, 6n, 3);
-              _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 255n), 9);
-            } else {
-              if (BigInt.asIntN(64, dd) >= BigInt.asIntN(64, 18446744073709549569n) && BigInt.asIntN(64, dd) <= BigInt.asIntN(64, 2048n)) {
-                _M0MP211localreview7gorilla6Writer3put(w, 14n, 4);
-                _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, dd + 2047n), 12);
-              } else {
-                _M0MP211localreview7gorilla6Writer3put(w, 15n, 4);
-                _M0MP211localreview7gorilla6Writer3put(w, dd, 64);
-              }
-            }
-          }
-        }
-        const x = BigInt.asUintN(64, previous.val ^ s.bits);
-        if (BigInt.asUintN(64, x) === BigInt.asUintN(64, 0n)) {
-          _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
-        } else {
-          _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
-          let l;
-          let t;
-          _L: {
-            const _bind$2 = _M0FP211localreview7gorilla5zeros(x);
-            const _l = _bind$2._0;
-            const _t = _bind$2._1;
-            l = _l;
-            t = _t;
-            break _L;
-          }
-          if (l >= leading.val && t >= trailing.val) {
-            _M0MP211localreview7gorilla6Writer3put(w, 0n, 1);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(trailing.val & 63)), (64 - leading.val | 0) - trailing.val | 0);
-          } else {
-            leading.val = l;
-            trailing.val = t;
-            _M0MP211localreview7gorilla6Writer3put(w, 1n, 1);
-            _M0MP211localreview7gorilla6Writer3put(w, _M0MPC13int3Int10to__uint64(l), 6);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, _M0MPC13int3Int10to__uint64((64 - l | 0) - t | 0) & 63n), 6);
-            _M0MP211localreview7gorilla6Writer3put(w, BigInt.asUintN(64, BigInt.asUintN(64, x) >> BigInt(t & 63)), (64 - l | 0) - t | 0);
-          }
-        }
-        delta.val = d;
-      }
-      time.val = s.timestamp;
-      previous.val = s.bits;
+    if (i < _bind$2) {
+      _M0MPC15array5Array3setGyE(data, 4 + i | 0, count >> (Math.imul(3 - i | 0, 8) | 0) & 255);
       _tmp = i + 1 | 0;
       continue;
     } else {
       break;
     }
   }
-  const data = [];
-  let _tmp$2 = 0;
+  return _M0MPC15bytes5Bytes11from__array(new _M0TPB9ArrayViewGyE(data, 0, data.length));
+}
+function _M0MP211localreview7gorilla7Encoder8snapshot(self) {
+  return _M0MP211localreview7gorilla6Writer8snapshot(self.writer, self.count);
+}
+function _M0MP211localreview7gorilla7Encoder6finish(self) {
+  self.closed = true;
+  return _M0MP211localreview7gorilla7Encoder8snapshot(self);
+}
+function _M0FP211localreview7gorilla6encode(samples) {
+  if (samples.length > 100000) {
+    return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE3Err(new _M0DTPC15error5Error44localreview_2fgorilla_2eCodecError_2eInvalid("sample limit"));
+  }
+  const encoder = _M0MP211localreview7gorilla7Encoder3new();
+  const _bind = samples.length;
+  let _tmp = 0;
   while (true) {
-    const i = _tmp$2;
-    if (i < w.bits.length) {
-      const b = new _M0TPB8MutLocalGiE(0);
-      const _bind$2 = 0;
-      const _bind$3 = 8;
-      let _tmp$3 = _bind$2;
-      while (true) {
-        const j = _tmp$3;
-        if (j < _bind$3) {
-          b.val = b.val << 1;
-          if ((i + j | 0) < w.bits.length) {
-            b.val = b.val | _M0MPC15array5Array2atGiE(w.bits, i + j | 0);
-          }
-          _tmp$3 = j + 1 | 0;
-          continue;
-        } else {
-          break;
-        }
+    const _ = _tmp;
+    if (_ < _bind) {
+      const sample = samples[_];
+      const _bind$2 = _M0MP211localreview7gorilla7Encoder6append(encoder, sample);
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        _ok._0;
+      } else {
+        return _bind$2;
       }
-      _M0MPC15array5Array4pushGyE(data, b.val & 255);
-      _tmp$2 = i + 8 | 0;
+      _tmp = _ + 1 | 0;
       continue;
     } else {
       break;
     }
   }
-  return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(_M0MPC15bytes5Bytes11from__array(new _M0TPB9ArrayViewGyE(data, 0, data.length)));
+  return new _M0DTPC16result6ResultGzRP211localreview7gorilla10CodecErrorE2Ok(_M0MP211localreview7gorilla7Encoder6finish(encoder));
+}
+function _M0FP211localreview7gorilla6decode(data) {
+  const _bind = _M0MP211localreview7gorilla7Decoder3new(data);
+  let decoder;
+  if (_bind.$tag === 1) {
+    const _ok = _bind;
+    decoder = _ok._0;
+  } else {
+    return _bind;
+  }
+  const out = [];
+  while (true) {
+    let sample;
+    _L: {
+      const _bind$2 = _M0MP211localreview7gorilla7Decoder4next(decoder);
+      let _bind$3;
+      if (_bind$2.$tag === 1) {
+        const _ok = _bind$2;
+        _bind$3 = _ok._0;
+      } else {
+        return _bind$2;
+      }
+      if (_bind$3 === undefined) {
+        break;
+      } else {
+        const _Some = _bind$3;
+        const _sample = _Some;
+        sample = _sample;
+        break _L;
+      }
+    }
+    _M0MPC15array5Array4pushGRP211localreview7gorilla6SampleE(out, sample);
+    continue;
+  }
+  return new _M0DTPC16result6ResultGRPB5ArrayGRP211localreview7gorilla6SampleERP211localreview7gorilla10CodecErrorE2Ok(out);
 }
 function _M0FP411localreview7gorilla3cmd3web3run(input) {
   let _try_err;
@@ -4736,7 +5021,230 @@ function _M0FP411localreview7gorilla3cmd3web3run(input) {
   const e = _try_err;
   return `ERROR: ${_M0IP016_24default__implPB4Show10to__stringGRPC15debug4ReprE(_M0MPC15debug4Repr4ReprGRPC15error5ErrorE(e))}`;
 }
+function _M0FP411localreview7gorilla3cmd3web7to__hex(data) {
+  const digits = _M0MPC16string6String9to__array("0123456789abcdef");
+  const out = _M0MPB13StringBuilder21StringBuilder_2einner(0);
+  const _bind = data.length;
+  let _tmp = 0;
+  while (true) {
+    const _ = _tmp;
+    if (_ < _bind) {
+      const b = data[_];
+      if (16 === 0) {
+        $panic();
+      }
+      _M0IPB13StringBuilderPB6Logger11write__char(out, _M0MPC15array5Array2atGcE(digits, b / 16 | 0));
+      if (16 === 0) {
+        $panic();
+      }
+      _M0IPB13StringBuilderPB6Logger11write__char(out, _M0MPC15array5Array2atGcE(digits, b % 16 | 0));
+      _tmp = _ + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return _M0MPB13StringBuilder10to__string(out);
+}
+function _M0FP411localreview7gorilla3cmd3web9from__hex(hex) {
+  let _tmp;
+  if (hex.length > 4000000) {
+    _tmp = true;
+  } else {
+    if (2 === 0) {
+      $panic();
+    }
+    _tmp = (hex.length % 2 | 0) !== 0;
+  }
+  if (_tmp) {
+    return new _M0DTPC16result6ResultGzRPB7FailureE3Err(new _M0DTPC15error5Error48moonbitlang_2fcore_2fbuiltin_2eFailure_2eFailure("invalid encoded length"));
+  }
+  const out = [];
+  const byte = new _M0TPB8MutLocalGiE(0);
+  const _bind = _M0MPC16string6String9to__array(hex);
+  const _bind$2 = _bind.length;
+  let _tmp$2 = 0;
+  while (true) {
+    const i = _tmp$2;
+    if (i < _bind$2) {
+      const c = _bind[i];
+      const digit = c >= 48 && c <= 57 ? c - 48 | 0 : c >= 97 && c <= 102 ? c - 87 | 0 : -1;
+      if (digit < 0) {
+        return new _M0DTPC16result6ResultGzRPB7FailureE3Err(new _M0DTPC15error5Error48moonbitlang_2fcore_2fbuiltin_2eFailure_2eFailure("lowercase hex required"));
+      }
+      byte.val = (Math.imul(byte.val, 16) | 0) + digit | 0;
+      if (2 === 0) {
+        $panic();
+      }
+      if ((i % 2 | 0) === 1) {
+        _M0MPC15array5Array4pushGyE(out, byte.val & 255);
+        byte.val = 0;
+      }
+      _tmp$2 = i + 1 | 0;
+      continue;
+    } else {
+      break;
+    }
+  }
+  return new _M0DTPC16result6ResultGzRPB7FailureE2Ok(_M0MPC15bytes5Bytes11from__array(new _M0TPB9ArrayViewGyE(out, 0, out.length)));
+}
+function _M0FP411localreview7gorilla3cmd3web14compress__text(source) {
+  let _try_err;
+  _L: {
+    if (source.length > 5000000) {
+      _try_err = new _M0DTPC15error5Error48moonbitlang_2fcore_2fbuiltin_2eFailure_2eFailure("input text limit");
+      break _L;
+    }
+    const encoder = _M0MP211localreview7gorilla7Encoder3new();
+    const _bind = "\n";
+    const _it = _M0MPC16string6String5split(source, new _M0TPC16string10StringView(_bind, 0, _bind.length));
+    while (true) {
+      let line;
+      _L$2: {
+        const _bind$2 = _M0MPB4Iter4nextGRPC16string10StringViewE(_it);
+        if (_bind$2 === undefined) {
+          break;
+        } else {
+          const _Some = _bind$2;
+          const _line = _Some;
+          line = _line;
+          break _L$2;
+        }
+      }
+      if (_M0MPC16string10StringView9is__empty(_M0MPC16string10StringView4trim(line, undefined))) {
+        continue;
+      }
+      const _tmp = _M0MPC16string10StringView9to__owned(_M0MPC16string10StringView4trim(line, undefined));
+      const _bind$2 = "\t";
+      const _tmp$2 = new _M0TPC16string10StringView(_bind$2, 0, _bind$2.length);
+      const _bind$3 = " ";
+      const _tmp$3 = _M0MPC16string6String12replace__all(_tmp, _tmp$2, new _M0TPC16string10StringView(_bind$3, 0, _bind$3.length));
+      const _bind$4 = " ";
+      const parts = _M0MPB4Iter9to__arrayGRPC16string10StringViewE(_M0MPB4Iter6filterGRPC16string10StringViewE(_M0MPC16string6String5split(_tmp$3, new _M0TPC16string10StringView(_bind$4, 0, _bind$4.length)), (s) => !_M0MPC16string10StringView9is__empty(s)));
+      if (parts.length !== 2) {
+        _try_err = new _M0DTPC15error5Error48moonbitlang_2fcore_2fbuiltin_2eFailure_2eFailure("expected timestamp raw_uint64_bits");
+        break _L;
+      }
+      const _bind$5 = _M0MPC16string10StringView9to__owned(_M0MPC15array5Array2atGRPC16string10StringViewE(parts, 0));
+      const _bind$6 = _M0FPC28internal7strconv20parse__int64_2einner(new _M0TPC16string10StringView(_bind$5, 0, _bind$5.length), 0);
+      let _tmp$4;
+      if (_bind$6.$tag === 1) {
+        const _ok = _bind$6;
+        _tmp$4 = _ok._0;
+      } else {
+        const _err = _bind$6;
+        _try_err = _err._0;
+        break _L;
+      }
+      const _tmp$5 = _tmp$4;
+      const _bind$7 = _M0MPC16string10StringView9to__owned(_M0MPC15array5Array2atGRPC16string10StringViewE(parts, 1));
+      const _bind$8 = _M0FPC28internal7strconv21parse__uint64_2einner(new _M0TPC16string10StringView(_bind$7, 0, _bind$7.length), 0);
+      let _tmp$6;
+      if (_bind$8.$tag === 1) {
+        const _ok = _bind$8;
+        _tmp$6 = _ok._0;
+      } else {
+        const _err = _bind$8;
+        _try_err = _err._0;
+        break _L;
+      }
+      const _bind$9 = _M0MP211localreview7gorilla7Encoder6append(encoder, new _M0TP211localreview7gorilla6Sample(_tmp$5, _tmp$6));
+      if (_bind$9.$tag === 1) {
+        const _ok = _bind$9;
+        _ok._0;
+      } else {
+        const _err = _bind$9;
+        _try_err = _err._0;
+        break _L;
+      }
+      continue;
+    }
+    return _M0FP411localreview7gorilla3cmd3web7to__hex(_M0MP211localreview7gorilla7Encoder6finish(encoder));
+  }
+  const e = _try_err;
+  return `ERROR: ${_M0IP016_24default__implPB4Show10to__stringGRPC15debug4ReprE(_M0MPC15debug4Repr4ReprGRPC15error5ErrorE(e))}`;
+}
+function _M0FP411localreview7gorilla3cmd3web16decompress__text(hex, start, end) {
+  let _try_err;
+  _L: {
+    const _bind = _M0FPC28internal7strconv20parse__int64_2einner(new _M0TPC16string10StringView(start, 0, start.length), 0);
+    let low;
+    if (_bind.$tag === 1) {
+      const _ok = _bind;
+      low = _ok._0;
+    } else {
+      const _err = _bind;
+      _try_err = _err._0;
+      break _L;
+    }
+    const _bind$2 = _M0FPC28internal7strconv20parse__int64_2einner(new _M0TPC16string10StringView(end, 0, end.length), 0);
+    let high;
+    if (_bind$2.$tag === 1) {
+      const _ok = _bind$2;
+      high = _ok._0;
+    } else {
+      const _err = _bind$2;
+      _try_err = _err._0;
+      break _L;
+    }
+    if (BigInt.asIntN(64, low) < BigInt.asIntN(64, 0n) || (BigInt.asIntN(64, high) < BigInt.asIntN(64, low) || BigInt.asIntN(64, high) > BigInt.asIntN(64, 9007199254740991n))) {
+      _try_err = new _M0DTPC15error5Error48moonbitlang_2fcore_2fbuiltin_2eFailure_2eFailure("invalid range");
+      break _L;
+    }
+    const _bind$3 = _M0FP411localreview7gorilla3cmd3web9from__hex(hex);
+    let _tmp;
+    if (_bind$3.$tag === 1) {
+      const _ok = _bind$3;
+      _tmp = _ok._0;
+    } else {
+      const _err = _bind$3;
+      _try_err = _err._0;
+      break _L;
+    }
+    const _bind$4 = _M0MP211localreview7gorilla7Decoder3new(_tmp);
+    let decoder;
+    if (_bind$4.$tag === 1) {
+      const _ok = _bind$4;
+      decoder = _ok._0;
+    } else {
+      const _err = _bind$4;
+      _try_err = _err._0;
+      break _L;
+    }
+    const out = _M0MPB13StringBuilder21StringBuilder_2einner(0);
+    while (true) {
+      let sample;
+      _L$2: {
+        const _bind$5 = _M0MP211localreview7gorilla7Decoder4next(decoder);
+        let _bind$6;
+        if (_bind$5.$tag === 1) {
+          const _ok = _bind$5;
+          _bind$6 = _ok._0;
+        } else {
+          const _err = _bind$5;
+          _try_err = _err._0;
+          break _L;
+        }
+        if (_bind$6 === undefined) {
+          break;
+        } else {
+          const _Some = _bind$6;
+          const _sample = _Some;
+          sample = _sample;
+          break _L$2;
+        }
+      }
+      if (BigInt.asIntN(64, sample.timestamp) >= BigInt.asIntN(64, low) && BigInt.asIntN(64, sample.timestamp) <= BigInt.asIntN(64, high)) {
+        _M0IPB13StringBuilderPB6Logger13write__string(out, `${_M0MPC15int645Int6418to__string_2einner(sample.timestamp, 10)} ${_M0MPC16uint646UInt6418to__string_2einner(sample.bits, 10)}\n`);
+      }
+      continue;
+    }
+    return _M0MPB13StringBuilder10to__string(out);
+  }
+  const e = _try_err;
+  return `ERROR: ${_M0IP016_24default__implPB4Show10to__stringGRPC15debug4ReprE(_M0MPC15debug4Repr4ReprGRPC15error5ErrorE(e))}`;
+}
 (() => {
 })();
-export { _M0FP411localreview7gorilla3cmd3web3run as run }
+export { _M0FP411localreview7gorilla3cmd3web3run as run, _M0FP411localreview7gorilla3cmd3web14compress__text as compress_text, _M0FP411localreview7gorilla3cmd3web16decompress__text as decompress_text }
 //# sourceMappingURL=web.js.map

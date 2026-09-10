@@ -1,66 +1,67 @@
 # Gorilla 时序压缩
 
-MoonBit 本地候选版 0.2.0。时间戳 delta-of-delta、64 位 XOR 值与受限解码。
+MoonBit 0.3.0 本地压缩库。时间戳 delta-of-delta 与 64 位 XOR 编码，支持逐条追加、快照和逐条解码。
+使用自定义 GOR1 容器，0.3 保持既有 GOR1 字节格式；不等同于 Facebook 或 Prometheus TSDB 的位流格式。
 
-## 快速试用
+## 本地文件使用
 
-已附真实 MoonBit 编译的浏览器引擎。需要 Python 3：
-
-```powershell
-./start-review.ps1
-```
-
-浏览器打开 http://127.0.0.1:8797/web/ 。也可以从第二批合集审查页直接运行。
-
-## 构建与测试
-
-MoonBit 工具链与 Node.js 安装好后，在此目录运行：
+每行输入两个十进制整数：timestamp raw_uint64_bits。值采用原始位模式，保留正负零、无穷和 NaN payload。
 
 ```powershell
-./verify.ps1
-# 或指定编译器
-./verify.ps1 -MoonPath C:/path/to/moon/bin/moon.exe
+node tools/blocks.mjs encode sample.txt output.gor1
+node tools/blocks.mjs decode output.gor1
+node tools/blocks.mjs range output.gor1 60 120
 ```
 
-脚本检查源码、在 Wasm-GC 和 JS 跑测试、构建浏览器引擎并运行示例。直接执行命令行示例：`moon run cmd/main`。`pkg.generated.mbti` 是生成的公共 API。
+encode 创建新文件，已有输出文件会报错，不覆盖。decode/range 输出原始时间戳和 UInt64 位模式，
+不会经过 JavaScript 浮点数转换。范围为闭区间。输入/输出错误返回非零退出码。
+旧 `tools/cli.mjs` 和网页演示仍可使用；`./start-review.ps1` 启动独立本地网页。
 
-## 已实现范围
+## 逐条 API
 
-时间戳 delta-of-delta、64 位 XOR 值与受限解码。示例输入与调用逻辑见 `cmd/main/main.mbt`；网页允许修改输入并执行实际编译代码。
-
-## 当前边界
-
-Gorilla 思路的自定义 GOR1 容器，非 Facebook/Prometheus TSDB 二进制格式；值以原始 UInt64 位模式输入；时间戳限非负安全整数且不递减；未提供持久化/随机访问。
-
-## 来源与许可证
-
-按[公开规格/参考项目](https://www.vldb.org/pvldb/vol8/p1816-teller.pdf)重新实现，没有复制上游代码或大规模词库。源码采用 MIT；原始测试输入为本地新编写。
-
-[查重](DUPLICATION.md)只描述本轮检索证据。`localreview` 是本地命名空间，正式发布前需替换为申请人的命名空间。
-
-## 下一步
-
-优先：核心算法易展示，可继续做压缩率图表与更多独立向量。
-
-所有文件仅在本地，未创建远程仓库、上传、发布包或提交比赛。
-
-## 独立仓库工作流
-
-本目录是该项目后续开发的唯一主仓库，旧批次目录及 ZIP 为历史审查快照。没有 Git remote，没有共享构建目录，没有上级 moon.work。
-
-真实 CLI 支持输入参数、文件和标准输入：
-
-```powershell
-node tools/cli.mjs --help
-node tools/cli.mjs --file sample.txt --json
+```moonbit
+let encoder = @gorilla.Encoder::new()
+encoder.append({ timestamp: 0L, bits: 0x3ff0000000000000UL })
+let prefix = encoder.snapshot()
+encoder.append({ timestamp: 60L, bits: 0x4000000000000000UL })
+let block = encoder.finish()
+let decoder = @gorilla.Decoder::new(block)
+while decoder.next() is Some(sample) {
+  // process sample.timestamp and sample.bits
+}
 ```
 
-需要安装 MoonBit 后传 `-MoonPath` 或将 moon 加入 PATH；不依赖工作区之外的私有脚本。详见 [TESTING.md](TESTING.md) 和 [CONTRIBUTING.md](CONTRIBUTING.md)。
+- Encoder 直接填充压缩字节，不再为每一位分配一个 Int，也不保留完整样本数组。
+- snapshot 返回带头部和零填充的独立 GOR1 副本，之后可继续追加；旧快照不会变化。
+- finish 封闭编码器，可重复读取结果；封闭后 append 报错。非法追加不会改变已有数据。
+- length/encoded_size 返回样本数与当前块字节数，不需要复制快照。
+- Decoder 接收完整字节块，next 逐条返回 Sample 或 EOF；状态大小不随样本数增长。
+  它是样本迭代器，尚不是接收任意网络字节分片的解码器。
+- Decoder.finish 丢弃并验证剩余样本，is_verified 说明整个块是否已读完且验证成功。
+  仅读取前几条不代表整个块有效；尾部检查在返回最后一条样本前完成。出错后解码器保持失败状态。
 
-## 本轮功能升级
+批量 encode/decode 复用这些接口。decode_range 仍扫描并验证完整块，但只保存命中的样本，
+不再先产生完整解码数组。即使损坏部分位于查询区间之外，也会报错。
 
-增加闭区间时间查询，保留原始样本顺序。
+## 边界与验证
 
-查询会顺序解码整个块；没有索引、持久化或数据库查询规划。
+每块最多 100,000 样本；时间戳范围 0..9,007,199,254,740,991，允许重复、不允许倒序。
+解码块上限 2,000,000 字节；拒绝错误头部、截断、超限、非法 XOR 窗口、非零填充和额外字节。
 
-[可执行 API 示例](README.mbt.md)会随测试运行；[功能边界](FEATURES.md)和[测试说明](TESTING.md)用于独立审查。网页与 CLI 展示示例入口，新 API 的完整使用见可执行示例。
+本轮 13 项项目 JS 测试通过，覆盖固定格式字节、所有特殊位模式、截断、快照生命周期、失败状态，
+以及 100,000 样本的追加与逐条验证。固定 NaN payload、等间隔样本的块小于 26,000 字节，
+这只是该特定测试数据的结果，不代表任意序列压缩率。
+5 个本地文件 CLI 场景通过：编码、解码、区间输出、防覆盖、区间外损坏仍报错。
+证据见 evidence/stream-focused-validation.json；本轮未重新验证其他项目或执行独立上游位流对照。
+
+安装 MoonBit 后 `./verify.ps1` 执行完整本项目流程；`pkg.generated.mbti` 为生成的公共 API。
+位格式详见 FORMAT.md。文件 CLI 为便利入口，会整体读取输入文件；MoonBit 流式 API 不需要样本数组。
+
+## 仍需完善
+
+独立编解码对照、更多真实数据压缩率/吞吐量测量、分块索引与随机访问、参考实现位流兼容模式、
+接收部分字节的增量输入接口。GOR1 当前没有校验和，合法位模式中的位翻转并不都能检测到。
+不声称已全面追平或具有数据库查询规划/事务能力。
+
+算法来源：[Gorilla 论文](https://www.vldb.org/pvldb/vol8/p1816-teller.pdf)。实现为本地原创，未复制上游源码，MIT。
+查重范围见 DUPLICATION.md。独立仓库仅本地保存，未上传/发布；旧 ZIP/bundle 是历史快照，本轮未重打包。

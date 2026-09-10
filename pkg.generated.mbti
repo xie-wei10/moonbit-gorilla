@@ -18,6 +18,25 @@ pub suberror CodecError {
 } derive(@debug.Debug)
 
 // Types and methods
+pub struct Decoder {
+  // private fields
+}
+pub fn Decoder::finish(Self) -> Unit raise CodecError
+pub fn Decoder::is_verified(Self) -> Bool
+pub fn Decoder::new(Bytes) -> Self raise CodecError
+pub fn Decoder::next(Self) -> Sample? raise CodecError
+pub fn Decoder::remaining(Self) -> Int
+
+pub struct Encoder {
+  // private fields
+}
+pub fn Encoder::append(Self, Sample) -> Unit raise CodecError
+pub fn Encoder::encoded_size(Self) -> Int
+pub fn Encoder::finish(Self) -> Bytes
+pub fn Encoder::length(Self) -> Int
+pub fn Encoder::new() -> Self
+pub fn Encoder::snapshot(Self) -> Bytes
+
 pub(all) struct Sample {
   timestamp : Int64
   bits : UInt64
