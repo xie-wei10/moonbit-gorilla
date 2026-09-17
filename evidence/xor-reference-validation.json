@@ -1,0 +1,12 @@
+{
+  "utc": "2026-09-17T12:31:48.260Z",
+  "mode": "live unmodified Prometheus chunkenc",
+  "reference": "github.com/prometheus/prometheus@v0.314.0",
+  "runtime": "go1.26.0",
+  "binarySha256": "f5c181b41eaf894db576941dfa9bedaeb777ea5528d3a19b260a61785e402325",
+  "engineSha256": "8f308a7b0465bc7e3b05de35dad5c59cd4b4dabf06d556829b6ccc7f1d0bcf51",
+  "total": 277,
+  "passed": 277,
+  "failed": 0,
+  "failures": []
+}

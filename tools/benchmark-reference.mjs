@@ -1,0 +1,16 @@
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';import {createHash} from 'node:crypto';import assert from 'node:assert/strict';import {codec_json} from '../web/engine.mjs';
+if(!process.env.GORILLA_DATA_DIR||!process.env.GORILLA_ORACLE)throw Error('Set GORILLA_DATA_DIR and GORILLA_ORACLE; prepare inputs with tools/prepare-data.py');
+const input=JSON.parse(fs.readFileSync(path.join(process.env.GORILLA_DATA_DIR,'datasets.json'),'utf8')),results=[];
+const median=values=>[...values].sort((a,b)=>a-b)[Math.floor(values.length/2)];
+for(const dataset of input.datasets){
+  const measurements=[];let actual;
+  for(let i=0;i<12;i++){const r=JSON.parse(codec_json(JSON.stringify({operation:'benchmark',samples:dataset.samples,repeats:1})));if(!r.ok)throw Error(r.error);actual=r.result;if(i>=3)measurements.push(actual);}
+  const requests=Array.from({length:12},(_,i)=>({operation:'encode',samples:dataset.samples,repeats:32,omitSamples:i!==0}));
+  const run=spawnSync(process.env.GORILLA_ORACLE,[],{input:requests.map(x=>JSON.stringify(x)).join('\n')+'\n',encoding:'utf8',windowsHide:true,timeout:90000,maxBuffer:64*1024*1024});if(run.error||run.status!==0)throw Error(String(run.error||run.stderr));
+  const reference=run.stdout.trim().split('\n').map(JSON.parse);for(const row of reference){assert.equal(row.ok,true);assert.equal(actual.hex,row.hex);}assert.deepEqual(reference[0].samples,dataset.samples);
+  const measured=reference.slice(3),bytes=actual.hex.length/2,n=dataset.samples.length;
+  const report={name:dataset.name,kind:dataset.kind,source:dataset.source,conversion:dataset.conversion,samples:n,bytes,rawBytes:n*16,ratio:bytes/(n*16),bytesPerSample:bytes/n,exactReferenceBytes:true,referenceSamplesMatch:true,moonbitJs:{encodeMedianMs:median(measurements.map(x=>x.encodeMs)),decodeMedianMs:median(measurements.map(x=>x.decodeMs))},prometheusGo:{runtime:reference[0].runtime,module:reference[0].module,encodeMedianMs:median(measured.map(x=>(x.encodeNs??0)/1e6)),decodeMedianMs:median(measured.map(x=>(x.decodeNs??0)/1e6))}};
+  results.push(report);console.log(`${dataset.name}: ${n} samples, ${report.bytesPerSample.toFixed(3)} bytes/sample; encode Moon/Go ${report.moonbitJs.encodeMedianMs.toFixed(2)}/${report.prometheusGo.encodeMedianMs.toFixed(2)} ms`);
+}
+const report={utc:new Date().toISOString(),runtime:process.version,cpu:os.cpus()[0].model,platform:process.platform,sources:input.sources,method:'3 warmups, 9 measured core runs; MoonBit one iteration per run, native Go averages 32 iterations per run to overcome sub-millisecond clock resolution; median; encode creates packed bytes, decode materializes typed samples; excludes JSON parsing/stringification, decimal conversion and subprocess I/O; different runtimes (MoonBit JS and Go native), same host; no overall parity claim',engineSha256:createHash('sha256').update(fs.readFileSync(new URL('../web/engine.mjs',import.meta.url))).digest('hex'),results};
+const name=process.argv.includes('--baseline')?'compression-baseline.json':'compression-reference.json';fs.writeFileSync(new URL('../evidence/'+name,import.meta.url),JSON.stringify(report,null,2)+'\n');

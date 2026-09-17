@@ -18,9 +18,13 @@ priv struct Writer {
 
 ///|
 fn Writer::put(self : Writer, n : UInt64, width : Int) -> Unit {
-  for i = width - 1; i >= 0; i = i - 1 {
-    self.partial = (self.partial << 1) | ((n >> i) & 1UL).to_int()
-    self.used += 1
+  let mut remaining = width
+  while remaining > 0 {
+    let take = Int::min(remaining, 8 - self.used)
+    let bits = ((n >> (remaining - take)) & ((1UL << take) - 1UL)).to_int()
+    self.partial = (self.partial << take) | bits
+    self.used += take
+    remaining -= take
     if self.used == 8 {
       self.bytes.push(self.partial.to_byte())
       self.partial = 0
@@ -53,25 +57,22 @@ fn Reader::get(self : Reader, n : Int) -> UInt64 raise CodecError {
     raise Invalid("truncated bitstream")
   }
   let mut out = 0UL
-  for _ in 0..<n {
-    out = (out << 1) |
-      ((self.bytes[self.pos / 8].to_uint64() >> (7 - self.pos % 8)) & 1UL)
-    self.pos += 1
+  let mut remaining = n
+  while remaining > 0 {
+    let available = 8 - self.pos % 8
+    let take = Int::min(remaining, available)
+    let bits = (self.bytes[self.pos / 8].to_int() >> (available - take)) &
+      ((1 << take) - 1)
+    out = (out << take) | bits.to_uint64()
+    self.pos += take
+    remaining -= take
   }
   out
 }
 
 ///|
 fn zeros(x : UInt64) -> (Int, Int) {
-  let mut lead = 0
-  let mut trail = 0
-  while lead < 64 && ((x >> (63 - lead)) & 1UL) == 0UL {
-    lead += 1
-  }
-  while trail < 64 && ((x >> trail) & 1UL) == 0UL {
-    trail += 1
-  }
-  (lead, trail)
+  (x.clz(), x.ctz())
 }
 
 ///|

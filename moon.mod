@@ -1,9 +1,9 @@
 name = "localreview/gorilla"
 
-version = "0.3.0"
+version = "0.4.0"
 
 license = "MIT"
 
 readme = "README.md"
 
-description = "Gorilla 时序压缩本地候选"
+description = "Gorilla / Prometheus XOR 压缩与带校验索引容器"

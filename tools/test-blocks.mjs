@@ -23,8 +23,8 @@ try {
   writeFileSync(output, Buffer.concat([bytes, Buffer.from([0])]));
   assert.equal(invoke('range', output, '0', '0').status, 1);
   writeFileSync(new URL('../evidence/stream-focused-validation.json', import.meta.url), JSON.stringify({
-    date: new Date().toISOString(), projectJsTestsPassed: 13, cliScenariosPassed: 5,
-    maximumSamplesTested: 100000, constantNaNPayloadBlockBytesBelow: 26000,
+    date: new Date().toISOString(), cliScenariosPassed: 5, samplesInCliFixture: 3,
+    scope: 'GOR1 file CLI only; MoonBit backend tests are recorded by verify.ps1 separately',
     wireFormat: 'GOR1 custom format, unchanged', upstreamWireCompatibilityClaimed: false,
     engineSha256: createHash('sha256').update(readFileSync(new URL('../web/engine.mjs', import.meta.url))).digest('hex'),
   }, null, 2) + '\n');

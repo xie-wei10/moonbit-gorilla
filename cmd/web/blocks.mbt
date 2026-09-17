@@ -11,7 +11,7 @@ fn to_hex(data : Bytes) -> String {
 
 ///|
 fn from_hex(hex : String) -> Bytes raise Failure {
-  if hex.length() > 4000000 || hex.length() % 2 != 0 {
+  if hex.length() > 5000000 || hex.length() % 2 != 0 {
     raise Failure("invalid encoded length")
   }
   let out = []

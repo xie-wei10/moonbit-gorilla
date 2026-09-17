@@ -1,0 +1,156 @@
+{
+  "utc": "2026-09-17T12:23:21.596Z",
+  "runtime": "v24.11.0",
+  "cpu": "Intel(R) Core(TM) i7-14700HX",
+  "platform": "win32",
+  "sources": {
+    "noaa-co2.csv": {
+      "url": "https://gml.noaa.gov/webdata/ccgg/trends/co2/co2_daily_mlo.csv",
+      "credit": "NOAA GML / Xin Lan and Scripps / Ralph Keeling; https://gml.noaa.gov/ccgg/trends/data.html",
+      "sha256": "a6f457ef8c3c9302bce31e88c788167258a4ae0907286f24e4e1d7a0c4009b14",
+      "bytes": 432229
+    },
+    "usgs-quakes.csv": {
+      "url": "https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime=2025-01-01&endtime=2025-02-01&minmagnitude=2.5&orderby=time-asc",
+      "credit": "USGS Earthquake Catalog; https://earthquake.usgs.gov/fdsnws/event/1/",
+      "sha256": "ceef655540bad08adbc996a37c2217bbcfb9fbaaf1827cbc653ef554b8364886",
+      "bytes": 426750
+    }
+  },
+  "method": "3 warmups, 9 measured core runs; MoonBit one iteration per run, native Go averages 32 iterations per run to overcome sub-millisecond clock resolution; median; encode creates packed bytes, decode materializes typed samples; excludes JSON parsing/stringification, decimal conversion and subprocess I/O; different runtimes (MoonBit JS and Go native), same host; no overall parity claim",
+  "engineSha256": "1ccd21897b45fbc578d81ed812458e20d68abf0db16aa3cdb86ab512cb63f389",
+  "results": [
+    {
+      "name": "NOAA Mauna Loa daily CO2",
+      "kind": "observed",
+      "source": "noaa-co2.csv",
+      "conversion": "UTC midnight milliseconds and float64 ppm; missing negative values excluded",
+      "samples": 15983,
+      "bytes": 133737,
+      "rawBytes": 255728,
+      "ratio": 0.5229658074203841,
+      "bytesPerSample": 8.367452918726146,
+      "exactReferenceBytes": true,
+      "referenceSamplesMatch": true,
+      "moonbitJs": {
+        "encodeMedianMs": 43.746799999999894,
+        "decodeMedianMs": 36.246200000000044
+      },
+      "prometheusGo": {
+        "runtime": "go1.26.0",
+        "module": "github.com/prometheus/prometheus@v0.314.0",
+        "encodeMedianMs": 0.847968,
+        "decodeMedianMs": 0.483746
+      }
+    },
+    {
+      "name": "USGS January 2025 mag",
+      "kind": "observed",
+      "source": "usgs-quakes.csv",
+      "conversion": "UTC event milliseconds; float64 mag; empty values excluded",
+      "samples": 2258,
+      "bytes": 29132,
+      "rawBytes": 36128,
+      "ratio": 0.8063551815766165,
+      "bytesPerSample": 12.901682905225863,
+      "exactReferenceBytes": true,
+      "referenceSamplesMatch": true,
+      "moonbitJs": {
+        "encodeMedianMs": 9.19190000000026,
+        "decodeMedianMs": 8.287700000000314
+      },
+      "prometheusGo": {
+        "runtime": "go1.26.0",
+        "module": "github.com/prometheus/prometheus@v0.314.0",
+        "encodeMedianMs": 0.189168,
+        "decodeMedianMs": 0.093512
+      }
+    },
+    {
+      "name": "USGS January 2025 depth",
+      "kind": "observed",
+      "source": "usgs-quakes.csv",
+      "conversion": "UTC event milliseconds; float64 depth; empty values excluded",
+      "samples": 2258,
+      "bytes": 29585,
+      "rawBytes": 36128,
+      "ratio": 0.818893932683791,
+      "bytesPerSample": 13.102302922940655,
+      "exactReferenceBytes": true,
+      "referenceSamplesMatch": true,
+      "moonbitJs": {
+        "encodeMedianMs": 9.425100000000384,
+        "decodeMedianMs": 8.03060000000005
+      },
+      "prometheusGo": {
+        "runtime": "go1.26.0",
+        "module": "github.com/prometheus/prometheus@v0.314.0",
+        "encodeMedianMs": 0.172165,
+        "decodeMedianMs": 0.078459
+      }
+    },
+    {
+      "name": "regular counter",
+      "kind": "synthetic",
+      "samples": 20000,
+      "bytes": 35139,
+      "rawBytes": 320000,
+      "ratio": 0.109809375,
+      "bytesPerSample": 1.75695,
+      "exactReferenceBytes": true,
+      "referenceSamplesMatch": true,
+      "moonbitJs": {
+        "encodeMedianMs": 47.12880000000041,
+        "decodeMedianMs": 11.72230000000036
+      },
+      "prometheusGo": {
+        "runtime": "go1.26.0",
+        "module": "github.com/prometheus/prometheus@v0.314.0",
+        "encodeMedianMs": 0.411743,
+        "decodeMedianMs": 0.516753
+      }
+    },
+    {
+      "name": "periodic signal",
+      "kind": "synthetic",
+      "samples": 20000,
+      "bytes": 167434,
+      "rawBytes": 320000,
+      "ratio": 0.52323125,
+      "bytesPerSample": 8.3717,
+      "exactReferenceBytes": true,
+      "referenceSamplesMatch": true,
+      "moonbitJs": {
+        "encodeMedianMs": 69.05659999999989,
+        "decodeMedianMs": 53.39590000000044
+      },
+      "prometheusGo": {
+        "runtime": "go1.26.0",
+        "module": "github.com/prometheus/prometheus@v0.314.0",
+        "encodeMedianMs": 0.565531,
+        "decodeMedianMs": 0.470075
+      }
+    },
+    {
+      "name": "uniform noise",
+      "kind": "synthetic",
+      "samples": 20000,
+      "bytes": 147497,
+      "rawBytes": 320000,
+      "ratio": 0.460928125,
+      "bytesPerSample": 7.37485,
+      "exactReferenceBytes": true,
+      "referenceSamplesMatch": true,
+      "moonbitJs": {
+        "encodeMedianMs": 54.09779999999955,
+        "decodeMedianMs": 50.823599999999715
+      },
+      "prometheusGo": {
+        "runtime": "go1.26.0",
+        "module": "github.com/prometheus/prometheus@v0.314.0",
+        "encodeMedianMs": 0.50265,
+        "decodeMedianMs": 0.500596
+      }
+    }
+  ]
+}

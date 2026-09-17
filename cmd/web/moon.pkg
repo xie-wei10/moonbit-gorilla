@@ -1,6 +1,7 @@
 import {
   "localreview/gorilla" @lib,
   "moonbitlang/core/string" @strconv,
+  "moonbitlang/core/json",
 }
 
 supported_targets = "js"
@@ -10,7 +11,13 @@ pkgtype(kind: "executable")
 options(
   link: {
     "js": {
-      "exports": [ "run", "compress_text", "decompress_text" ],
+      "exports": [
+        "run",
+        "compress_text",
+        "decompress_text",
+        "codec_json",
+        "archive_json",
+      ],
       "format": "esm",
     },
   },

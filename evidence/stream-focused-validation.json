@@ -1,10 +1,9 @@
 {
-  "date": "2026-09-10T14:50:08.317Z",
-  "projectJsTestsPassed": 13,
+  "date": "2026-09-17T12:31:46.609Z",
   "cliScenariosPassed": 5,
-  "maximumSamplesTested": 100000,
-  "constantNaNPayloadBlockBytesBelow": 26000,
   "wireFormat": "GOR1 custom format, unchanged",
   "upstreamWireCompatibilityClaimed": false,
-  "engineSha256": "a407544a7697dab31018f412c914e10bd2e6032b60b078b8366413ba10ad5ff5"
+  "engineSha256": "8f308a7b0465bc7e3b05de35dad5c59cd4b4dabf06d556829b6ccc7f1d0bcf51",
+  "samplesInCliFixture": 3,
+  "scope": "GOR1 file CLI only; MoonBit backend tests are recorded by verify.ps1 separately"
 }

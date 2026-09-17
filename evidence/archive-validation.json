@@ -1,0 +1,18 @@
+{
+  "utc": "2026-09-17T12:41:45.871Z",
+  "referenceMode": "live independent Python container / Go payload",
+  "passed": 10,
+  "checks": [
+    "5 independent container cases: exact bytes and bidirectional samples",
+    "100000-sample async input and index reads less than 10% of archive for narrow query",
+    "100000-sample bounded stream decoding",
+    "existing output is byte-identical after rejected publication",
+    "abort removes only owned temporary file and publishes no output",
+    "invalid input cannot publish an archive",
+    "range excludes unread corruption; verifyAll and full stream detect it",
+    "early iterator return and repeated opens release bridge/file resources",
+    "strict UTF-8, exact integer text input and fragment-independent line limits",
+    "actual CLI encode/stdin/decode/range/verify/info and failure exit"
+  ],
+  "samplesInStreamingCase": 100000
+}
