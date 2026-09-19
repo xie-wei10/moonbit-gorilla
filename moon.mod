@@ -1,4 +1,4 @@
-name = "localreview/gorilla"
+name = "xie-wei10/gorilla"
 
 version = "0.4.0"
 
