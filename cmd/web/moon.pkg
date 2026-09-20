@@ -1,5 +1,5 @@
 import {
-  "localreview/gorilla" @lib,
+  "xie-wei10/gorilla" @lib,
   "moonbitlang/core/string" @strconv,
   "moonbitlang/core/json",
 }

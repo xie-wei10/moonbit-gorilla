@@ -1,0 +1,22 @@
+$ C:\Users\uiwcv\Documents\Codex\2026-09-10\ban\work\moon\bin\moon.exe info
+Finished. moon: ran 4 tasks, now up to date
+
+$ C:\Users\uiwcv\Documents\Codex\2026-09-10\ban\work\moon\bin\moon.exe check --deny-warn
+Finished. moon: ran 4 tasks, now up to date
+
+$ C:\Users\uiwcv\Documents\Codex\2026-09-10\ban\work\moon\bin\moon.exe build --target js --deny-warn
+Finished. moon: ran 5 tasks, now up to date
+
+$ C:\Users\uiwcv\Documents\Codex\2026-09-10\ban\work\moon\bin\moon.exe run cmd/main
+Samples: 4
+Encoded bytes: 28
+Raw sample bytes: 64
+Decoded: [
+  { timestamp: 1700000000, bits: 4607182418800017408 },
+  { timestamp: 1700000060, bits: 4607182418800017408 },
+  { timestamp: 1700000120, bits: 4607182418800017409 },
+  { timestamp: 1700000180, bits: 4607182418800017409 },
+]
+
+$ node tools/test-demo.mjs
+gorilla: independent browser engine passed

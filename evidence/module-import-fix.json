@@ -1,0 +1,145 @@
+{
+  "utc": "2026-09-20T16:05:12.291359+00:00",
+  "project": "moonbit-gorilla",
+  "module": "xie-wei10/gorilla",
+  "baselineCommit": "a8f68dd892bcc700e0e6eee6ea0dbc29fb37dc37",
+  "localOnly": true,
+  "fullParity": false,
+  "replacements": [
+    {
+      "file": "cmd/main/moon.pkg",
+      "old": "localreview/gorilla",
+      "new": "xie-wei10/gorilla"
+    },
+    {
+      "file": "cmd/web/moon.pkg",
+      "old": "localreview/gorilla",
+      "new": "xie-wei10/gorilla"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "info"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "check",
+        "--deny-warn"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "build",
+        "--target",
+        "js",
+        "--deny-warn"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "run",
+        "cmd/main"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "tools/test-demo.mjs"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "engineSHA256": "dc1670c652fb0b2a4becd6195c0e061de851b245b668cbe6a3c3c3d24513d9f3",
+  "scope": "Only module imports and regenerated module identities/JS artifact changed. Core algorithm sources unchanged. Check/build and main/demo entry smoke checks passed; historical behavioral/performance reports not rerun.",
+  "sourceSHA256": {
+    ".gitattributes": "968aed8752f58f3554e38c1db0b611ba4663668909552d8d17c2874ff5966312",
+    ".github/workflows/ci.yml": "5e097dce4bb182b7281cb69f4d4a4e129cb39696b616c1a9b43a7854c924c108",
+    ".gitignore": "d0d570c45833b94ea26f146137bd336ddab0711a7760b523947b74c5c7571e02",
+    "CHANGELOG.md": "15eb7e9c101e2b48ee1c0b1e42a5097eff06921f4600e80be8b371acd04ab7de",
+    "CONTRIBUTING.md": "2fd1b8751b140299fd020bdbcc3bdecbd1793e4c18a66b6ccecfc127f78ae3fa",
+    "DUPLICATION.md": "3af28419e74c4dafd33a61c0975146f5069b0e9dc4138bcc0c5b24d7c73bfcf5",
+    "FEATURES.md": "fe0f82366ca3e2ec4482f6fafea5781e6ecdee5b828eb54d6b98848541209167",
+    "FORMAT.md": "9a3b9a4e635132de0a3eb105e233e1b4517ff5f3cd7f2a1651342a3d933ebb2c",
+    "LICENSE": "a2ae469f92ac7fd70592f338c7c43657c7e9510be802cfb3db880fff11df3807",
+    "MANIFEST.sha256.json.baseline": "f5d36110b2eb603808c183557b1e4f2e56bb1fc3d338181d4bda025026242295",
+    "README.mbt.md": "a4a2200972a09ff801b99fa40eb61644e015c9674ee75b943f53e467782a90b5",
+    "README.md": "6694e9f7c11e3e8477a1770b1f085688556ddd257b469440e4de0cf10c2b2fae",
+    "ROADMAP.md": "6b5b4168e906776bd9207406584d3401275120c50b2bd98c1532eb95d2a7c0e1",
+    "TESTING.md": "c1b6f9c0b3f1da4db64a97690e9f4e315d771e06c6aa08ab9398f7e1d4798a8a",
+    "archive.mbt": "5a0059ae5d7b11da03a7c4da3a4c3aed8b0d01ec312422ab00e92074852d493e",
+    "archive_test.mbt": "6aa1a46da1d36197a586f2948dc6a41ddda46bf7794906cc4386e2e3a20b400b",
+    "cmd/main/main.mbt": "7986f2a2dc5ee3b203f9767d4358b33f8202f75c1354882982e2ffd964a133f7",
+    "cmd/main/moon.pkg": "d470d84757780f888351b5b0c70ba5979eb154db2d5d6f87284062d3b79c4e0c",
+    "cmd/main/pkg.generated.mbti": "861c2003243e5889304aca1926f286cc84b92963811cbfa09a49ff713aa2ddf6",
+    "cmd/web/archive.mbt": "d986eaffeac133ef68f9a27272f19e759f6f48fd8247bdb2cbdcabd15e36d47b",
+    "cmd/web/blocks.mbt": "c0c44f6ca4068cbec65ab0ae654b3b402d2c3058933f1904989e60fe45bef48d",
+    "cmd/web/codec.mbt": "ba9ab29ad4a528e08f87ef41e9369d26c98a14e383ac634fda756357c1b6ee13",
+    "cmd/web/main.mbt": "c1c38d48b79ea9d11a185be2f8f3aa887c2186671003fcca51445945c0564649",
+    "cmd/web/moon.pkg": "3f3e755620f6a8083c8895f9a596e71e5436ce3da6b26a11bd38ccce66581804",
+    "codec.mbt": "6c865c303fb75e1ddcb154325815870c17dd9c1fbf7317b2695d4c81970fea2f",
+    "core_test.mbt": "3bafb8774ad515183ec55f8b49aa1db4be1d53bc1227164308ce84e806f2e5be",
+    "moon.mod": "3be8bf78e32a4907320daa5e046fea9f21197c1fae69a78471599a5facfaba73",
+    "moon.pkg": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "pkg.generated.mbti": "eb8d90ad3d21b3c17cc38c3c6da4b1ee0e26412c6d6a5a1419e0a7e0881e9a5e",
+    "prometheus.mbt": "12f714ac7c2447d7b46e20551a9e54764a25f08f05430f3b61b9fd7839421d1d",
+    "sample.txt": "f650e09bc8658c6ac1383f6957fd78f337a308ecad428f9a73bfc7d0f1c3ea12",
+    "start-review.ps1": "b636e9cc854081a93bc15cab603a21de48c2ae00d9f49ca543cfcf9bcce9d7c8",
+    "stream.mbt": "e6f6f2a62b2b960a0ec65720df8442ab6263c4be28728d1fb2c983ce662d989c",
+    "stream_test.mbt": "7249644b0a960f434cb5866ebc9c21cb2ddb39c86c1b03f991e33f32bda33917",
+    "tools/archive-cli.mjs": "9484501817c01419be52962799c235054906a0ed1f2b04c89b0b5591244b1750",
+    "tools/archive.mjs": "d4d10e1e53cf92405c8cdb8fc432d882b1c69c4ce15c04e9dd130bf711b55c73",
+    "tools/archive_oracle.py": "232c7eb4dbeb29ae19d2978bcd804dae5b811c7b6f4470393dc36c4cf14372d4",
+    "tools/benchmark-reference.mjs": "d720017c829b729c776c478b43a266cbb37d05bea81c2d1a2a70492eb50b1d14",
+    "tools/benchmark.mjs": "53ac611536ba7cb3732017d22976ff8f38dbd9e7aa579c2469eab75b0cdc7216",
+    "tools/blocks.mjs": "42244377febe5e1d142dbbbcac7ca4bf6baaf040f405a0611d8fc37e82459558",
+    "tools/cli.mjs": "f98839799f2896c92a75e6565add432efe166f00bc3fed89e03d6d59eca688d4",
+    "tools/generate-xor-tests.mjs": "43101fce1d0d3d0a481e90c08bc251cce22e80a32966d806fbec15e8ced46f82",
+    "tools/gor1_oracle.py": "0a4ade6f9913e287bd0ff9519ef04737baa14a74cdc7c6382f2bd016dca939a5",
+    "tools/invalid-input.txt": "2f05d4b689d270cafb02285f35f44866f7dc8a2d368a3f9d1124373eeab31fb1",
+    "tools/oracle/go.mod": "ef850f31f99818f1fbd2eac0a388cdd313dfe3f13257866506f0a3a0569e81c1",
+    "tools/oracle/go.sum": "6acd5f940373709010f32563ce8295a92be572f39aa957527027e869b64386c3",
+    "tools/oracle/main.go": "300a0c6ff7bc64a6ebd959ca285138eb2e80cf1826c4bd105a94c588e28ab07d",
+    "tools/prepare-data.py": "c925fab112308da7e82fe7fc5e0c54f8b28f06551dc2f635cd670d5beea052d5",
+    "tools/robustness.mjs": "24964a078897dccc448ba3d5db4c08f6446d38008424987bf26b4b6f042a21d6",
+    "tools/serve.py": "77361b08fc65d9c6a3d89bda03949d9e1a9754f76e8cc32b20ca11aa9bf1ff5e",
+    "tools/test-archive.mjs": "b79673aaf8fac8eed49307eb7a666b3e066c1ddf6c195d9e95d250f5b7857b7f",
+    "tools/test-blocks.mjs": "c73f11cc67476cb8a79120be312f6db29e3d7fe23d0cb96199417e5487b4c56f",
+    "tools/test-cli.mjs": "b1acaf8992e16d37e1527fd60beeea275ce0df574a9622ab3b44d86dcaf08b03",
+    "tools/test-demo.mjs": "02ec6337b9c72c299450db6f0d2b024fd4fd96193d17e5cd501c3a8e6eb87188",
+    "tools/test-gor1-reference.mjs": "1176f1302fccf13a3f2754806de70bbc40b2f521af07557a6c9ac42133c563bf",
+    "tools/test-xor-reference.mjs": "3f79eaf8a7a87fb7d70c88c378f1d04ddb833d8dcd14e036a1a8337994b3eae4",
+    "usability.mbt": "43aa545f497aab4470f67b51bb257f95810270bbc47fd81192356357ca231d1a",
+    "verify.ps1": "ee3bb79df0e146f3d2884de35b8ff8d4e8074fe31d7c58854678bc6dbf455ad1",
+    "web/app.mjs": "12a0cf3565b6298e2e3760355ec5da3fed88870be604b7f6e1a2f57d7334578d",
+    "web/config.mjs": "70d7d1ec298cb289a3e8a615c25bb011258f330f897eab5f4072cd2913e57d65",
+    "web/engine.mjs": "dc1670c652fb0b2a4becd6195c0e061de851b245b668cbe6a3c3c3d24513d9f3",
+    "web/index.html": "cdcbb5d9f2d455d4335bfd7fdcd30bac065fc0b90843d4fe616ef9726fc7aeb8",
+    "xor_vectors_test.mbt": "c9f631aefe95dfcf42e71100622ecdcd2d952935ba9fbd53ef45f1a594b42e87"
+  },
+  "evidenceSHA256": {
+    "evidence/archive-reference-vectors.json": "8e41b2bcdf1773234624aa597a4a807a0c52c083c0acfc7a20c441893b37fbd9",
+    "evidence/archive-validation.json": "869d33eb2b3d3e21715365c359254bad5dda02e9c23510fbed33d7c79dcd7b6e",
+    "evidence/compression-baseline.json": "59f51e45bd08311cd478bb863a521bcba28a3b3fe53bb2cc9d363ac8b119c874",
+    "evidence/compression-reference.json": "7a5e83115e001223f4fc36e6fc2c204b51975ff0769b907a580bdb99255a9a90",
+    "evidence/duplication.json": "90e4d6b3cec1c83cdbd06b422b2b3dbc654e3122473071554961876d5f9b1325",
+    "evidence/gor1-reference-validation.json": "032bd18e1f251aa3fc71ddf284c6370b2d3d43baa167b4fb22e6f1f689bf0db4",
+    "evidence/gor1-reference-vectors.json": "7a1d4b12c633a543004464ce131e34e00dfff36cacfc4c02e356343187590ff1",
+    "evidence/indexed-upgrade.json": "f02ba0921a4e2cd1c76107c21bf707fc6d3730860c5b9ab418ccaf177d6b8cdb",
+    "evidence/module-import-fix-log.txt": "03ee193b6b433e4d2ebc4f5c562cc5db4d6317df8f1983d999640d65e8c04ae8",
+    "evidence/quality-review.json": "0327c8a865afa210071ff6e3de3b4b010e71a3e927a88dc9d4b4d7b6061daab9",
+    "evidence/stream-focused-validation.json": "1d4b2ddc6fd606bb0bd844915ce109b63a28dda1efaa8da95e1582e2080e3c60",
+    "evidence/verification.json": "f7d0452f6a4dd68aeafa3b264b5c6846eae00d46dd31b5c8d29d3ac2b24084a7",
+    "evidence/xor-reference-validation.json": "224d50ace1067dd75623561da70c28a72ef05cd8ea5ed6141c0373b5f1851aeb",
+    "evidence/xor-reference-vectors.json": "02798b3a4e128abf23e78e3f52971c03963d11cb4a99bf7c4a68918a74643fe2"
+  }
+}
