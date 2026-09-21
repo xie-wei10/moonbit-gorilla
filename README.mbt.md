@@ -23,4 +23,4 @@ test "closed range query filters decoded points" {
 }
 ```
 
-限制：查询会顺序解码整个块；没有索引、持久化或数据库查询规划。
+本例的 GOR1 `decode_range` 会顺序解码整个块；另有 GOR2 `ArchiveIndex` 范围索引和 Node 文件读写宿主，见 [README.md](README.md)。GOR2 是自定义容器，不是 Prometheus TSDB segment/block/WAL 格式，也不提供数据库查询规划。
