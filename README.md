@@ -1,6 +1,14 @@
 # Gorilla 时序压缩 · 0.4.0
 
-MoonBit 原创压缩库与 Node 文件宿主，支持原有 GOR1、兼容 Prometheus 的原始 XOR chunk，以及新增带 CRC 校验和索引的 GOR2 容器。全部在本地，未上传或发布。完整追平目标仍未完成。
+## 获取与验证入口
+
+公开源码：[github.com/xie-wei10/moonbit-gorilla](https://github.com/xie-wei10/moonbit-gorilla)；MoonBit 模块名为 `xie-wei10/gorilla`。
+
+从源码运行：`git clone https://github.com/xie-wei10/moonbit-gorilla.git` 后进入该目录，按下文和 [TESTING.md](TESTING.md) 安装所需工具。仓库公开不等于已在 Mooncakes 发布，不承诺 `moon add` 当前可用。
+
+查看 [GitHub Actions](https://github.com/xie-wei10/moonbit-gorilla/actions) 时请核对 run 的 commit SHA；历史 evidence、旧 ZIP 与本地测试不能替代当前提交的 CI 结果。下文保留各版本的验证范围和兼容性限制。
+
+> 历史开发记录（以下发布/归档状态不代表当前仓库；当前入口见文首）：MoonBit 原创压缩库与 Node 文件宿主，支持原有 GOR1、兼容 Prometheus 的原始 XOR chunk，以及新增带 CRC 校验和索引的 GOR2 容器。全部在本地，未上传或发布。完整追平目标仍未完成。
 
 ## 真实文件使用
 
@@ -68,4 +76,4 @@ GOR1 仍最多 100000 条、时间 0..2^53-1；原始 XOR chunk 最多 65535 条
 
 尚缺论文原始块/Beringei 等其他位流、完整 TSDB 格式和多序列管理、更广泛真实数据/长期故障/跨平台验证，以及代表性吞吐与内存的进一步优化。新 GOR2 路径有分片解码，旧 GOR1/原始 XOR 迭代器仍接收完整块。完整差距见 [FEATURES.md](FEATURES.md)。
 
-算法参考 [Gorilla 论文](https://www.vldb.org/pvldb/vol8/p1816-teller.pdf) 和 [Prometheus chunkenc](https://github.com/prometheus/prometheus/tree/v3.14.0/tsdb/chunkenc)。生产代码为原创，不复制上游源码，MIT；Go 官方库仅为开发测试依赖。独立仓库、无 remote、远端 CI 未运行；旧 ZIP/Git bundle 暂未刷新。
+> 历史开发记录（以下发布/归档状态不代表当前仓库；当前入口见文首）：算法参考 [Gorilla 论文](https://www.vldb.org/pvldb/vol8/p1816-teller.pdf) 和 [Prometheus chunkenc](https://github.com/prometheus/prometheus/tree/v3.14.0/tsdb/chunkenc)。生产代码为原创，不复制上游源码，MIT；Go 官方库仅为开发测试依赖。独立仓库、无 remote、远端 CI 未运行；旧 ZIP/Git bundle 暂未刷新。
