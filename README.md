@@ -12,18 +12,20 @@
 
 ## 真实文件使用
 
-Node.js 24，已附实际 MoonBit 编译引擎：
+Node.js 24，已附实际 MoonBit 编译引擎和可直接使用的 [输入样例](examples/samples.txt)。以下命令从仓库根目录执行；生成文件不能覆盖已有文件，重复演示时请换一个输出文件名：
 
 ```powershell
-node tools/archive-cli.mjs encode samples.txt output.gor2 --block-size 4096
+node tools/archive-cli.mjs encode examples/samples.txt output.gor2 --block-size 4096
 node tools/archive-cli.mjs decode output.gor2
 node tools/archive-cli.mjs range output.gor2 -1000 1000
 node tools/archive-cli.mjs range output.gor2 -1000 1000 --verify-all
 node tools/archive-cli.mjs info output.gor2
 node tools/archive-cli.mjs verify output.gor2
-node tools/archive-cli.mjs xor-encode samples.txt output.xor
+node tools/archive-cli.mjs xor-encode examples/samples.txt output.xor
 node tools/archive-cli.mjs xor-decode output.xor
 ```
+
+`decode` 和 `xor-decode` 应返回样例的全部 4 行；`range ... -1000 1000` 应返回前三行。样例中第二列是 Double 的原始 UInt64 位模式，不是普通十进制浮点数。
 
 文本每行两个十进制整数：`signed_int64_timestamp raw_uint64_bits`；值保留正负零、无穷和 NaN payload，不经过 JSON 浮点舍入。输入 `-` 读取 stdin。GOR2 要求时间不递减，允许重复；原始 XOR chunk 可记录任意 Int64 时间顺序。GOR2 encode 流式读取，只保留当前块、有限批次和索引，完成后同步临时文件并以同目录硬链接原子发布；目标已存在则报错，不覆盖。失败或取消清理本次临时文件。底层文件系统需支持同目录文件硬链接。
 
