@@ -1,0 +1,57 @@
+{
+  "date": "2026-09-22",
+  "project": "gorilla",
+  "package": "xie-wei10/gorilla",
+  "version": "0.4.0",
+  "code_base_commit_before_materials": "a7202bebcd12850634eda5595afc2b91d38054a3",
+  "core_checks": [
+    {
+      "command": [
+        "moon",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "seconds": 1.9,
+      "log": "gorilla-test---target-js.log"
+    },
+    {
+      "command": [
+        "moon",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit": 0,
+      "seconds": 1.36,
+      "log": "gorilla-test---target-wasm-gc.log"
+    },
+    {
+      "command": [
+        "moon",
+        "build",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "seconds": 1.29,
+      "log": "gorilla-build---target-js.log"
+    }
+  ],
+  "workflow_checks": [
+    {
+      "command": [
+        "node",
+        "tools/test-archive.mjs",
+        "--golden"
+      ],
+      "exit": 0,
+      "log": "gorilla-workflow-final.log",
+      "note": "reference oracle environment missing initially; explicit saved-vector replay passed"
+    }
+  ],
+  "interpretation": "本轮 10 组真实归档流程及十万样本范围读取通过；独立容器向量为保存的参考重放，未冒充本轮重新运行 Go oracle。",
+  "limit": "默认范围读取只检查选中的块；完整归档校验需 verify/--verify-all。原始 XOR chunk 互通不等于整个 TSDB 兼容。",
+  "remote_push_performed": false
+}
