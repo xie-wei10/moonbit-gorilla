@@ -1,75 +1,63 @@
-> 2026-09-22 当前本地版 0.4.0：申报定位为“保留浮点位模式的时序压缩与范围归档”。已更新[现有项目对照](DUPLICATION.md)、[申报草稿](PROPOSAL.md)及[本轮验证](evidence/innovation-review-20260922/results.json)。下面带日期的旧轮次描述保留历史范围；团队已有公开仓库，本次本地修订尚未由本任务推送。
+# 保留浮点位模式的时序压缩与范围归档
 
-# Gorilla 时序压缩 · 0.4.0
+**本项目仓库：[https://github.com/xie-wei10/moonbit-gorilla](https://github.com/xie-wei10/moonbit-gorilla)**
 
-> 2026-09-21 本地构建修复：命令包 import 已同步到当前 moon.mod 模块名；moon info/check、JS 构建、MoonBit 示例和 Node 引擎示例通过。算法未改，本轮未重跑历史全部行为/性能套件。当前提交指纹见 evidence/module-import-fix.json。
+模块 `xie-wei10/gorilla`，本地版本 **0.4.0**，MIT。当前评审状态：**保留候选**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
 
-MoonBit 原创压缩库与 Node 文件宿主，支持原有 GOR1、兼容 Prometheus 的原始 XOR chunk，以及新增带 CRC 校验和索引的 GOR2 容器。全部在本地，未上传或发布。完整追平目标仍未完成。
+## 解决什么任务
 
-## 真实文件使用
+将时间戳/原始浮点位模式归档，并按时间索引读取小范围、定位坏块；数据仍可按 Prometheus XOR chunk 交换。
 
-Node.js 24，已附实际 MoonBit 编译引擎：
+需要原始浮点位模式、块索引和坏块定位时评估；如果只是 JSON 导出，无须引入该自有容器。
 
-```powershell
-node tools/archive-cli.mjs encode samples.txt output.gor2 --block-size 4096
-node tools/archive-cli.mjs decode output.gor2
-node tools/archive-cli.mjs range output.gor2 -1000 1000
-node tools/archive-cli.mjs range output.gor2 -1000 1000 --verify-all
-node tools/archive-cli.mjs info output.gor2
-node tools/archive-cli.mjs verify output.gor2
-node tools/archive-cli.mjs xor-encode samples.txt output.xor
-node tools/archive-cli.mjs xor-decode output.xor
+## 直接复现
+
+安装 MoonBit 和 Node.js 24，在本仓库根目录运行：
+
+```sh
+moon build --target js
+node -e "require('node:fs').copyFileSync('_build/js/debug/build/cmd/web/web.js','web/engine.mjs')"
+node examples/run-use-case.mjs
 ```
 
-文本每行两个十进制整数：`signed_int64_timestamp raw_uint64_bits`；值保留正负零、无穷和 NaN payload，不经过 JSON 浮点舍入。输入 `-` 读取 stdin。GOR2 要求时间不递减，允许重复；原始 XOR chunk 可记录任意 Int64 时间顺序。GOR2 encode 流式读取，只保留当前块、有限批次和索引，完成后同步临时文件并以同目录硬链接原子发布；目标已存在则报错，不覆盖。失败或取消清理本次临时文件。底层文件系统需支持同目录文件硬链接。
+流程：**保留特殊浮点位模式的区间归档**。运行器创建新的系统临时目录，保留每一步的 stdout/stderr、产物及 `report.json`，打印实际目录；重复运行不会覆盖之前产物。它只执行仓库内的本地样例，不连接公网或发送消息。`report.json` 的 `expected` 是应观察的结果，实际结果在各步输出中；成功退出不替代内容核对。
 
-range 为闭区间，按索引跳过不相交块。默认只验证索引和读到的块；`--verify-all` 另外验证未选中负载。decode 的 stdout 可以先输出有效前缀，只有退出码 0 才证明整个索引和尾部都通过，管道消费者应检查退出码。`verify` 显式扫描全部块。
+输入性质：原创合成时间序列，含负零与 NaN payload。
 
-旧 GOR1 CLI `node tools/blocks.mjs encode|decode|range ...` 保持原格式与行为，range 仍验证整个旧块。原网页用 `./start-review.ps1`，没有将网页演示当作新文件格式的 UI 验收。
+应观察：闭区间返回负零 bits=9223372036854775808 与 NaN bits=9221120237041090626，完整校验成功。
 
-## MoonBit API
+具体命令和输入路径见 [使用任务](USE-CASE.md) 与 [机器可读流程](examples/use-case.json)。只把这个脚本当复现入口，不把通用运行器计作核心技术贡献。
 
-- `Encoder/Decoder`、`encode/decode/decode_range`：原有 GOR1；逐条追加、独立快照、完整块迭代和严格尾部检查。
-- `XorEncoder/XorDecoder`、`encode_xor/decode_xor`：Prometheus 3.14.0（module v0.314.0）原始 XOR chunk；Int64 时间、UInt64 值、快照、封闭编码器、最多 65535 条。默认严格尾部；`strict=false` 与参考迭代器一样在样本数处停止。
-- `ArchiveEncoder`：先写 `archive_header()`，按 append 返回的完整块写出，最后写 finish 返回的尾块、索引和 trailer。已完成块不保存在编码器内。
-- `ArchiveDecoder.feed`：接受任意分片，每次最多 65536 字节；校验完整块后返回样本。`finish` 验证最终索引与已消费块一致；出错后保持失败状态。
-- `ArchiveIndex`：校验索引、二分定位范围、校验并解码指定块。`crc32` 提供 IEEE CRC-32。
+## 实现与已有项目的关系
 
-完整公开接口见 `pkg.generated.mbti`。格式、字段与 CRC 覆盖范围见 [FORMAT.md](FORMAT.md)。GOR2 是本项目自定义容器，负载的 XOR chunk 可与 Prometheus 交换；GOR2 不是 Prometheus TSDB segment/block/WAL 格式。
+MoonBit 执行 XOR/位流、CRC、分块增量编码及范围索引；Node 执行文件发布、异步输入输出及 CLI。
 
-## Node 流式 API
+Gorilla 是既有算法；本轮未找到同范围 MoonBit 压缩库。贡献是该生态的可复用实现和块索引/完整性工作流，不是算法首创，也不把自有 GOR2 容器说成 Prometheus TSDB 文件。
 
-```javascript
-import {writeArchive, readArchive, ArchiveFile} from './tools/archive.mjs';
-await writeArchive('series.gor2', asyncIterableOfSamples, {blockSize: 4096, signal});
-for await (const sample of readArchive('series.gor2')) {
-  // timestamp 和 bits 为精确十进制字符串
-}
-const file = await ArchiveFile.open('series.gor2');
-try {
-  for await (const sample of file.range('-1000', '1000')) { /* ... */ }
-  console.log(file.bytesRead); // 可以观察索引查询实际读取量
-} finally {
-  await file.close();
-}
+同类项目和检索边界见 [DUPLICATION](DUPLICATION.md)。查重用于避免错误的首创表述；关键词零结果不能证明生态空白，Node 宿主能力也不计为 MoonBit 原生 I/O。
+
+库使用从 [公共 API](pkg.generated.mbti) 和根包源码开始；可在本 checkout 的消费包中导入 `"xie-wei10/gorilla"`。源码中的网络/文件宿主入口及完整参数仍见 [完整使用说明](README-BEFORE-VALUE-REWORK.md)。是否已发布到 Mooncakes 需另核实，本文不把 `moon add` 的下载成功作为已完成事项。
+
+## 验证与边界
+
+前一轮工程验证 10 组真实归档流程及十万样本范围读取通过；独立容器向量为保存的参考重放，未冒充前一轮工程验证重新运行 Go oracle。
+
+[上一轮工程验证](evidence/innovation-review-20260922/results.json) 与 [本轮最小任务回执](evidence/value-rework-20260922/use-case.json) 分开。历史参考版本、golden 重放、本机 peer、真实第三方服务端和本次样例是不同证据，不能合并成“全部生产验证”。
+
+常规核心检查可运行 `moon check --target js`、`moon test --target js`、`moon test --target wasm-gc`。专项命令：
+
+```sh
+node tools/test-archive.mjs --golden
 ```
 
-也接受 BigInt 或安全整数输入；不安全的 JavaScript Number 被拒绝。提前结束 readArchive 的 iterator 会释放文件/桥接会话，但不表示未读后缀已经校验。关闭 ArchiveFile 前需要结束其活动 iterator。没有后台服务或系统配置修改。
+专项所需的参考环境和历史版本见原使用说明及 TESTING 文档；本轮回执只记录实际执行项，不声称上面所有参考服务在任意环境即装即跑。
 
-## 当前独立证据
+默认范围读取只检查选中的块；完整归档校验需 verify/--verify-all。原始 XOR chunk 互通不等于整个 TSDB 兼容。
 
-- 固定未修改 Prometheus v0.314.0 的 277 个案例，编码字节及双向样本一致；其中 38 个固定黄金向量也在每个 MoonBit 后端执行。
-- 144 个原有 GOR1 场景由独立 Python 规格模型核对精确字节和双向样本；它是自定义格式对照，不冒充上游格式。
-- GOR2 用 Python struct/zlib 构造/检查容器、官方 Go 库处理负载，5 个案例全字节及双向样本一致。
-- 10 组文件/流式/CLI 集成检查包含 10 万样本、窄查询读取不足文件 10%、取消与防覆盖、区间外损坏、提前退出和会话释放。
-- NOAA 日均 CO2、USGS 月度地震震级/深度及 3 类合成序列做实际字节与计时对照；数据来源、SHA256、转换与运行环境全部记录。
+## 复审材料状态
 
-构建/复现命令和证据口径见 [TESTING.md](TESTING.md)。优化把逐位移位改为每次处理至多一个字节，并使用前导/尾随零计数；字节格式不变。实际压缩大小与参考一致，MoonBit JS 速度仍落后于同机原生 Go，不能据此宣称性能追平。CRC 检测损坏而非密码学认证。
+Gorilla 算法已有，GOR2 不是 Prometheus 完整 TSDB 格式，性能不宣称追平。
 
-## 资源与剩余差距
+2026-09-22 匿名新克隆成功；默认分支 `main`，核验公开提交 `1934afceef052621c668119279f210624bb89692`。本轮源码修订仅在本地，尚未推送；此记录不证明当时报名表中的地址正确，也不证明新修订已上线。
 
-GOR1 仍最多 100000 条、时间 0..2^53-1；原始 XOR chunk 最多 65535 条、2 MB。GOR2 每块最多 65535 条、2 MB 负载，最多 65536 块；索引最多约 2.36 MB。编码/解码宿主使用有界输入批次，但索引内存随块数增长。单次 feed 大小不等于整个文件上限。
-
-尚缺论文原始块/Beringei 等其他位流、完整 TSDB 格式和多序列管理、更广泛真实数据/长期故障/跨平台验证，以及代表性吞吐与内存的进一步优化。新 GOR2 路径有分片解码，旧 GOR1/原始 XOR 迭代器仍接收完整块。完整差距见 [FEATURES.md](FEATURES.md)。
-
-算法参考 [Gorilla 论文](https://www.vldb.org/pvldb/vol8/p1816-teller.pdf) 和 [Prometheus chunkenc](https://github.com/prometheus/prometheus/tree/v3.14.0/tsdb/chunkenc)。生产代码为原创，不复制上游源码，MIT；Go 官方库仅为开发测试依赖。独立仓库、无 remote、远端 CI 未运行；旧 ZIP/Git bundle 暂未刷新。
+[申报草稿](PROPOSAL.md) 已压缩为 30 行以内，并单独标明本项目仓库；[复核说明](REVIEW-RESPONSE.md) 区分材料错误、功能变化及尚未解决的问题。没有编造用户、设备接入、生产部署或评审认可。
