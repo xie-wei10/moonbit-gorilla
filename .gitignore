@@ -9,3 +9,6 @@ evidence/current-validation.json
 evidence/validation-console.txt
 tools/oracle/gorilla-oracle
 tools/oracle/gorilla-oracle.exe
+# Local output files from the README walkthrough.
+/output.gor2
+/output.xor
