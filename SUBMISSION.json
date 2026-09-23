@@ -1,17 +1,20 @@
 {
   "project": "gorilla",
-  "title": "保留浮点位模式的时序压缩与范围归档",
+  "title": "Gorilla 压缩归档与 MoonPromQL 查询数据源",
   "module": "xie-wei10/gorilla",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "repository": "https://github.com/xie-wei10/moonbit-gorilla",
-  "status": "保留候选",
-  "remainingRisk": "Gorilla 算法已有，GOR2 不是 Prometheus 完整 TSDB 格式，性能不宣称追平。",
+  "status": "已补真实生态接入与场景，待团队同步复审",
+  "remainingRisk": "无确认使用方；GOR2不是完整TSDB；查询子集和毫秒@继承上游，非有限值查询拒绝。",
   "actualUsersClaimed": false,
   "anonymousCloneVerified": true,
   "publicHead": "1934afceef052621c668119279f210624bb89692",
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
-  "proposalLines": 25,
-  "useCase": "保留特殊浮点位模式的区间归档",
-  "diff": "Gorilla 是既有算法；本轮未找到同范围 MoonBit 压缩库。贡献是该生态的可复用实现和块索引/完整性工作流，不是算法首创，也不把自有 GOR2 容器说成 Prometheus TSDB 文件。"
+  "proposalLines": 23,
+  "useCase": "本机进程指标采集、GOR2归档、区间读取与上游时间窗口查询",
+  "diff": "直接复用Santa968/moonpromql的parser/AST/model/eval，计算完整读取窗口并以压缩归档提供数据；不重新实现查询语言。",
+  "license": "MIT AND Apache-2.0",
+  "dependency": "Santa968/moonpromql@0.1.0",
+  "anonymousCloneVerifiedDate": "2026-09-22"
 }

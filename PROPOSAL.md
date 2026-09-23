@@ -1,25 +1,23 @@
-# 保留浮点位模式的时序压缩与范围归档 · 修订申报草稿
+# Gorilla 压缩归档与 MoonPromQL 查询数据源 · 复审稿
 
 本项目仓库：https://github.com/xie-wei10/moonbit-gorilla
-模块 / 本地版本：`xie-wei10/gorilla` / `0.4.0`；许可证：MIT。
-修订状态：保留候选；本轮仅本地修订，未推送或提交表单。
+模块/本地版本：`xie-wei10/gorilla` / `0.5.0`；交付许可证 MIT AND Apache-2.0。
+本地完成，未推送/发布/提交表单。针对“生态衔接与实际场景不足”补充如下。
 
-## 任务与选择依据
-将时间戳/原始浮点位模式归档，并按时间索引读取小范围、定位坏块；数据仍可按 Prometheus XOR chunk 交换。
-需要原始浮点位模式、块索引和坏块定位时评估；如果只是 JSON 导出，无须引入该自有容器。
+## 已有生态与新增连接
+Gorilla是既有算法。现有 [MoonPromQL](https://github.com/Santa968/MoonPromQL) 提供内存时序查询，本项目不重复实现其查询语言。
+直接依赖 Santa968/moonpromql@0.1.0，复用 parser/AST/model/eval；新增公开 /moonpromql 适配和真实文件 queryArchives 工作流。
+按上游AST计算range、offset、@与瞬时lookback所需窗口，使用GOR2索引读取相关块，校验后转换为上游Series并求值。
+MoonBit负责压缩、CRC、索引与适配；Node负责文件和样例指标采集。不是完整Prometheus TSDB或MoonBit原生文件I/O。
 
-## 已实现内容
-MoonBit 执行 XOR/位流、CRC、分块增量编码及范围索引；Node 执行文件发布、异步输入输出及 CLI。
-可复现任务：保留特殊浮点位模式的区间归档；按 README 构建后运行 `node examples/run-use-case.mjs`，输入与输出见 USE-CASE.md。
-前一轮工程验证 10 组真实归档流程及十万样本范围读取通过；独立容器向量为保存的参考重放，未冒充前一轮工程验证重新运行 Go oracle。
+## 具体场景与复现
+面向单机/边缘任务的指标快照与离线诊断：把已有指标归档，再查询指定时段，避免把整份样本全部送入内存求值。
+`moon build --target js` → `node tools/refresh-engines.mjs` → `node examples/run-metrics-query.mjs`。
+实际采集本例进程RSS/heap共48样本，写入GOR2、按bits精确读回，上游avg_over_time结果与未压缩同输入一致；保留文件、标签清单与报告。
+这是可运行场景，不是客户采用证明；尚无确认使用方。
 
-## 原创、复用与差异
-原创实现/参考来源/第三方材料许可按 README、DUPLICATION 与仓库来源说明披露；不将既有协议、算法、词库或规范发明归于本项目。
-Gorilla 是既有算法；本轮未找到同范围 MoonBit 压缩库。贡献是该生态的可复用实现和块索引/完整性工作流，不是算法首创，也不把自有 GOR2 容器说成 Prometheus TSDB 文件。
-比较项目链接单列于 DUPLICATION.md，不作为本项目提交地址。检索范围不含完整未公开报名表，不能保证无重叠。
-
-## 边界与剩余计划
-默认范围读取只检查选中的块；完整归档校验需 verify/--verify-all。原始 XOR chunk 互通不等于整个 TSDB 兼容。
-Gorilla 算法已有，GOR2 不是 Prometheus 完整 TSDB 格式，性能不宣称追平。
-剩余计划：由对接团队核对真实表单链接、公开本轮对应提交及确认选题/换题流程；按实际接入输入补验证，避免以更多规则、测试数量或改名替代用途证据。
-交付：MoonBit 库、限定宿主入口、可运行任务、源码/来源说明及分层验证证据；不承诺自动通过初审。
+## 验证与限制
+新测试含3组MoonBit适配检查、11组文件/查询流程；4096样本的固定用例中选定查询加载12样本、读4858/16593归档字节，并与全量输入结果相同。
+这不是通用性能结论。查询子集由上游决定：@采用上游毫秒语义，非有限值/stale及不精确时间戳拒绝；标签/序列清单需应用提供完整。
+GOR2为自有容器，不等于Prometheus TSDB；默认只校验选中块，verifyAll可全检。无抓取/remote read-write/生产部署或上游背书声明。
+完整接口、实跑日志和剩余边界见 UPSTREAM-RELATION.md、TESTING.md；请求依据实际衔接补充重新审核。

@@ -1,0 +1,26 @@
+{
+  "timestampUnit": "milliseconds",
+  "source": "this Node process memoryUsage()",
+  "series": [
+    {
+      "file": "rss.gor2",
+      "metric": "process_memory_bytes",
+      "labels": [
+        [
+          "kind",
+          "rss"
+        ]
+      ]
+    },
+    {
+      "file": "heap.gor2",
+      "metric": "process_memory_bytes",
+      "labels": [
+        [
+          "kind",
+          "heap"
+        ]
+      ]
+    }
+  ]
+}

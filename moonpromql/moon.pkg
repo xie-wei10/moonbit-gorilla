@@ -1,0 +1,7 @@
+import {
+  "xie-wei10/gorilla" @archive,
+  "Santa968/moonpromql/model",
+  "Santa968/moonpromql/ast",
+  "Santa968/moonpromql/parser",
+  "Santa968/moonpromql/eval",
+}

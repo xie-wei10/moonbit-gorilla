@@ -28,6 +28,12 @@ try {
   $engine=Get-ChildItem '_build/js' -Recurse -File | Where-Object { $_.Name -in @('main.js','web.js') -and $_.FullName -match '[\\/]cmd[\\/]web[\\/]' } | Sort-Object LastWriteTime -Descending | Select-Object -First 1
   if (-not $engine) {throw 'Missing browser engine'}
   Copy-Item -LiteralPath $engine.FullName -Destination 'web/engine.mjs' -Force
+  node tools/refresh-engines.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'query engine refresh failed'}
+  node examples/run-metrics-query.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'metrics archive query example failed'}
+  node tools/test-query-archive.mjs
+  if ($LASTEXITCODE -ne 0) {throw 'archive query integration failed'}
   node tools/test-demo.mjs
   if ($LASTEXITCODE -ne 0) {throw 'browser engine test failed'}
   node tools/test-blocks.mjs

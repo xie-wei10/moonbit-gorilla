@@ -1,0 +1,159 @@
+{
+  "date": "2026-09-23",
+  "checks": [
+    {
+      "check": "fmt",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "fmt"
+      ],
+      "exit": 0,
+      "log": "fmt.log"
+    },
+    {
+      "check": "info",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "info"
+      ],
+      "exit": 0,
+      "log": "info.log"
+    },
+    {
+      "check": "check-js",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "check",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "log": "check-js.log"
+    },
+    {
+      "check": "test-js",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "log": "test-js.log"
+    },
+    {
+      "check": "test-wasm-gc",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exit": 0,
+      "log": "test-wasm-gc.log"
+    },
+    {
+      "check": "build-js",
+      "command": [
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\work\\moon\\bin\\moon.exe",
+        "build",
+        "--target",
+        "js"
+      ],
+      "exit": 0,
+      "log": "build-js.log"
+    },
+    {
+      "check": "refresh",
+      "command": [
+        "node",
+        "tools/refresh-engines.mjs"
+      ],
+      "exit": 0,
+      "log": "refresh.log"
+    },
+    {
+      "check": "live-metrics-example",
+      "command": [
+        "node",
+        "examples/run-metrics-query.mjs"
+      ],
+      "exit": 0,
+      "log": "live-metrics-example.log"
+    },
+    {
+      "check": "archive-query",
+      "command": [
+        "node",
+        "tools/test-query-archive.mjs",
+        "--output",
+        "evidence/moonpromql-integration-20260923/QUERY-CHECKS.json"
+      ],
+      "exit": 0,
+      "log": "archive-query.log"
+    },
+    {
+      "check": "test-demo",
+      "command": [
+        "node",
+        "tools/test-demo.mjs"
+      ],
+      "exit": 0,
+      "log": "test-demo.log"
+    },
+    {
+      "check": "test-cli",
+      "command": [
+        "node",
+        "tools/test-cli.mjs"
+      ],
+      "exit": 0,
+      "log": "test-cli.log"
+    },
+    {
+      "check": "test-blocks",
+      "command": [
+        "node",
+        "tools/test-blocks.mjs"
+      ],
+      "exit": 0,
+      "log": "test-blocks.log"
+    },
+    {
+      "check": "test-xor-reference",
+      "command": [
+        "node",
+        "tools/test-xor-reference.mjs",
+        "--golden"
+      ],
+      "exit": 0,
+      "log": "test-xor-reference.log"
+    },
+    {
+      "check": "test-gor1-reference",
+      "command": [
+        "node",
+        "tools/test-gor1-reference.mjs",
+        "--golden"
+      ],
+      "exit": 0,
+      "log": "test-gor1-reference.log"
+    },
+    {
+      "check": "test-archive",
+      "command": [
+        "node",
+        "tools/test-archive.mjs",
+        "--golden"
+      ],
+      "exit": 0,
+      "log": "test-archive.log"
+    }
+  ],
+  "historicalEvidencePreserved": true,
+  "GoReferenceRerun": false,
+  "upstreamActuallyImported": true,
+  "remoteCIExecuted": false,
+  "published": false,
+  "productionUsersClaimed": false
+}

@@ -1,0 +1,64 @@
+{
+  "measurementSource": "this process only; no external user claim",
+  "samples": 48,
+  "writes": [
+    {
+      "output": "C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-metrics-LjzijS\\rss.gor2",
+      "samples": "24",
+      "bytes": 324
+    },
+    {
+      "output": "C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-metrics-LjzijS\\heap.gor2",
+      "samples": "24",
+      "bytes": 368
+    }
+  ],
+  "bitExactRoundtrip": true,
+  "equalsUncompressedQuery": true,
+  "query": "avg_over_time(process_memory_bytes[1s])",
+  "at": "1790150131062",
+  "window": {
+    "start": "1790150130062",
+    "end": "1790150131062"
+  },
+  "result": {
+    "kind": "instant",
+    "points": [
+      {
+        "labels": [
+          [
+            "kind",
+            "rss"
+          ]
+        ],
+        "value": "61709141.333333336"
+      },
+      {
+        "labels": [
+          [
+            "kind",
+            "heap"
+          ]
+        ],
+        "value": "7795934.666666667"
+      }
+    ]
+  },
+  "samplesLoaded": 48,
+  "reads": [
+    {
+      "file": "C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-metrics-LjzijS\\rss.gor2",
+      "archiveBytes": 324,
+      "bytesRead": 324,
+      "samples": 24,
+      "allBlocksVerified": true
+    },
+    {
+      "file": "C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-metrics-LjzijS\\heap.gor2",
+      "archiveBytes": 368,
+      "bytesRead": 368,
+      "samples": 24,
+      "allBlocksVerified": true
+    }
+  ]
+}

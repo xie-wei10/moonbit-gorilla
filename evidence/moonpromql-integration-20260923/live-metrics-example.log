@@ -1,0 +1,3 @@
+{"output":"C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-metrics-LjzijS","samples":48,"bitExactRoundtrip":true,"equalsUncompressedQuery":true,"result":{"kind":"instant","points":[{"labels":[["kind","rss"]],"value":"61709141.333333336"},{"labels":[["kind","heap"]],"value":"7795934.666666667"}]}}
+
+STDERR

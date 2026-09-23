@@ -1,0 +1,32 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "xie-wei10/gorilla/moonpromql"
+
+import {
+  "Santa968/moonpromql/ast",
+  "Santa968/moonpromql/model",
+  "moonbitlang/core/debug",
+  "xie-wei10/gorilla",
+}
+
+// Values
+pub fn plan(String, Int64) -> QueryPlan raise
+
+pub fn series(String, Array[(String, String)], Array[@gorilla.Sample]) -> @model.Series raise AdapterError
+
+// Errors
+pub(all) suberror AdapterError {
+  Invalid(String)
+} derive(@debug.Debug)
+
+// Types and methods
+pub struct QueryPlan {
+  expression : @ast.Expr
+  at : Double
+  window : (Int64, Int64)?
+}
+pub fn QueryPlan::evaluate(Self, Array[@model.Series]) -> @model.Value raise @model.PromqlError
+pub fn QueryPlan::read_window(Self) -> (Int64, Int64)?
+
+// Type aliases
+
+// Traits

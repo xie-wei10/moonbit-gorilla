@@ -1,63 +1,36 @@
-# 保留浮点位模式的时序压缩与范围归档
+# Gorilla 压缩归档与 MoonPromQL 查询数据源
 
-**本项目仓库：[https://github.com/xie-wei10/moonbit-gorilla](https://github.com/xie-wei10/moonbit-gorilla)**
+本项目仓库：https://github.com/xie-wei10/moonbit-gorilla
 
-模块 `xie-wei10/gorilla`，本地版本 **0.4.0**，MIT。当前评审状态：**保留候选**。本文件是当前入口，旧轮次说明与详细用法保存在 [历史/完整使用说明](README-BEFORE-VALUE-REWORK.md)。
+模块 `xie-wei10/gorilla`，本地版本 **0.5.0**，直接依赖 `Santa968/moonpromql@0.1.0`。本项目代码 MIT，上游 Apache-2.0；包含上游的交付标注 MIT AND Apache-2.0。仅本地，未推送或发布。
 
-## 解决什么任务
+本版补充初审要求的生态衔接与使用流程：已有 [MoonPromQL](https://github.com/Santa968/MoonPromQL) 提供内存时序查询，本项目提供压缩归档、索引范围读取和完整性检查。新增 `/moonpromql` 包把读回的样本送入上游模型与查询引擎，复用它的解析器、AST和求值器，不重写查询语言。
 
-将时间戳/原始浮点位模式归档，并按时间索引读取小范围、定位坏块；数据仍可按 Prometheus XOR chunk 交换。
+## 可复现的落地流程
 
-需要原始浮点位模式、块索引和坏块定位时评估；如果只是 JSON 导出，无须引入该自有容器。
-
-## 直接复现
-
-安装 MoonBit 和 Node.js 24，在本仓库根目录运行：
+适用于保存单机/边缘任务的指标快照，事后读取某个时段进行分析。下例采集的是**本示例进程自己的内存指标**，不是团队实际客户或生产部署。
 
 ```sh
 moon build --target js
-node -e "require('node:fs').copyFileSync('_build/js/debug/build/cmd/web/web.js','web/engine.mjs')"
-node examples/run-use-case.mjs
+node tools/refresh-engines.mjs
+node examples/run-metrics-query.mjs
 ```
 
-流程：**保留特殊浮点位模式的区间归档**。运行器创建新的系统临时目录，保留每一步的 stdout/stderr、产物及 `report.json`，打印实际目录；重复运行不会覆盖之前产物。它只执行仓库内的本地样例，不连接公网或发送消息。`report.json` 的 `expected` 是应观察的结果，实际结果在各步输出中；成功退出不替代内容核对。
+采集 RSS/heap 两个指标共48个样本 → 分别写入带校验的 GOR2 文件 → 位模式精确读回 → 上游执行 `avg_over_time(process_memory_bytes[1s])`。自动断言压缩输入与未压缩输入查询一致。运行后打印新的临时目录，其中保存两份归档、指标/标签/时间单位清单及 report.json；数字随本机运行而变，不把它们作为固定性能成绩。
 
-输入性质：原创合成时间序列，含负零与 NaN payload。
+已有数据可使用 `tools/query-archive.mjs` 的 `queryArchives({series, query, at})`；每条 series 显式提供 `file`、`metric` 和 `[标签名,标签值]` 数组，`at` 为整数毫秒。示例与接口边界见 [USE-CASE.md](USE-CASE.md) 和 [生态关系](UPSTREAM-RELATION.md)。
 
-应观察：闭区间返回负零 bits=9223372036854775808 与 NaN bits=9221120237041090626，完整校验成功。
+## 读取正确的数据
 
-具体命令和输入路径见 [使用任务](USE-CASE.md) 与 [机器可读流程](examples/use-case.json)。只把这个脚本当复现入口，不把通用运行器计作核心技术贡献。
+查询计划由**上游 AST**产生，计算所有 selector 所需时间窗口的保守并集，包含范围、offset、上游的毫秒制 @ 和瞬时查询5分钟回看。随后通过已有 ArchiveFile 索引只读相关块，再调用上游 evaluator。不是按用户指定的随意截断窗口得出看似成功的结果。暂未做标签下推，调用者必须提供相关的完整序列集合。
 
-## 实现与已有项目的关系
+`node tools/test-query-archive.mjs` 的原创建模输入共4096样本；选定5分钟查询加载12个样本（磁盘仍按块解码），读4858字节/归档共16593字节，与全量输入的上游结果一致。11组流程检查包括 offset/@、左开右闭区间、损坏块、资源上限及非有限值拒绝。这是固定样例的 I/O 结果，不声称通用性能提升。
 
-MoonBit 执行 XOR/位流、CRC、分块增量编码及范围索引；Node 执行文件发布、异步输入输出及 CLI。
+## 分工与明确限制
 
-Gorilla 是既有算法；本轮未找到同范围 MoonBit 压缩库。贡献是该生态的可复用实现和块索引/完整性工作流，不是算法首创，也不把自有 GOR2 容器说成 Prometheus TSDB 文件。
+- MoonBit：Gorilla/XOR、CRC、GOR2块索引、上游AST读取范围计划和数据模型转换；Node：文件与本例指标采集；MoonPromQL：PromQL子集的解析、函数和求值。
+- 查询适配要求严格递增、可用Double精确表示的整数毫秒时间戳；拒绝 NaN、无穷和 stale markers，**不静默删除**。原压缩库仍能保存负零及NaN payload，不把数学查询结果当作原位模式存档。
+- 默认仅校验读到的块；`verifyAll:true` 会额外读并检查全部块。CRC不是密码学认证。每次最多64序列、合计100000个加载样本；超限报错，不返回部分查询结果。
+- GOR2不是完整Prometheus TSDB格式；无抓取服务、remote read/write、指标自动发现、告警规则、实时持久化服务或生产部署证明。上游查询子集与Prometheus存在语义差异，详见关系说明。
 
-同类项目和检索边界见 [DUPLICATION](DUPLICATION.md)。查重用于避免错误的首创表述；关键词零结果不能证明生态空白，Node 宿主能力也不计为 MoonBit 原生 I/O。
-
-库使用从 [公共 API](pkg.generated.mbti) 和根包源码开始；可在本 checkout 的消费包中导入 `"xie-wei10/gorilla"`。源码中的网络/文件宿主入口及完整参数仍见 [完整使用说明](README-BEFORE-VALUE-REWORK.md)。是否已发布到 Mooncakes 需另核实，本文不把 `moon add` 的下载成功作为已完成事项。
-
-## 验证与边界
-
-前一轮工程验证 10 组真实归档流程及十万样本范围读取通过；独立容器向量为保存的参考重放，未冒充前一轮工程验证重新运行 Go oracle。
-
-[上一轮工程验证](evidence/innovation-review-20260922/results.json) 与 [本轮最小任务回执](evidence/value-rework-20260922/use-case.json) 分开。历史参考版本、golden 重放、本机 peer、真实第三方服务端和本次样例是不同证据，不能合并成“全部生产验证”。
-
-常规核心检查可运行 `moon check --target js`、`moon test --target js`、`moon test --target wasm-gc`。专项命令：
-
-```sh
-node tools/test-archive.mjs --golden
-```
-
-专项所需的参考环境和历史版本见原使用说明及 TESTING 文档；本轮回执只记录实际执行项，不声称上面所有参考服务在任意环境即装即跑。
-
-默认范围读取只检查选中的块；完整归档校验需 verify/--verify-all。原始 XOR chunk 互通不等于整个 TSDB 兼容。
-
-## 复审材料状态
-
-Gorilla 算法已有，GOR2 不是 Prometheus 完整 TSDB 格式，性能不宣称追平。
-
-2026-09-22 匿名新克隆成功；默认分支 `main`，核验公开提交 `1934afceef052621c668119279f210624bb89692`。本轮源码修订仅在本地，尚未推送；此记录不证明当时报名表中的地址正确，也不证明新修订已上线。
-
-[申报草稿](PROPOSAL.md) 已压缩为 30 行以内，并单独标明本项目仓库；[复核说明](REVIEW-RESPONSE.md) 区分材料错误、功能变化及尚未解决的问题。没有编造用户、设备接入、生产部署或评审认可。
+[验证](TESTING.md)、[申报书](PROPOSAL.md)、[复核说明](REVIEW-RESPONSE.md)、[查重](DUPLICATION.md)、[许可证](THIRD-PARTY-NOTICES.md)。Gorilla算法是既有工作；本版贡献范围是压缩归档与已有生态查询能力的实际连接。对接团队需同步公开代码和表单，再请求复审；不保证通过。

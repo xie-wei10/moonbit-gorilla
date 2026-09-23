@@ -1,23 +1,9 @@
-> 2026-09-22 三份初审反馈后的当前判断：**保留候选**。Gorilla 算法已有，GOR2 不是 Prometheus 完整 TSDB 格式，性能不宣称追平。 本次差异说明：Gorilla 是既有算法；本轮未找到同范围 MoonBit 压缩库。贡献是该生态的可复用实现和块索引/完整性工作流，不是算法首创，也不把自有 GOR2 容器说成 Prometheus TSDB 文件。 以下保留之前检索的固定提交与来源；此前“补足场景”不能理解为本次已解除价值异议。
+# 查重与生态定位 · 2026-09-23
 
-# gorilla 查重与定位 · 2026-09-22
+Gorilla/XOR是既有压缩算法，不申报算法首创，也不以检索零命中证明生态空白。此前来源与范围记录保留于 [旧记录](DUPLICATION-BEFORE-MOONPROMQL.md)。
 
-Gorilla 是既有算法；本轮未找到同范围 MoonBit 压缩库。贡献是该生态的可复用实现和块索引/完整性工作流，不是算法首创，也不把自有 GOR2 容器说成 Prometheus TSDB 文件。 检索原始响应在总交付包的创新性复核目录保存。
+本次先检索MoonBit时序/指标/查询项目，核对 [MoonPromQL](https://github.com/Santa968/MoonPromQL) 后选择直接复用其已发布0.1.0。其查询语言与内存模型已经存在，本项目只补压缩归档数据读取和类型/范围适配。相关边界与真实依赖见 [UPSTREAM-RELATION.md](UPSTREAM-RELATION.md)。
 
+另检索到 [moonbit-community/opentelemetry](https://github.com/moonbit-community/opentelemetry.mbt) 和官方registry中的 guiqi695/moon-prometheus-sdk；本版**没有**接入它们，不把搜索结果列成完成的生态集成。对指标采集协议和完整存储服务有需求应另评估已有项目，不把本例Node memoryUsage采集当作OTel exporter。
 
-
-本轮材料采用定位：**保留浮点位模式的时序压缩与范围归档**。
-
-MoonBit 与宿主分工：MoonBit 执行 XOR/位流、CRC、分块增量编码及范围索引；Node 执行文件发布、异步输入输出及 CLI。
-
-本轮证据：本轮 10 组真实归档流程及十万样本范围读取通过；独立容器向量为保存的参考重放，未冒充本轮重新运行 Go oracle。 具体输入、脚本、已执行与历史对照分开记录在 [PROPOSAL.md](PROPOSAL.md) 和 evidence/innovation-review-20260922/。
-
-边界：默认范围读取只检查选中的块；完整归档校验需 verify/--verify-all。原始 XOR chunk 互通不等于整个 TSDB 兼容。
-
-检索覆盖 Mooncakes 官方关键词/别名、GitHub 仓库查询、GitLink 公开索引、直接来源文档；没有完整赛事报名表、私有仓库、未公开分支或 GitHub 全代码索引。GitLink 索引也不完整。未找到同范围项目不等于生态空白；已有相关项目不自动等于无独立贡献。完整查询和固定提交快照在总交付目录 innovation-review-20260922/。
-
-初次复核风险为“待补场景”。本次补足差异和可复现工作流，没有自行将重叠归零，也不替评委作创新性认定。最终公开代码与表单附件须使用一致版本。
-
-## 来源直达
-
-[Gorilla 论文](https://www.vldb.org/pvldb/vol8/p1816-teller.pdf)、[Prometheus v3.14.0 chunkenc](https://github.com/prometheus/prometheus/tree/v3.14.0/tsdb/chunkenc)。这些是既有规范/实现的来源；具体固定版本、适配与运行范围见 [完整说明](README-BEFORE-VALUE-REWORK.md) 和仓库验证记录。链接存在不代表本轮重新运行了对方实现，也不构成赛事无重复证明。
+[Prometheus chunkenc](https://github.com/prometheus/prometheus/tree/v3.14.0/tsdb/chunkenc) 为历史XOR互通来源；GOR2不是其TSDB容器。检索不覆盖私有仓库、全部报名或未公开分支，也不替评委认定创新性。

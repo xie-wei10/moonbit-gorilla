@@ -1,0 +1,15 @@
+import {
+  "xie-wei10/gorilla" @archive,
+  "xie-wei10/gorilla/moonpromql" @adapter,
+  "Santa968/moonpromql/model",
+  "moonbitlang/core/json",
+  "moonbitlang/core/string" @strconv,
+}
+
+supported_targets = "js"
+
+pkgtype(kind: "executable")
+
+options(
+  link: { "js": { "exports": [ "query_json" ], "format": "esm" } },
+)
