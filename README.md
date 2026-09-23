@@ -34,3 +34,5 @@ node examples/run-metrics-query.mjs
 - GOR2不是完整Prometheus TSDB格式；无抓取服务、remote read/write、指标自动发现、告警规则、实时持久化服务或生产部署证明。上游查询子集与Prometheus存在语义差异，详见关系说明。
 
 [验证](TESTING.md)、[申报书](PROPOSAL.md)、[复核说明](REVIEW-RESPONSE.md)、[查重](DUPLICATION.md)、[许可证](THIRD-PARTY-NOTICES.md)。Gorilla算法是既有工作；本版贡献范围是压缩归档与已有生态查询能力的实际连接。对接团队需同步公开代码和表单，再请求复审；不保证通过。
+
+CI固定的编译器与标准库版本见 [TOOLCHAIN.md](TOOLCHAIN.md)；升级时需同时核对生成产物。
