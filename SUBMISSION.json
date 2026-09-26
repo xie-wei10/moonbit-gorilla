@@ -1,17 +1,17 @@
 {
   "project": "gorilla",
-  "title": "Gorilla 压缩归档与 MoonPromQL 查询数据源 · 复审稿",
+  "title": "Gorilla 压缩归档与 MoonPromQL 查询数据源",
   "module": "xie-wei10/gorilla",
   "version": "0.6.0",
   "repository": "https://github.com/xie-wei10/moonbit-gorilla",
   "status": "原申报已驳回；本地修订待团队同步复审",
-  "remainingRisk": "无确认使用方；GOR2不是完整TSDB；查询子集和毫秒@继承上游，非有限值查询拒绝。",
+  "remainingRisk": "GOR2不是TSDB；非有限值拒绝；继承上游查询限制，没有生产监控采用证明",
   "actualUsersClaimed": false,
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
   "proposalLines": 25,
-  "useCase": "本机进程指标采集、GOR2归档、区间读取与上游时间窗口查询",
-  "diff": "直接复用Santa968/moonpromql的parser/AST/model/eval，计算完整读取窗口并以压缩归档提供数据；不重新实现查询语言。",
+  "useCase": "将有限数值的Prometheus文本样本导入GOR2，检查精确回读并交给MoonPromQL窗口查询",
+  "diff": "Gorilla压缩与TSDB并非原创；实际依赖MoonPromQL，主贡献为有界归档/导入/读取接口",
   "license": "MIT AND Apache-2.0",
   "dependency": "Santa968/moonpromql@0.1.0",
   "historicalAnonymousClone": {
@@ -26,5 +26,6 @@
   "currentValidation": "evidence/public-20260927/LOCAL-CHECKS.json",
   "currentEvidence": "evidence/public-20260927/LOCAL-CHECKS.json",
   "metadataReviewedOn": "2026-09-27",
-  "currentEvidenceScope": "Pure MoonBit finite promtool dump ingress; official 15-point fixture, GOR2 bit preservation and independent window mean; reject malformed time coercions"
+  "currentEvidenceScope": "Pure MoonBit finite promtool dump ingress; official 15-point fixture, GOR2 bit preservation and independent window mean; reject malformed time coercions",
+  "reviewDecision": "保留指标归档与上游查询接入"
 }
