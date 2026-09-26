@@ -1,7 +1,7 @@
 # Gorilla 压缩归档与 MoonPromQL 查询数据源 · 复审稿
 
 本项目仓库：https://github.com/xie-wei10/moonbit-gorilla
-模块/本地版本：`xie-wei10/gorilla` / `0.5.0`；交付许可证 MIT AND Apache-2.0。
+模块/本地版本：`xie-wei10/gorilla` / `0.6.0`；交付许可证 MIT AND Apache-2.0。
 本地完成，未推送/发布/提交表单。针对“生态衔接与实际场景不足”补充如下。
 
 ## 已有生态与新增连接
@@ -15,6 +15,8 @@ MoonBit负责压缩、CRC、索引与适配；Node负责文件和样例指标采
 `moon build --target js` → `node tools/refresh-engines.mjs` → `node examples/run-metrics-query.mjs`。
 实际采集本例进程RSS/heap共48样本，写入GOR2、按bits精确读回，上游avg_over_time结果与未压缩同输入一致；保留文件、标签清单与报告。
 这是可运行场景，不是客户采用证明；尚无确认使用方。
+
+新增公开Prometheus导出夹具入口：`node examples/run-prometheus-dump.mjs NEW_DIRECTORY`。原文件15点/3序列，纯MoonBit校验标签/时间序并导入，GOR2位模式精确读回；Python独立核对15位值和窗口均值2.5。新增入口明确拒绝非有限/重复/乱序/越界及资源超限，只覆盖有限dump文本，不是全量OpenMetrics。参见PUBLIC-PROMETHEUS.md。
 
 ## 验证与限制
 新测试含3组MoonBit适配检查、11组文件/查询流程；4096样本的固定用例中选定查询加载12样本、读4858/16593归档字节，并与全量输入结果相同。

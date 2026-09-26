@@ -1,0 +1,9 @@
+{
+  "commit": "ea954809ceafceb53ecfa295ab0947753929de9e",
+  "source": "https://raw.githubusercontent.com/prometheus/prometheus/ea954809ceafceb53ecfa295ab0947753929de9e/cmd/promtool/testdata/dump-test-1.prom",
+  "sha256": "cf96f3f04cc915ae0248cdb007fc17bc5aa69aeffe10a749c32d0e2ef4f130f4",
+  "license": "Apache-2.0",
+  "kind": "upstream synthetic test fixture, not production monitoring",
+  "rows": 15,
+  "series": 3
+}

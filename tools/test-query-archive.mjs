@@ -32,6 +32,8 @@ try{
   await assert.rejects(queryArchives({series:[files[0],files[0]],query:'requests_total',at}),/duplicate series/);
   await assert.rejects(queryArchives({series:[{...files[0],labels:[['__name__','other']]}],query:'requests_total',at}),/labels/);
   assert.throws(()=>planQuery('requests_total',9007199254740992n),/precision/);passed('duplicate identities reserved labels and unsafe timestamps reject');
+  for(const at of [true,false,null,undefined,'',' ','0x10','1e3',{},[],0.5,Infinity,NaN])assert.throws(()=>planQuery('requests_total',at),/exact integer/);
+  assert.deepEqual(planQuery('requests_total','1000'),planQuery('requests_total',1000n));passed('timestamp types cannot silently coerce booleans empty or hexadecimal input');
   const bad=path.join(temp,'nan.gor2');await writeArchive(bad,[{timestamp:'0',bits:'9221120237041090626'}]);
   await assert.rejects(queryArchives({series:[{file:bad,metric:'x',labels:[]}],query:'x',at:0}),/nonfinite/);passed('NaN payload remains storable but query adapter rejects rather than drops it');
   const corrupt=path.join(temp,'corrupt.gor2');await fs.copyFile(files[0].file,corrupt);

@@ -1,0 +1,54 @@
+{
+  "upstream": "Santa968/moonpromql@0.1.0",
+  "groups": 12,
+  "passed": [
+    "full-input parity and reduced reads: sum(rate(requests_total[5m]))",
+    "full-input parity and reduced reads: avg_over_time(requests_total[2m] offset 1m)",
+    "full-input parity and reduced reads: requests_total @ 600000",
+    "full-input parity and reduced reads: sum(requests_total) + sum(requests_total offset 1m)",
+    "full-input parity and reduced reads: count_over_time(requests_total[2m])",
+    "scalar query has no archive dependency",
+    "sample cap releases file and rejects incomplete evaluation",
+    "duplicate identities reserved labels and unsafe timestamps reject",
+    "timestamp types cannot silently coerce booleans empty or hexadecimal input",
+    "NaN payload remains storable but query adapter rejects rather than drops it",
+    "selected-block validation versus explicit whole-archive validation",
+    "cancel before I/O"
+  ],
+  "selectedQuery": {
+    "query": "sum(rate(requests_total[5m]))",
+    "at": "1800000",
+    "window": {
+      "start": "1500000",
+      "end": "1800000"
+    },
+    "result": {
+      "kind": "instant",
+      "points": [
+        {
+          "labels": [],
+          "value": "0.15000000000000002"
+        }
+      ]
+    },
+    "samplesLoaded": 12,
+    "reads": [
+      {
+        "file": "C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-query-test-r2xI4r\\a.gor2",
+        "archiveBytes": 8303,
+        "bytesRead": 2429,
+        "samples": 6,
+        "allBlocksVerified": false
+      },
+      {
+        "file": "C:\\Users\\uiwcv\\AppData\\Local\\Temp\\gorilla-query-test-r2xI4r\\b.gor2",
+        "archiveBytes": 8290,
+        "bytesRead": 2429,
+        "samples": 6,
+        "allBlocksVerified": false
+      }
+    ]
+  },
+  "sourceSamples": 4096,
+  "source": "original deterministic fixtures; not production telemetry"
+}

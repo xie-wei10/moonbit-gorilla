@@ -1,0 +1,119 @@
+{
+  "utc": "2026-09-26T20:14:33.474228+00:00",
+  "version": "0.6.0",
+  "checks": [
+    {
+      "name": "format",
+      "command": [
+        "moon",
+        "fmt"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "api",
+      "command": [
+        "moon",
+        "info"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "check",
+      "command": [
+        "moon",
+        "check",
+        "--target",
+        "all"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "js",
+      "command": [
+        "moon",
+        "test",
+        "--target",
+        "js"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "wasm",
+      "command": [
+        "moon",
+        "test",
+        "--target",
+        "wasm-gc"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "build",
+      "command": [
+        "moon",
+        "build",
+        "--target",
+        "js"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "refresh",
+      "command": [
+        "node",
+        "tools/refresh-engines.mjs"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "archive-query",
+      "command": [
+        "node",
+        "tools/test-query-archive.mjs",
+        "--output",
+        "C:\\Users\\uiwcv\\Documents\\Codex\\2026-09-10\\ban\\outputs\\repos\\moonbit-gorilla\\evidence\\public-20260927\\archive-query.json"
+      ],
+      "exitCode": 0
+    },
+    {
+      "name": "public-prometheus",
+      "exitCode": 0,
+      "command": [
+        "python",
+        "tools/verify-prometheus-dump.py"
+      ],
+      "previousInvocation": true
+    },
+    {
+      "name": "import-limits",
+      "exitCode": 0,
+      "command": [
+        "node",
+        "tools/test-promtool-import.mjs"
+      ],
+      "previousInvocation": true
+    }
+  ],
+  "sourceHashPolicy": "LF-normalized source",
+  "sources": {
+    "moonpromql/dump.mbt": "d290a649a5346cf3a25edf93c9a27ef5e442dfce4394a5b3b3c0f23e96f233f7",
+    "moonpromql/dump_test.mbt": "489984f0743ad44c6588b6f6bf68ad264e2926ffae303e261efb1663f56ff12e",
+    "moonpromql/adapter.mbt": "ff12da0dba584aa3dfec06f506422f4b8f2567a2898ebcbb99f8adec3c4283b3",
+    "cmd/moonpromql/main.mbt": "3779819e7801a75c2345ef549d58a9864b80802e9b4f45546671b886ad8dfa2f",
+    "tools/query-archive.mjs": "8601136bb57ac8917443584b7aaf563be4cbf66553f1be478c49d7e34551c66e",
+    "tools/import-promtool.mjs": "5adaadf1dfdc0636d7888c4b855ab72047108cdd37befcfb58a51c2bab799e72",
+    "tools/test-promtool-import.mjs": "5781927a5c45e5d3880a6493802f2064649e96cae337206296c1bc0ae209f012",
+    "tools/verify-prometheus-dump.py": "3f9522c35010d47322f36f5a0ce895b586a1e27152e5a803263eb915c0733745",
+    "examples/run-prometheus-dump.mjs": "d82efcaf48924339bffd01fe0ce3310c1d0824e7a9925281eb08917b849183da",
+    "moonpromql/pkg.generated.mbti": "bbe191c6dfbb45f0462448cdb99cba98cf55357a874d636b2da3b08aa3501b55",
+    "moon.mod": "216693ea5e9165d4435feb199e47eb05237a245b8a3e7158cc61a986af881098",
+    "web/moonpromql-engine.mjs": "b3fc3fe8a824b2d4384ff3fa7d818f4df9122b3ffb12c61d22951adb32f4cd62"
+  },
+  "scope": "new ingress/strict timestamp host fix; archive codecs unchanged; upstream query evaluator unchanged",
+  "limits": [
+    "finite dump profile only",
+    "not production monitoring",
+    "no remote CI or publication"
+  ]
+}

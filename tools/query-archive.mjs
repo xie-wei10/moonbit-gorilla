@@ -2,7 +2,9 @@ import {ArchiveFile} from './archive.mjs';
 import {query_json} from '../web/moonpromql-engine.mjs';
 
 const call=request=>{const response=JSON.parse(query_json(JSON.stringify(request)));if(!response.ok)throw Error(response.error);return response.result;};
-function exactTime(value){if(typeof value==='number'&&!Number.isSafeInteger(value))throw TypeError('at must be an exact integer millisecond timestamp');const n=BigInt(value);if(n < -9007199254740991n || n > 9007199254740991n)throw RangeError('at loses Double precision');return n.toString();}
+function exactTime(value){if(!['number','bigint','string'].includes(typeof value)||(typeof value==='number'&&!Number.isSafeInteger(value))||(typeof value==='string'&&!/^-?\d+$/.test(value)))throw TypeError('at must be an exact integer millisecond timestamp');const n=BigInt(value);if(n < -9007199254740991n || n > 9007199254740991n)throw RangeError('at loses Double precision');return n.toString();}
+/** Pure MoonBit import of bounded finite-sample promtool tsdb dump text. */
+export function parsePromtoolDump(source){if(typeof source!=='string')throw TypeError('source must be text');return call({action:'import-dump',source});}
 export function planQuery(query,at){return call({action:'plan',query,at:exactTime(at)});}
 /** Query an explicitly supplied set of per-series GOR2 files. Reads the complete
  * conservative union planned from the pinned upstream AST, with no label pushdown.

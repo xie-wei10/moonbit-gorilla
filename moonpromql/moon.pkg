@@ -4,4 +4,5 @@ import {
   "Santa968/moonpromql/ast",
   "Santa968/moonpromql/parser",
   "Santa968/moonpromql/eval",
+  "moonbitlang/core/string" @strconv,
 }

@@ -46,6 +46,31 @@ pub fn query_json(input : String) -> String {
       raise Failure("request byte/character limit")
     }
     let request = @json.parse(input)
+    match request {
+      { "action": String("import-dump"), "source": String(source), .. } => {
+        let items = @adapter.parse_promtool_dump(source)
+        let result = items.map(item => {
+          (
+            {
+              "metric": item.metric.to_json(),
+              "labels": Json::array(
+                item.labels.map(p => Json::array([p.0.to_json(), p.1.to_json()])),
+              ),
+              "samples": Json::array(
+                item.samples.map(s => {
+                  (
+                    {
+                      "timestamp": s.timestamp.to_string(),
+                      "bits": s.bits.to_string(),
+                    } : Json)
+                }),
+              ),
+            } : Json)
+        })
+        return ({ "ok": true, "result": result } : Json).stringify()
+      }
+      _ => ()
+    }
     let (action, query, at) = match request {
       { "action": String(a), "query": String(q), "at": String(t), .. } =>
         (a, q, @strconv.parse_int64(t))

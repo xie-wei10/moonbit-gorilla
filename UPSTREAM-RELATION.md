@@ -28,3 +28,5 @@ Node queryArchives保证读取完整计划窗口，并在超出合计样本上�
 3. 坏块被选中则失败；坏块位于窗口外时默认不检查，verifyAll可发现。资源上限、非法标签、NaN、时间精度、取消与句柄释放均检查。
 
 上游还存在counter外推模型、正则、histogram、subquery、staleness等限制；本版继承其支持范围，不宣称完整PromQL。原Prometheus XOR参考检查只证明相应chunk互通，不证明TSDB兼容。既有算法不作原创算法申报，未联系上游或取得背书，无真实采用方证明。
+
+0.6.0的dump标签也复用上游AST/parser，严格等号匹配，核心另管聚合身份、时间与资源界限。没有新增一套PromQL语言。公共输入及与完整TSDB/OpenMetrics的边界见PUBLIC-PROMETHEUS.md。

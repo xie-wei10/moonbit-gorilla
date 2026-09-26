@@ -2,9 +2,11 @@
 
 本项目仓库：https://github.com/xie-wei10/moonbit-gorilla
 
-模块 `xie-wei10/gorilla`，本地版本 **0.5.0**，直接依赖 `Santa968/moonpromql@0.1.0`。本项目代码 MIT，上游 Apache-2.0；包含上游的交付标注 MIT AND Apache-2.0。仅本地，未推送或发布。
+模块 `xie-wei10/gorilla`，本地版本 **0.6.0**，直接依赖 `Santa968/moonpromql@0.1.0`。本项目代码 MIT，上游 Apache-2.0；包含上游的交付标注 MIT AND Apache-2.0。仅本地，未推送或发布。
 
 本版补充初审要求的生态衔接与使用流程：已有 [MoonPromQL](https://github.com/Santa968/MoonPromQL) 提供内存时序查询，本项目提供压缩归档、索引范围读取和完整性检查。新增 `/moonpromql` 包把读回的样本送入上游模型与查询引擎，复用它的解析器、AST和求值器，不重写查询语言。
+
+0.6.0 新增[公开Prometheus输入工作流](PUBLIC-PROMETHEUS.md)：纯MoonBit有限dump导入器，实际GOR2文件，官方15点/3序列夹具与Python位模式/窗口均值对照。不是生产监控采用证据。
 
 ## 可复现的落地流程
 

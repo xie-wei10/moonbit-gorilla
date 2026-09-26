@@ -1,0 +1,23 @@
+{
+  "source": {
+    "commit": "ea954809ceafceb53ecfa295ab0947753929de9e",
+    "source": "https://raw.githubusercontent.com/prometheus/prometheus/ea954809ceafceb53ecfa295ab0947753929de9e/cmd/promtool/testdata/dump-test-1.prom",
+    "sha256": "cf96f3f04cc915ae0248cdb007fc17bc5aa69aeffe10a749c32d0e2ef4f130f4",
+    "license": "Apache-2.0",
+    "kind": "upstream synthetic test fixture, not production monitoring",
+    "rows": 15,
+    "series": 3
+  },
+  "rows": 15,
+  "series": 3,
+  "bitValuesCompared": 15,
+  "window": "(60000,180000]",
+  "expectedMean": 2.5,
+  "loadedSamples": 9,
+  "oracle": "Python text/struct and explicit source-row mean; actual GOR2 file roundtrip and pinned MoonPromQL",
+  "limits": [
+    "tiny upstream synthetic fixture, not production telemetry",
+    "no general performance claim",
+    "query engine belongs to MoonPromQL"
+  ]
+}

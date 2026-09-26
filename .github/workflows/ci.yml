@@ -24,6 +24,8 @@ jobs:
         run: node tools/refresh-engines.mjs
       - run: node examples/run-metrics-query.mjs
       - run: node tools/test-query-archive.mjs
+      - run: node tools/test-promtool-import.mjs
+      - run: python3 tools/verify-prometheus-dump.py
       - run: node tools/test-demo.mjs
       - run: node tools/test-cli.mjs
       - run: node tools/test-blocks.mjs
