@@ -159,10 +159,10 @@
     "unchangedValidation": "This pass reran the importer and independent oracle only. Existing generated MoonBit JS engines were unchanged; the full MoonBit build/test suite was not rerun."
   },
   "sourceFingerprintPolicy": {
-    "gitTree": "2f16c92abdf96d8c18a90d2c8bea839b287f7f33",
+    "gitTree": "9ef3d2e0088ab829e2dfe3206e7eba79cb28151b",
     "encoding": "SHA-256 and byte count over exact entries extracted from `git archive` for the listed Git tree; no ad hoc normalization applied after archive extraction.",
     "includesRuntimeInputs": true,
-    "treeArchiveBytes": 15032130,
+    "treeArchiveBytes": 15032505,
     "scope": "The listed inputs and generated data are entries in this local Git archive tree; LOCAL-CHECKS.json is excluded to avoid self-referential hashing."
   },
   "limitations": [
@@ -177,15 +177,15 @@
       "bytes": 893
     },
     "PROPOSAL.md": {
-      "sha256": "d1078f6519c51235243f22e70a6b6dd0109bf1da4aeb5e68a95063822e2aa3f3",
-      "bytes": 2087
+      "sha256": "436457575fab9d8fce2fb97d817c8ac6d6711db266631833ff3ceacf9b50eadd",
+      "bytes": 2462
     },
     "README.md": {
       "sha256": "86df6e3a47c23b2e8abb3192dc0aa0c8850aee33965d95a9b80824087baa06da",
       "bytes": 4760
     },
     "SUBMISSION.json": {
-      "sha256": "3338af515aa22325197a555ea8fb2931b092682258d2ccb72e3f1fccbaacd8d2",
+      "sha256": "02cf7b46ca1c5210c7dc69eeeb34d107dbe6955cd2962c4adadc1c531036f9be",
       "bytes": 2408
     },
     "moon.mod": {

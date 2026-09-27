@@ -9,7 +9,7 @@
   "actualUsersClaimed": false,
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
-  "proposalLines": 19,
+  "proposalLines": 28,
   "useCase": "完整扫描并校验UCI原始输入，只将一个月的实测功率写入GOR2，再用MoonPromQL做有界离线窗口查询并由Python标准库独立核对",
   "diff": "Gorilla压缩与TSDB并非原创；核心是GOR2有界索引读取和MoonPromQL适配，新增真实UCI完整月消费者；不声称Parquet或TSDB空白/劣势",
   "license": "MIT AND Apache-2.0",
