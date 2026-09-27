@@ -1,0 +1,221 @@
+{
+  "schemaVersion": "uci-household-gor2-v1",
+  "source": {
+    "url": "https://archive.ics.uci.edu/static/public/235/individual%2Bhousehold%2Belectric%2Bpower%2Bconsumption.zip",
+    "archiveName": "individual+household+electric+power+consumption.zip",
+    "license": "CC BY 4.0",
+    "expectedSha256": "4259c9d7ece5dbee9ab8d53682baac68d791c864f0f64a52b4043cb3b90894b7",
+    "matchesPinnedSource": true,
+    "citation": "Hebrail, G. & Berard, A. (2006). Individual Household Electric Power Consumption [Dataset]. UCI Machine Learning Repository. DOI:10.24432/C58K54.",
+    "rows": 2075259,
+    "bytes": 132960755,
+    "sha256": "4259c9d7ece5dbee9ab8d53682baac68d791c864f0f64a52b4043cb3b90894b7",
+    "globalActivePowerMissing": {
+      "blank": 0,
+      "questionMark": 25979
+    }
+  },
+  "selection": {
+    "column": "Global_active_power",
+    "unit": "kW",
+    "month": "2007-04",
+    "rows": 43200,
+    "encodedSamples": 39477,
+    "missing": {
+      "blank": 0,
+      "questionMark": 3723
+    },
+    "timeCoordinate": "Gregorian wall-clock fields encoded as milliseconds using UTC calendar arithmetic; not a claim that the source data are UTC",
+    "firstMs": "1175385600000",
+    "lastMs": "1177977540000",
+    "rowSpacingMs": 60000,
+    "pointProbe": {
+      "date": "1/4/2007",
+      "time": "00:00:00",
+      "timestampMs": "1175385600000",
+      "sourceValue": "3.480",
+      "bits": "4615018682151642071"
+    },
+    "queryWindowSelection": {
+      "policy": "first 30-minute April window containing both measured and missing Global_active_power rows",
+      "date": "28/4/2007",
+      "time": "00:21:00",
+      "atMs": "1177719660000",
+      "calendarRows": 30,
+      "missingRows": 1
+    },
+    "boundaryWindow": {
+      "policy": "first 30-minute April window with a measured sample at both exact range endpoints",
+      "date": "1/4/2007",
+      "time": "00:30:00",
+      "atMs": "1175387400000",
+      "calendarRows": 30,
+      "boundaries": {
+        "left": {
+          "date": "1/4/2007",
+          "time": "00:00:00",
+          "timestampMs": "1175385600000",
+          "sourceValue": "3.480",
+          "bits": "4615018682151642071"
+        },
+        "right": {
+          "date": "1/4/2007",
+          "time": "00:30:00",
+          "timestampMs": "1175387400000",
+          "sourceValue": "1.568",
+          "bits": "4609740463388363850"
+        }
+      }
+    },
+    "allMissingWindow": {
+      "date": "28/4/2007",
+      "time": "00:50:00",
+      "atMs": "1177721400000",
+      "calendarRows": 30,
+      "expectedMeasuredSamples": 0
+    }
+  },
+  "archive": {
+    "format": "GOR2",
+    "file": "global-active-power.gor2",
+    "blockSize": 512,
+    "samples": "39477",
+    "bytes": 233699,
+    "sha256": "4cf803012cde4ae669ad01be5b40a53072e4275ae3e9bde5d9da9e9d7e7b2516"
+  },
+  "query": {
+    "engine": "MoonPromQL 0.1.0 via tools/query-archive.mjs",
+    "rangeSemantics": "Prometheus range vector: (start, end]",
+    "offline": true,
+    "series": 1,
+    "querySampleLimit": 1000,
+    "queries": {
+      "count": {
+        "query": "count_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1177719660000",
+        "window": {
+          "start": "1177717860000",
+          "end": "1177719660000"
+        },
+        "value": 29,
+        "samplesLoaded": 30,
+        "bytesRead": 6316,
+        "archiveBytes": 233699
+      },
+      "avg": {
+        "query": "avg_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1177719660000",
+        "window": {
+          "start": "1177717860000",
+          "end": "1177719660000"
+        },
+        "value": 1.1613103448275863,
+        "samplesLoaded": 30,
+        "bytesRead": 6316,
+        "archiveBytes": 233699
+      },
+      "min": {
+        "query": "min_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1177719660000",
+        "window": {
+          "start": "1177717860000",
+          "end": "1177719660000"
+        },
+        "value": 0.488,
+        "samplesLoaded": 30,
+        "bytesRead": 6316,
+        "archiveBytes": 233699
+      },
+      "max": {
+        "query": "max_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1177719660000",
+        "window": {
+          "start": "1177717860000",
+          "end": "1177719660000"
+        },
+        "value": 1.478,
+        "samplesLoaded": 30,
+        "bytesRead": 6316,
+        "archiveBytes": 233699
+      }
+    },
+    "boundaryWindow": {
+      "count": {
+        "query": "count_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1175387400000",
+        "window": {
+          "start": "1175385600000",
+          "end": "1175387400000"
+        },
+        "value": 30,
+        "samplesLoaded": 31,
+        "bytesRead": 6294,
+        "archiveBytes": 233699
+      },
+      "avg": {
+        "query": "avg_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1175387400000",
+        "window": {
+          "start": "1175385600000",
+          "end": "1175387400000"
+        },
+        "value": 3.1248666666666667,
+        "samplesLoaded": 31,
+        "bytesRead": 6294,
+        "archiveBytes": 233699
+      },
+      "min": {
+        "query": "min_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1175387400000",
+        "window": {
+          "start": "1175385600000",
+          "end": "1175387400000"
+        },
+        "value": 1.496,
+        "samplesLoaded": 31,
+        "bytesRead": 6294,
+        "archiveBytes": 233699
+      },
+      "max": {
+        "query": "max_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1175387400000",
+        "window": {
+          "start": "1175385600000",
+          "end": "1175387400000"
+        },
+        "value": 4.968,
+        "samplesLoaded": 31,
+        "bytesRead": 6294,
+        "archiveBytes": 233699
+      }
+    },
+    "allMissingWindow": {
+      "count": {
+        "query": "count_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1177721400000",
+        "window": {
+          "start": "1177719600000",
+          "end": "1177721400000"
+        },
+        "resultKind": "instant",
+        "points": 0,
+        "samplesLoaded": 1,
+        "bytesRead": 6316,
+        "archiveBytes": 233699
+      },
+      "avg": {
+        "query": "avg_over_time(household_global_active_power_kw{dataset=\"uci-235\",month=\"2007-04\"}[30m])",
+        "atMs": "1177721400000",
+        "window": {
+          "start": "1177719600000",
+          "end": "1177721400000"
+        },
+        "resultKind": "instant",
+        "points": 0,
+        "samplesLoaded": 1,
+        "bytesRead": 6316,
+        "archiveBytes": 233699
+      }
+    }
+  }
+}

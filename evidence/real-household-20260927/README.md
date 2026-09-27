@@ -1,0 +1,5 @@
+# Local UCI household-power evidence
+
+The UCI source text is not bundled. Download it from the [official UCI dataset page](https://archive.ics.uci.edu/dataset/235/individual%2Bhousehold%2Belectric%2Bpower%2Bconsumption); cite Hebrail and Berard (2006), DOI 10.24432/C58K54, CC BY 4.0. The importer refuses text whose full-file SHA-256 differs from the pinned distributed source. Reproduction commands and timestamp/missing-value policy are in [REAL-HOUSEHOLD.md](../../REAL-HOUSEHOLD.md); per-artifact attribution and license boundaries are in [THIRD-PARTY-NOTICES.md](../../THIRD-PARTY-NOTICES.md).
+
+`run.json` records the full source scan and MoonPromQL range reads. `oracle.json` is the independent Python standard-library source and query check, including a valid measured sample exactly at both `(start,end]` bounds and a separate all-missing window. The latter has one conservative archive candidate at the excluded left bound, then returns an empty vector rather than zero or NaN. `global-active-power.gor2` is the produced one-month archive. The archive SHA-256 and exact tested scope are in [LOCAL-CHECKS.json](LOCAL-CHECKS.json).

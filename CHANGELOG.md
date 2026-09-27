@@ -1,3 +1,7 @@
+# 0.7.0 · 2026-09-27
+
+Added a reproducible UCI household-power consumer: full source stream hash/row checks, one complete month in GOR2, explicit missing-value gaps, indexed offline MoonPromQL windows, and an independent Python standard-library oracle. Evidence covers mixed-missing, exact `(start,end]` endpoints, and all-missing behavior. It does not claim TSDB/Parquet replacement or production adoption.
+
 # 0.4.0 · 2026-09-17
 
 新增兼容 Prometheus 原始 XOR chunk、完整 Int64 时间、GOR2 CRC 分块索引容器、任意分片输入、流式文件和索引 CLI；保留 GOR1。位读取/写入改为按字节处理，零位扫描使用标准库位计数，字节格式不变。

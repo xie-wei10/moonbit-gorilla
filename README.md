@@ -2,11 +2,13 @@
 
 本项目仓库：https://github.com/xie-wei10/moonbit-gorilla
 
-模块 `xie-wei10/gorilla`，本地版本 **0.6.0**，直接依赖 `Santa968/moonpromql@0.1.0`。本项目代码 MIT，上游 Apache-2.0；包含上游的交付标注 MIT AND Apache-2.0。仅本地，未推送或发布。
+模块 `xie-wei10/gorilla`，本地版本 **0.7.0**，直接依赖 `Santa968/moonpromql@0.1.0`。本项目代码 MIT，上游 Apache-2.0；包含上游的交付标注 MIT AND Apache-2.0。仅本地，未推送或发布。
 
 本版补充初审要求的生态衔接与使用流程：已有 [MoonPromQL](https://github.com/Santa968/MoonPromQL) 提供内存时序查询，本项目提供压缩归档、索引范围读取和完整性检查。新增 `/moonpromql` 包把读回的样本送入上游模型与查询引擎，复用它的解析器、AST和求值器，不重写查询语言。
 
 0.6.0 新增[公开Prometheus输入工作流](PUBLIC-PROMETHEUS.md)：纯MoonBit有限dump导入器，实际GOR2文件，官方15点/3序列夹具与Python位模式/窗口均值对照。不是生产监控采用证据。
+
+0.7.0 新增[UCI家庭用电完整月消费者](REAL-HOUSEHOLD.md)：完整流读UCI原始文件并核对行数/SHA-256，只将2007年4月的Global_active_power写入GOR2；离线30分钟PromQL的count/avg/min/max由Python标准库从原始记录独立对照。缺失值保留为时间洞，日期时间只编码为无时区的wall-clock坐标。证据还核对有效的左右端点及全缺失查询返回空向量（没有变成0/NaN）。实测数据与许可证归属见 [evidence/real-household-20260927](evidence/real-household-20260927/LOCAL-CHECKS.json)；不代表47个月数据验证、TSDB替代或实际部署。
 
 ## 可复现的落地流程
 

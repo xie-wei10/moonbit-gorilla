@@ -2,16 +2,16 @@
   "project": "gorilla",
   "title": "Gorilla 压缩归档与 MoonPromQL 查询数据源",
   "module": "xie-wei10/gorilla",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "repository": "https://github.com/xie-wei10/moonbit-gorilla",
   "status": "原申报已驳回；本地修订待团队同步复审",
-  "remainingRisk": "GOR2不是TSDB；非有限值拒绝；继承上游查询限制，没有生产监控采用证明",
+  "remainingRisk": "GOR2不是TSDB；非有限值拒绝；UCI仅验证单列单月且使用无时区wall-clock坐标；没有生产监控采用证明",
   "actualUsersClaimed": false,
   "defaultBranch": "origin/main",
   "localChangesPublished": false,
-  "proposalLines": 25,
-  "useCase": "将有限数值的Prometheus文本样本导入GOR2，检查精确回读并交给MoonPromQL窗口查询",
-  "diff": "Gorilla压缩与TSDB并非原创；实际依赖MoonPromQL，主贡献为有界归档/导入/读取接口",
+  "proposalLines": 19,
+  "useCase": "完整扫描并校验UCI原始输入，只将一个月的实测功率写入GOR2，再用MoonPromQL做有界离线窗口查询并由Python标准库独立核对",
+  "diff": "Gorilla压缩与TSDB并非原创；核心是GOR2有界索引读取和MoonPromQL适配，新增真实UCI完整月消费者；不声称Parquet或TSDB空白/劣势",
   "license": "MIT AND Apache-2.0",
   "dependency": "Santa968/moonpromql@0.1.0",
   "historicalAnonymousClone": {
@@ -23,9 +23,14 @@
   "originalSubmission": "gorilla",
   "acceptance": "not established",
   "remoteCIRunByThisTask": false,
-  "currentValidation": "evidence/public-20260927/LOCAL-CHECKS.json",
-  "currentEvidence": "evidence/public-20260927/LOCAL-CHECKS.json",
+  "currentValidation": "evidence/real-household-20260927/LOCAL-CHECKS.json",
+  "currentEvidence": "evidence/real-household-20260927/LOCAL-CHECKS.json",
   "metadataReviewedOn": "2026-09-27",
-  "currentEvidenceScope": "Pure MoonBit finite promtool dump ingress; official 15-point fixture, GOR2 bit preservation and independent window mean; reject malformed time coercions",
-  "reviewDecision": "保留指标归档与上游查询接入"
+  "currentEvidenceScope": "Official UCI input full-stream SHA/row-count; full April 2007 Global_active_power month into GOR2 with explicit missing gaps; indexed offline 30-minute MoonPromQL count/avg/min/max compared to independent Python stdlib oracle; exact valid endpoint samples confirm (start,end]; all-missing window returns empty vector despite one conservative left-boundary archive candidate; one wall-clock point timestamp/bit check",
+  "priorEvidence": "evidence/public-20260927/LOCAL-CHECKS.json",
+  "reviewDecision": "本地复审材料增加真实单月文件到有界查询消费者；其余功能/采用/竞赛结论不外推",
+  "licenseScope": {
+    "projectCodeAndBundledMoonPromQL": "MIT AND Apache-2.0, as declared by moon.mod",
+    "evidence/real-household-20260927/global-active-power.gor2": "CC BY 4.0 derived data; see THIRD-PARTY-NOTICES.md for attribution and transform scope"
+  }
 }
