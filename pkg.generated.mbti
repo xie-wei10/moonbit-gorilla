@@ -26,6 +26,7 @@ pub fn encode_xor(Array[Sample]) -> Bytes raise CodecError
 pub suberror CodecError {
   Invalid(String)
 } derive(@debug.Debug)
+pub fn CodecError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
 pub struct ArchiveDecoder {
@@ -62,6 +63,9 @@ pub(all) struct BlockInfo {
   last : Int64
   checksum : UInt
 } derive(Eq, @debug.Debug)
+pub fn BlockInfo::equal(Self, Self) -> Bool
+pub fn BlockInfo::not_equal(Self, Self) -> Bool
+pub fn BlockInfo::to_repr(Self) -> @debug.Repr
 
 pub struct Decoder {
   // private fields
@@ -86,6 +90,9 @@ pub(all) struct Sample {
   timestamp : Int64
   bits : UInt64
 } derive(Eq, @debug.Debug)
+pub fn Sample::equal(Self, Self) -> Bool
+pub fn Sample::not_equal(Self, Self) -> Bool
+pub fn Sample::to_repr(Self) -> @debug.Repr
 
 pub struct XorDecoder {
   // private fields
