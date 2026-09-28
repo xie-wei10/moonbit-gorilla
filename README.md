@@ -12,7 +12,7 @@
 
 ## 可复现的落地流程
 
-适用于保存单机/边缘任务的指标快照，事后读取某个时段进行分析。下例采集的是**本示例进程自己的内存指标**，不是团队实际客户或生产部署。
+适用于保存单机/边缘任务的指标快照，事后读取某个时段进行分析。下例采集的是**本示例进程自己的内存指标**，不是已确认的客户或生产部署。
 
 ```sh
 moon build --target js
@@ -37,7 +37,7 @@ node examples/run-metrics-query.mjs
 - 默认仅校验读到的块；`verifyAll:true` 会额外读并检查全部块。CRC不是密码学认证。每次最多64序列、合计100000个加载样本；超限报错，不返回部分查询结果。
 - GOR2不是完整Prometheus TSDB格式；无抓取服务、remote read/write、指标自动发现、告警规则、实时持久化服务或生产部署证明。上游查询子集与Prometheus存在语义差异，详见关系说明。
 
-[验证](TESTING.md)、[申报书](PROPOSAL.md)、[复核说明](REVIEW-RESPONSE.md)、[查重](DUPLICATION.md)、[许可证](THIRD-PARTY-NOTICES.md)。Gorilla算法是既有工作；本版贡献范围是压缩归档与已有生态查询能力的实际连接。对接团队需同步公开代码和表单，再请求复审；不保证通过。
+[验证](TESTING.md)、[申报书](PROPOSAL.md)、[复核说明](REVIEW-RESPONSE.md)、[查重](DUPLICATION.md)、[许可证](THIRD-PARTY-NOTICES.md)。Gorilla算法是既有工作；本版贡献范围是压缩归档与已有生态查询能力的实际连接。申报人需同步公开代码和表单，再请求复审；不保证通过。
 
 CI固定的编译器与标准库版本见 [TOOLCHAIN.md](TOOLCHAIN.md)；升级时需同时核对生成产物。
 
@@ -57,4 +57,4 @@ moon package
 
 本地核验：JS/Wasm-GC 测试、指标查询、归档、Prometheus 数据交换和 XOR/GOR1 参考检查通过。 `moon package` 已完成离线打包预检，它不等于已发布到 Mooncakes。
 
-公开交付（2026-09-28 核对）：当日 [https://github.com/xie-wei10/moonbit-gorilla](https://github.com/xie-wei10/moonbit-gorilla) 可匿名读取 Git HEAD，Mooncakes 在线版本为 `0.4.0`；此处源码版本 `0.7.0` 仍需由团队同步到公开仓库，检查新提交的 GitHub Actions，再由对应账号发布 Mooncakes 新版。相关远端 CI 与赛事结果仍需以实际记录核对。项目许可见 [LICENSE](LICENSE)；如使用第三方材料，其来源和许可见仓内相应说明。
+公开交付（2026-09-28 核对）：当日 [https://github.com/xie-wei10/moonbit-gorilla](https://github.com/xie-wei10/moonbit-gorilla) 可匿名读取 Git HEAD，Mooncakes 在线版本为 `0.4.0`；此处源码版本 `0.7.0` 仍需由申报人同步到公开仓库，检查新提交的 GitHub Actions，再由对应账号发布 Mooncakes 新版。相关远端 CI 与赛事结果仍需以实际记录核对。项目许可见 [LICENSE](LICENSE)；如使用第三方材料，其来源和许可见仓内相应说明。
