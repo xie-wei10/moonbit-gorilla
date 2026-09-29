@@ -1,30 +1,23 @@
-# Gorilla GOR2 索引归档与 MoonPromQL 查询适配
-项目：`xie-wei10/gorilla` 0.7.0；仓库：[moonbit-gorilla](https://github.com/xie-wei10/moonbit-gorilla)。
-状态：仅本地修订材料；未声称公开更新、参赛通过或获奖。
+# Gorilla GOR2：索引化时序归档与 MoonPromQL 查询适配
 
-## 项目贡献
-Gorilla/XOR 压缩是既有工作；本项目提供校验和索引化 GOR2 归档、有界时间范围读取，并从固定 MoonPromQL AST 规划读取窗口后交给上游 evaluator，不重写 PromQL。
+项目仓库：https://github.com/xie-wei10/moonbit-gorilla。模块 `xie-wei10/gorilla@0.7.0`；MIT AND Apache-2.0。申请范围是 MoonBit 时序归档与现有查询引擎之间的可复用数据层。
 
-## 可复现消费者
-真实数据取自 UCI [Individual Household Electric Power Consumption](https://archive.ics.uci.edu/dataset/235/individual%2Bhousehold%2Belectric%2Bpower%2Bconsumption)，Hebrail 与 Berard (2006)，DOI `10.24432/C58K54`，数据许可 CC BY 4.0。
+## 场景与核心能力
 
-导入器流式扫描全部 2,075,259 行、132,960,755 字节，并固定校验原始文本 SHA-256 `4259c9d7ece5dbee9ab8d53682baac68d791c864f0f64a52b4043cb3b90894b7`；原始 ZIP/TXT 不随包分发。
+离线监测数据需要按时间范围反复读取，而缺测不能被填成零、窗口端点也不能多算或少算。本库提供 Gorilla/XOR 编解码、带校验和索引的 GOR2 归档、有界时间读取，并从固定 MoonPromQL AST 规划读取窗口，把结果交给其 evaluator。调用方能把文件存储与查询组合起来；不另造 PromQL 执行器。
 
-只编码 2007 年 4 月完整单列 `Global_active_power`（kW）：43,200 个分钟墙钟行、39,477 个实测值、3,723 个缺失值。`?`/空值作为时间洞，不填零。
-数据未声明时区；时间戳仅是无时区的 wall-clock 坐标，不表示 UTC。
+## 独立贡献与现有生态
 
-离线 30 分钟 `(start,end]` 窗口由 MoonPromQL 计算 count/avg/min/max，并与独立 Python 标准库从原始十进制值重算的结果一致：count 29、avg 1.1613103448275863、min 0.488、max 1.478。
+Gorilla 压缩算法、Prometheus 时序系统和列式存储均有成熟实现。项目实际复用 [Santa968/MoonPromQL](https://github.com/Santa968/MoonPromQL)，其查询语义归于上游；[mizchi/parquet](https://github.com/mizchi/parquet) 是 MoonBit 另一种文件交换选择。本项目的交付价值是同一 MoonBit 核心中的有界编解码、索引读取及查询接入，不主张算法首创、TSDB 兼容或性能优胜。
 
-单独验证左右端点均有值：左端排除、右端纳入，结果 count 30；左闭会为 31，右开会为 29。全缺失窗口的 count/avg 均返回空向量，不报告零或 NaN。
+## 公开数据任务
 
-该混合窗口每次索引读取 6,316 字节，归档总计 233,699 字节；这是 `ArchiveFile.bytesRead` 的单次场景观测，不是基准测试或性能优越性结论。
+使用 UCI Individual Household Electric Power Consumption（Hebrail 与 Berard，DOI 10.24432/C58K54，CC BY 4.0）。导入器流式校验完整原文 2,075,259 行及固定 SHA-256，仅编码 2007 年 4 月 `Global_active_power` 一列：43,200 个分钟行中保留 39,477 个测量值，将 3,723 个缺失项保留为时间洞。数据未声明时区，数值时间轴不冒称 UTC。
 
-## 许可与边界
-项目代码与随附 MoonPromQL 编译件按 `moon.mod` 声明 MIT AND Apache-2.0；派生 GOR2 数据文件按 CC BY 4.0 署名，转换范围及链接见 [第三方说明](THIRD-PARTY-NOTICES.md)。
+按 [REAL-HOUSEHOLD](REAL-HOUSEHOLD.md) 运行文件到查询的完整流程。30 分钟 `(start,end]` 窗口的 count/avg/min/max 与独立 Python 原文重算一致；另以端点均有值的窗口证明左端排除、右端纳入，以全缺测窗口证明返回空向量。选定窗口读取 6,316 字节，归档共 233,699 字节；这是一次场景记录，不是通用性能结论。
 
-复现步骤、缺失值/时间策略及完整测量见 [REAL-HOUSEHOLD.md](REAL-HOUSEHOLD.md) 和 [本地回执](evidence/real-household-20260927/LOCAL-CHECKS.json)。
-本证据仅覆盖一个月、一列，不代表验证了全部 47 个月或 9 个字段。GOR2 不是 Prometheus TSDB。
+## 可靠性与交付边界
 
-不包含抓取服务、远程读写、告警、部署、外部采用证明；赛事是否接收、公开提交或批准仍未确定。
+AI 生成的统计代码仍必须遵守测量身份、缺失值和时间窗契约；库把这些约束与独立参考结果保留为可复核接口。公开记录说明具体用途，不代表 UCI 或其他使用方采用本库。当前只验证上述一月单列，不覆盖整个数据集、持续写入、抓取服务、告警或远程读写。交付包含 MoonBit 库、Node 文件消费者、可运行查询、数据署名和分层证据。
 
-**验收复现与交付状态（2026-09-28 本地）**：以 moonc 0.10.14+7d59c7ec9 通过 `--deny-warn` 检查、JS/Wasm-GC 测试和构建、最小样例和离线 `moon package`；同一代码在 Ubuntu-D 26.04 WSL2 全新解包后通过格式、接口生成、严格双后端检查及 Node 24.21.0 最小宿主入口；截至 2026-09-29，公开 Git HEAD 为本地提交祖先；Mooncakes 最新版号 `0.4.0` 较本地 `0.7.0` 仍旧；本次文档、包内容与远端 CI 尚需核对。命令与能力边界见 [README](README.md)，自动检查见 [CI](.github/workflows/ci.yml)；本地通过不代表赛事审核通过。
+**公开状态（2026-09-29 核对）**：GitHub [公开仓库](https://github.com/xie-wei10/moonbit-gorilla)、[Mooncakes 0.7.0](https://mooncakes.io/docs/xie-wei10/gorilla@0.7.0) 已可访问；[CI 成功记录](https://github.com/xie-wei10/moonbit-gorilla/actions/runs/36435951979) 对应 `1e63af377d10`。本次材料更新尚未推送；该远端 CI 对应所列公开提交。报名表一致性及赛事审核结果尚未核实。
